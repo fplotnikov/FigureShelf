@@ -1,0 +1,97 @@
+# art (text-to-image, nano-banana-2)
+animals2 01 lion 01a1ec73-6c25-7111-8f26-eaeae51cb527
+animals2 02 zebra 01a1ec73-6dcc-727c-bf0d-11d6a5527a31
+animals2 03 ostrich 01a1ec73-6f5e-75ff-810c-16e98fb3c969
+animals2 04 horse 01a1ec73-70fe-70c5-b36c-2f776c747efb
+animals2 05 tiger 01a1ec73-72f3-7598-88a9-1db88c82b6f2
+animals2 06 beaver 01a1ec73-7445-773f-aa65-4faca98f1c24
+animals2 07 raccoon 01a1ec73-75ed-71c2-85b5-e9242b73a44c
+animals2 08 elephant 01a1ec73-77a7-751c-aeca-2220ceebe020
+animals2 09 hippo 01a1ec73-7927-7676-a4d1-252de7d283e8
+animals2 10 rhino 01a1ec73-7b22-7280-89f0-855df23c3df4
+animals2 11 mouse 01a1ec73-7c8b-77d1-972f-2861925ce679
+animals2 12 turtle 01a1ec73-7e08-709f-b584-59ebdd6342fd
+dinosaurs 01 trex 01a1ec73-efc3-705e-9098-6786bcd2686a
+dinosaurs 02 triceratops 01a1ec73-f119-73ff-9b5a-73b17923f71a
+dinosaurs 03 stegosaurus 01a1ec73-f2b3-765b-8f20-f5330a072e67
+dinosaurs 04 velociraptor 01a1ec73-f42b-73dc-b175-23a5409c01d2
+dinosaurs 05 brachiosaurus 01a1ec73-f5d9-7186-93d3-d8486ccbd3db
+dinosaurs 06 spinosaurus 01a1ec73-f730-72ac-a620-bf9452db24ba
+dinosaurs 07 ankylosaurus 01a1ec73-f89d-710c-bea2-91151c5212a8
+dinosaurs 08 pteranodon 01a1ec73-fa0d-73d1-9dd2-5ab9086e0251
+dinosaurs 09 parasaurolophus 01a1ec73-fbfb-7618-b6f2-5f5111aefad6
+dinosaurs 10 diplodocus 01a1ec73-fd82-73aa-9d41-2553cb1cc284
+dinosaurs 11 pachycephalosaurus 01a1ec73-feef-7310-9d70-66f20e77db0a
+dinosaurs 12 allosaurus 01a1ec74-0049-7625-a670-ab804cefe3ea
+# image-to-3d (name: model file name)
+lion 01a1ec76-a3fa-74c0-be36-b31c2394bf97
+zebra 01a1ec76-a841-7609-b87c-845f6317ba9e
+ostrich 01a1ec76-acdb-729b-8118-95ffbdacc946
+horse 01a1ec76-afc1-752f-9a52-c9aabebeb700
+tiger 01a1ec76-b341-74ef-b517-57bd8c7f0bc6
+beaver 01a1ec76-b7cc-74ab-9640-7d23ce5445ea
+raccoonkid 01a1ec76-bb1d-701e-af0d-04e4a13f7ed2
+elephant 01a1ec76-bf90-70d1-918e-3fc72ed67b56
+hippo 01a1ec76-c2b9-7489-af7b-1833c5ba16cc
+rhino 01a1ec76-c5d8-7288-a50d-14649ef8caa8
+mouse 01a1ec76-c903-742d-8a29-1cbc5c1f59e9
+turtle 01a1ec76-ce6c-7130-add1-3b9a242e9f30
+trex 01a1ec77-3437-76d4-b513-3f48d5330668
+triceratops 01a1ec77-3781-74c9-9d28-f3450c5765a5
+stegosaurus 01a1ec77-3a85-7027-bdcb-598bc874f980
+velociraptor 01a1ec77-3da6-7257-ad83-26c3cda2a45a
+brachiosaurus 01a1ec77-4268-763c-b1ac-9e674542f1cd
+spinosaurus 01a1ec77-45d5-7250-8370-8e8c8f8b9dfb
+ankylosaurus 01a1ec77-4900-713b-a67d-51b1bb92d2e1
+pteranodon 01a1ec77-4d8c-72ae-aefa-d244c5b140d8
+parasaurolophus 01a1ec77-5209-772d-b31a-9da38951a4da
+diplodocus 01a1ec77-5642-7264-b168-1d903a7b40e5
+pachycephalosaurus 01a1ec77-598a-7109-aa49-bd6fab71d92c
+allosaurus 01a1ec77-5c4f-7253-af0e-35da4a674c1c
+# rigs
+r_lion 01a1ec78-8d83-74f8-b591-f208315a0c9b
+r_zebra 01a1ec78-a91a-7087-8979-255dc93d9394
+r_ostrich 01a1ec78-b5de-7167-a790-ff749ab8d815
+r_horse 01a1ec78-c435-7230-8661-5ea072806c4f
+r_tiger 01a1ec78-e37c-7395-9166-8849b6f8a4a5
+r_beaver 01a1ec78-f3d9-71cb-baa2-d3b60a1126be
+r_raccoonkid 01a1ec79-022e-7145-acef-8a7fef9007c8
+r_elephant 01a1ec79-0f14-757c-8791-ec3586886f73
+r_hippo 01a1ec79-1bb5-756c-8d82-3ddcef3e1bbb
+r_rhino 01a1ec79-27b8-77c3-9ad4-70cc54726a9a
+r_mouse 01a1ec79-34c3-74a8-852e-adb1ba46c906
+r_turtle 01a1ec79-423a-7773-be06-efe3489afb82
+r_trex 01a1ec79-5f74-73f7-a18e-7933e7eed427
+r_velociraptor 01a1ec79-6c49-7358-bf93-12ffdcc534ed
+r_spinosaurus 01a1ec79-874a-7227-99e0-54b92198aa73
+r_pachycephalosaurus 01a1ec79-9395-76e6-950b-8ec83bc9a5b3
+r_allosaurus 01a1ec79-9fdd-7666-b790-e9e3eaef2ad3
+r_pteranodon 01a1ec79-acad-70c2-86cc-85b69769d2e4
+# realistic dino art (nano-banana-2)
+ra_trex 01a1ec7c-16b4-7707-85ea-942c22c95732
+ra_triceratops 01a1ec7c-18ad-756b-a37f-1abe0e9bd4ba
+ra_stegosaurus 01a1ec7c-1a12-758c-8a96-a708d7409c13
+ra_velociraptor 01a1ec7c-1b75-721e-b895-1778fc892fc5
+ra_brachiosaurus 01a1ec7c-1cf2-7726-b867-15e76dd6b9a5
+ra_spinosaurus 01a1ec7c-1ed0-733a-9907-effc722a7b4b
+ra_ankylosaurus 01a1ec7c-555b-7185-8bfc-6a744dab3fa3
+ra_pteranodon 01a1ec7c-5706-7644-a116-995e62d6c403
+ra_parasaurolophus 01a1ec7c-5866-73c1-affd-d3cae1556ce1
+ra_diplodocus 01a1ec7c-59ba-74a2-8cf6-318cc7c13133
+ra_pachycephalosaurus 01a1ec7c-5b87-735e-8a72-bf519137d50d
+ra_allosaurus 01a1ec7c-5cf9-701f-b0f1-95c0b4bd629f
+ra_velociraptor_retry 01a1ec7e-e588-71b9-8630-2cbce519b8f3
+ra_allosaurus_retry 01a1ec7e-e6e1-70fb-b38e-f64645dfe9b6
+# realistic dino 3D (meshy-t2.5 smart topology 20k + meshy-n1)
+r3_trex 01a1ec90-dd7b-7302-b912-4aa11f5782cd
+r3_triceratops 01a1ec90-e0c6-7035-acb5-5bc989b9726d
+r3_stegosaurus 01a1ec90-e4bf-7340-bb06-c29791eb256b
+r3_velociraptor 01a1ec90-e830-75d9-94e4-ce8ae22bfd60
+r3_brachiosaurus 01a1ec90-ebcf-7594-98e9-a830c5a92e8d
+r3_spinosaurus 01a1ec90-ef4c-769d-a4b4-dd5da207498d
+r3_ankylosaurus 01a1ec91-36c6-7349-a461-0b2a7f778fce
+r3_pteranodon 01a1ec91-3ac3-75f4-81df-56ecc8d519e3
+r3_parasaurolophus 01a1ec91-3e2d-77cb-b108-527bc7c996a3
+r3_diplodocus 01a1ec91-41f5-709c-ac12-2c549a12605d
+r3_pachycephalosaurus 01a1ec91-4539-7015-ac1b-4d57bd2d5c24
+r3_allosaurus 01a1ec91-4912-7029-875d-201eb2b3d8b6

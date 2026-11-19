@@ -1,0 +1,35 @@
+# macOS / Xcode noise
+.DS_Store
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+.build/
+.swiftpm/xcode/xcuserdata/
+
+# Secrets — never commit
+.env
+.env.*
+*.key
+.claude.json
+*meshy*key*
+
+# App Store build products (.ipa, .xcarchive)
+appstore/build/
+# Website has its own repo (github.com/fplotnikov/figureshelf-web)
+appstore/figureshelf-web/
+
+# Dev screenshots
+/screenshots/
+
+# Blender scratch test
+/blender-test/
+
+# models/: keep only scripts and small text files
+models/**
+!models/**/
+!models/**/*.py
+!models/**/*.sh
+!models/**/*.json
+!models/**/*.txt
+!models/**/*.md

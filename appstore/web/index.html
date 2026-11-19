@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Figure Shelf</title>
+<meta name="description" content="Figure Shelf: a calm toy box of 60 3D figures for iPhone and iPad. Animals, real-looking dinosaurs, creatures, robots and animatronics. No ads, no accounts, nothing collected.">
+<meta property="og:title" content="Figure Shelf">
+<meta property="og:description" content="A calm toy box of 60 3D figures: animals, real-looking dinosaurs, robots and more. Dress them up, make them move, see them in your room.">
+<meta property="og:image" content="https://fplotnikov.github.io/figureshelf-web/img/icon.png">
+<link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<style>
+:root{--bg:#faf7f2;--card:#ffffff;--ink:#2b2b2b;--muted:#6b6560;--accent:#e8743b;--accent-soft:#fbe6d9;--line:#ece5dc}
+@media (prefers-color-scheme: dark){:root{--bg:#1c1a18;--card:#262320;--ink:#f1ece6;--muted:#b3aba2;--accent:#f08a55;--accent-soft:#3a2a20;--line:#36312c}}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--accent)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 24px;text-align:center}
+.badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:14px;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+h1{font-size:44px;line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+.lead{font-size:20px;color:var(--muted);max-width:640px;margin:0 auto}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px}
+.pills span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:15px}
+.gallery{display:flex;gap:18px;overflow-x:auto;padding:28px 4px 20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.shot{flex:0 0 auto;width:210px;scroll-snap-align:center;text-align:center;margin:0}
+.shot img{width:100%;border-radius:28px;border:6px solid var(--ink);background:var(--card);display:block;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.shot figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+h2{font-size:28px;margin:48px 0 16px;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.num{font-size:30px;font-weight:700;color:var(--accent);line-height:1}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px 16px 60px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 0;color:var(--muted)}
+.contact{background:var(--accent-soft);border-radius:24px;padding:28px;text-align:center;margin:48px 0}
+.contact a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:999px;margin-top:8px}
+footer{text-align:center;color:var(--muted);font-size:14px;padding:8px 0 40px}
+@media (max-width:600px){h1{font-size:34px}.lead{font-size:18px}.shot{width:170px}}
+
+.icon{width:120px;height:120px;border-radius:28px;box-shadow:0 10px 28px rgba(0,0,0,.18);display:block;margin:0 auto 18px}
+.soon{display:inline-block;margin-top:22px;background:var(--ink);color:var(--bg);font-weight:600;padding:12px 22px;border-radius:14px;font-size:16px}
+.soon small{display:block;font-weight:400;font-size:12px;opacity:.75;letter-spacing:.02em}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.feature{grid-template-columns:1fr}}
+.promise{background:var(--accent-soft);border-radius:24px;padding:26px 28px;margin:48px 0 0}
+.promise h2{margin:0 0 8px}
+.promise ul{margin:8px 0 0;padding-left:20px}
+.links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:40px 0 16px}
+.links a{display:inline-block;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;padding:12px 22px;border-radius:999px}
+.links a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img class="icon" src="img/icon.png" alt="Figure Shelf app icon">
+  <div class="badge">iPhone and iPad</div>
+  <h1>Figure Shelf</h1>
+  <p class="lead">A calm toy box of 60 3D figures. Animals, real-looking dinosaurs, imaginary creatures, transforming robots and clicky animatronics. Dress them up, make them move, and see them standing on your own floor.</p>
+  <div class="pills"><span>Everything unlocked</span><span>No ads</span><span>No accounts</span><span>Nothing collected</span><span>Works offline</span></div>
+  <div class="soon">Coming soon to the App Store<small>For iPhone and iPad</small></div>
+</header>
+
+<div class="gallery" aria-label="Screenshots">
+  <figure class="shot"><img src="img/picker.jpg" alt="The figure picker with animals and dinosaurs" loading="lazy"><figcaption>Pick from 60 figures</figcaption></figure>
+  <figure class="shot"><img src="img/dinosaur.jpg" alt="A realistic T. rex shown full screen" loading="lazy"><figcaption>Real-looking dinosaurs</figcaption></figure>
+  <figure class="shot"><img src="img/accessories.jpg" alt="Kitty wearing a crown, heart glasses and a scarf" loading="lazy"><figcaption>Hats, glasses and more</figcaption></figure>
+  <figure class="shot"><img src="img/wave.jpg" alt="Bear waving" loading="lazy"><figcaption>Five gentle moves</figcaption></figure>
+  <figure class="shot"><img src="img/robot.jpg" alt="Supercar robot transformed into a car" loading="lazy"><figcaption>Robots that transform</figcaption></figure>
+  <figure class="shot"><img src="img/zoom.jpg" alt="Zoomed in on a dinosaur's head" loading="lazy"><figcaption>Zoom in close</figcaption></figure>
+  <figure class="shot"><img src="img/fullscreen.jpg" alt="A figure filling the whole screen" loading="lazy"><figcaption>Full screen view</figcaption></figure>
+</div>
+
+<h2>Why it feels calm</h2>
+<div class="feature">
+  <div class="card"><h3>Nothing to unlock</h3><p>No levels, timers, scores or stars. Every figure, color and accessory is there from the first tap.</p></div>
+  <div class="card"><h3>Gentle by design</h3><p>Soft colors, slow moves and quiet sounds that only play when you tap. One button turns sound off.</p></div>
+  <div class="card"><h3>Always reversible</h3><p>Undo any change. Reset brings the figure back to how it started.</p></div>
+  <div class="card"><h3>Look as long as you like</h3><p>Turn a figure around, pinch to zoom right up to an eye, or swipe the menu away to see it full screen.</p></div>
+</div>
+
+<h2>What's on the shelf</h2>
+<div class="grid">
+  <div class="card"><div class="num">18</div><h3>Animals</h3><p>From bunny, kitty and penguin to lion, elephant, hippo and turtle.</p></div>
+  <div class="card"><div class="num">12</div><h3>Dinosaurs</h3><p>Museum-style T. rex, Triceratops, Brachiosaurus, a feathered Velociraptor and a gliding Pteranodon.</p></div>
+  <div class="card"><div class="num">10</div><h3>Creatures</h3><p>Imaginary friends like Mosskip, Glassfin and Lanternquill.</p></div>
+  <div class="card"><div class="num">10</div><h3>Robots</h3><p>Tap Run and they become a supercar, jet, helicopter, speedboat and more.</p></div>
+  <div class="card"><div class="num">10</div><h3>Animatronics</h3><p>Friendly park-style performers with clicky, servo-like moves.</p></div>
+</div>
+
+<h2>See it in your room</h2>
+<div class="feature">
+  <div class="card"><h3>On your real floor</h3><p>Tap "See in my room" and the figure stands on your floor through the camera. Tap to move it, pinch to resize, twist to turn.</p></div>
+  <div class="card"><h3>Still fun without AR</h3><p>On devices without augmented reality the room button simply hides. The shelf, colors, accessories and moves all work.</p></div>
+</div>
+
+<div class="promise">
+  <h2>Our promise</h2>
+  <p>Figure Shelf collects nothing.</p>
+  <ul>
+    <li>No accounts, sign-in, ads, analytics or tracking</li>
+    <li>No purchases and no internet needed</li>
+    <li>The camera picture stays on the device and is never recorded or sent</li>
+  </ul>
+</div>
+
+<div class="links">
+  <a class="primary" href="support.html">Support and tips</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="mailto:support@brightsteps.app">support@brightsteps.app</a>
+</div>
+
+<footer>© 2026 Fedir Plotnikov</footer>
+
+</div>
+</body>
+</html>

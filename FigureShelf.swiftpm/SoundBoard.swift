@@ -1,0 +1,76 @@
+import AVFoundation
+
+/// Soft, original action sounds (Resources/Sounds, made by models/make_sounds.py).
+/// Sounds only ever start from a tap: an action, "Again" repeating that action, or picking
+/// an animal, colour or extra. Uses the ambient category, so the silent switch mutes them
+/// and other audio keeps playing. The speaker button turns them off (remembered).
+final class SoundBoard {
+    static let shared = SoundBoard()
+    static let storageKey = "figureShelf.sound"
+
+    private var players: [String: AVAudioPlayer] = [:]
+    private var current: AVAudioPlayer?
+
+    var enabled: Bool {
+        UserDefaults.standard.object(forKey: Self.storageKey) as? Bool ?? true
+    }
+
+    private init() {
+        try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: [.mixWithOthers])
+        try? AVAudioSession.sharedInstance().setActive(true)
+        let vehicles = ["car", "truck", "bike", "snow", "digger", "jet", "plane", "heli", "boat"].map { "run_" + $0 }
+        let servos = ["dance", "jump", "run", "wave", "spin"].map { "anim_" + $0 }
+        let dinos = ["dance", "jump", "run", "wave", "fly"].map { "dino_" + $0 }
+        for name in ["dance", "jump", "run", "spin", "wave", "pop"] + vehicles + servos + dinos {
+            guard let url = Bundle.main.url(forResource: "sfx_" + name, withExtension: "m4a"),
+                  let player = try? AVAudioPlayer(contentsOf: url) else { continue }
+            player.prepareToPlay()
+            players[name] = player
+        }
+    }
+
+    /// Starts the sound for an action from the beginning (nil just fades out what plays).
+    /// `vehicle`: robots run as a vehicle, with its own soft engine sound.
+    /// `animatronic`: servo clicks (and a calliope for dance) instead of the soft sounds.
+    /// `dinosaur`: a soft "rawr" for dance and wave, padded footsteps for run;
+    /// `flyer` (Pteranodon) whooshes its wings on run instead.
+    func play(_ action: FigureAction?, vehicle: String? = nil, animatronic: Bool = false,
+              dinosaur: Bool = false, flyer: Bool = false) {
+        fadeOutCurrent()
+        guard enabled, let action else { return }
+        var name = action == .run && vehicle != nil ? "run_" + vehicle!
+            : (animatronic ? "anim_" + action.rawValue : action.rawValue)
+        if dinosaur {
+            name = action == .run && flyer ? "dino_fly" : "dino_" + action.rawValue
+            if players[name] == nil { name = action.rawValue }   // spin keeps the usual whoosh
+        }
+        guard let player = players[name] else { return }
+        player.currentTime = 0
+        player.volume = 0
+        player.play()
+        player.setVolume(0.8, fadeDuration: 0.08)
+        current = player
+    }
+
+    /// A very quiet pop when something is chosen.
+    func pop() {
+        guard enabled, let player = players["pop"] else { return }
+        player.currentTime = 0
+        player.volume = 0.35
+        player.play()
+    }
+
+    /// Called when the speaker button turns sounds off.
+    func stopAll() {
+        fadeOutCurrent()
+    }
+
+    private func fadeOutCurrent() {
+        guard let old = current else { return }
+        current = nil
+        old.setVolume(0, fadeDuration: 0.15)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.17) { [weak self] in
+            if self?.current !== old { old.stop() }
+        }
+    }
+}

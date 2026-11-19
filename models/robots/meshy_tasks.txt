@@ -1,0 +1,44 @@
+# robot image-to-3d
+supercar 01a1ebf1-e07c-7107-a950-d8448e478663
+jet 01a1ebf1-e799-75fd-97fa-6ffbf2026525
+motorcycle 01a1ebf1-ef5e-7637-9e41-1aeecd548512
+truck 01a1ebf1-f6bc-76d7-8395-ec6e15ce685e
+helicopter 01a1ebf1-febb-75cf-b1d1-d923f073f3a1
+rally 01a1ebf2-0652-74b9-b51f-4cb6dae6d20d
+seaplane 01a1ebf2-0e90-7066-a4cc-88763d831c6a
+snowmobile 01a1ebf2-15fb-75c6-8382-0386689cfccf
+excavator 01a1ebf2-1d89-74e2-8abe-9ec502e79417
+speedboat 01a1ebf2-25e6-75cb-b2da-14bfbed48ec0
+# vehicle image-to-image (nano-banana-2)
+v_supercar 01a1ebf2-9afb-721a-8146-077b7e3774ae
+v_jet 01a1ebf2-a28d-7291-9e42-583baa391e05
+v_motorcycle 01a1ebf2-ae46-76fd-be5c-c0396ab6dada
+v_truck 01a1ebf2-b6a3-75eb-b2ad-f010bad8c87b
+v_helicopter 01a1ebf2-bf5d-77a5-a535-80745613850e
+v_rally 01a1ebf2-c6db-731e-9f77-c8c97311bc11
+v_seaplane 01a1ebf2-cf79-7238-8b30-035b10c96daf
+v_snowmobile 01a1ebf2-d970-745f-8cb7-3cc09ea36c08
+v_excavator 01a1ebf2-e282-7556-a71d-d857083dff1e
+v_speedboat 01a1ebf2-ea72-7449-a231-d0b170667c28
+# vehicle image-to-3d
+m_supercar 01a1ebf4-6be8-76b1-97ee-e29c187346d9
+m_jet 01a1ebf4-6fa2-7005-a5e3-35324880e033
+m_motorcycle 01a1ebf4-72fb-74fe-9c87-ba3aa2617035
+m_truck 01a1ebf4-767c-70ad-b073-3cf3a6c38cc6
+m_helicopter 01a1ebf4-7a11-7511-8c7e-5abb7ae6a299
+m_rally 01a1ebf4-7dc2-7288-b5a3-5e9cc352ba40
+m_seaplane 01a1ebf4-8211-70cb-bb88-190bcce83510
+m_snowmobile 01a1ebf4-8567-74a1-92ae-531a8b49abc6
+m_excavator 01a1ebf4-8984-7277-9a36-bedba41e6a11
+m_speedboat 01a1ebf4-8d78-746a-bce7-a118ec8ec793
+# robot rigging (meshy_rig)
+r_supercar 01a1ebf6-6ed4-70dc-a198-00ef0fa67975
+r_jet 01a1ebf6-7d1f-73f4-b776-52784d7f529e
+r_motorcycle 01a1ebf6-8c12-7152-84e2-5bbb52dd2919
+r_truck 01a1ebf6-99ce-725a-9ef6-575f2a299f0f
+r_helicopter 01a1ebf6-acdd-76f2-889d-bc6e9fccefac
+r_rally 01a1ebf6-bb00-778d-b0b1-e4c5406d49bf
+r_seaplane 01a1ebf6-c80c-7085-b426-acd4de8d7ad8
+r_snowmobile 01a1ebf6-d7ff-72a9-9634-c7371ef6cacf
+r_excavator 01a1ebf6-e50a-742f-a481-1fa5b9bbf306
+r_speedboat 01a1ebf6-f27f-7269-b640-841de11168db

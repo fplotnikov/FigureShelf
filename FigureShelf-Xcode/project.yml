@@ -1,0 +1,70 @@
+# Regular Xcode project for App Store builds. It uses the same Swift files and resources as
+# ../FigureShelf.swiftpm (keep working there; regenerate with `xcodegen` after adding files).
+name: FigureShelf
+options:
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: B6LBNVRNQ4
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+targets:
+  FigureShelf:
+    type: application
+    platform: iOS
+    sources:
+      - path: ../FigureShelf.swiftpm/ContentView.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/FigureBuilder.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/FigureRig.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/FigureShelfApp.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/Model.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/ParentsInfo.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/RealFigure.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/SoundBoard.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/StageView.swift
+        group: Code
+      - path: ../FigureShelf.swiftpm/Assets.xcassets
+        group: Assets
+      - path: ../FigureShelf.swiftpm/Resources
+        group: Assets
+        buildPhase: resources
+      - path: Extra.xcassets
+        group: Assets
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Figure Shelf
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSCameraUsageDescription: The camera lets your animal appear in your room.
+        ITSAppUsesNonExemptEncryption: false
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        UISupportedInterfaceOrientations~iphone:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    settings:
+      base:
+        PRODUCT_NAME: Figure Shelf
+        PRODUCT_BUNDLE_IDENTIFIER: app.figureshelf.FigureShelf
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "2"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: NO
