@@ -8,3 +8,12 @@ bloomusk 01a1eae8-1eff-764d-91d0-80b5580d0619
 velvetide 01a1eae8-270d-7487-99f6-311b3acaee61
 lanternquill 01a1eae8-2f3e-721d-b98d-d8f6f503e528
 dunewisp 01a1eae8-38c5-70c0-9955-b7087d83d7fd
+# second set (Nov 22, 2026): image-to-3d from Fedir's pictures, meshy-t2.5 smart topology 20k + meshy-n1
+pleatbill 01a2015c-e9b9-72dd-bffd-a9b68af5742b
+coilusk 01a2015c-f23c-709c-963c-53701c2f356b
+siftrunk 01a2015c-fb17-732f-ae8c-10ea3fa6f8dd
+spindlecrab 01a2015d-0504-70aa-96f6-492c9e2fb719
+ripplemantis 01a2015d-0d6b-75cc-8309-80fe93a5ceb2
+tuftwhale 01a2015d-15e4-71e7-b1b6-553780d38c22
+knotcko 01a2015d-1da6-70c9-af98-20092b452717
+cupspinner 01a2015d-26f1-765e-8d13-17aec7b5b6f8

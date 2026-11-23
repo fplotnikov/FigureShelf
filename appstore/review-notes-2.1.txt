@@ -1,0 +1,29 @@
+Screen recording: attached in the App Review Information attachment field (recorded on iPhone, latest iOS, starting from launch).
+
+1. PURPOSE AND AUDIENCE
+Figure Shelf is a calm 3D toy app for all ages, built first for a young child who loves browsing 3D characters but gets upset by locks, missions and timers in other apps. It offers 60 original 3D figures (animals, dinosaurs, imaginary creatures, robots, animatronics) that you can recolor, dress up with accessories, animate (dance, jump, run, spin, wave) and place in your room with augmented reality. Everything is unlocked from the start, with no goals, scores, fail states, popups or ads. Value: open-ended, low-stress play and looking at detailed figures up close.
+
+2. HOW TO USE (no login, no setup, no sample files)
+- Launch the app. A figure appears on the shelf.
+- Pick any figure from the grid at the bottom (Animals, Dinosaurs, Creatures, Robots, Animatronics).
+- Colors and Accessories tabs: tap to change the look. In the top bar, the curved arrow (first button) is Undo and the circled arrow (second button) is Reset, which restores the original look.
+- Action row: Dance, Jump, Run, Spin, Wave. "Again" repeats the move. Robots transform into their vehicle on Run.
+- Drag sideways to turn the figure, pinch to zoom, double-tap to reset the zoom.
+- Swipe the bottom menu down once (actions only) and again (full screen). Tap "Show menu" to bring it back.
+- "See in my room" (AR-capable devices): allow the camera, move the device slowly to find the floor, tap the floor to move the figure, pinch to resize, twist to turn. The button is hidden on devices without ARKit support.
+- Speaker button: turns the soft tap sounds on or off.
+- Parents' info: press and hold the "i" button for 3 seconds to see the version, privacy policy and support links.
+
+3. ACCOUNTS, PAYMENTS, USER CONTENT
+None. No account creation or login, no in-app purchases or paid content, no user-generated content, no chat or sharing.
+
+4. EXTERNAL SERVICES
+None at runtime. The app makes no network requests and works fully offline: no analytics, ads, authentication, payment or AI services. The 3D models were created in advance during development (with Meshy AI from our own designs, and rigged and animated in Blender) and are bundled in the app. The sounds were synthesized for the app.
+
+5. REGIONAL DIFFERENCES
+None. The app works the same in all regions. The only device difference is that the AR room view appears only on devices that support ARKit world tracking.
+
+6. REGULATED INDUSTRY OR THIRD-PARTY MATERIAL
+Not applicable. The app is not in a regulated industry and contains no protected third-party material: all figures, designs, textures and sounds are original and owned by the developer (the models were generated on a paid Meshy plan that grants commercial rights to the output).
+
+The app collects no data. The camera is used only live, on the device, for the AR view.

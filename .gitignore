@@ -33,3 +33,6 @@ models/**
 !models/**/*.json
 !models/**/*.txt
 !models/**/*.md
+
+# Dev screenshots made while building (not for the website)
+/screenshots-*/

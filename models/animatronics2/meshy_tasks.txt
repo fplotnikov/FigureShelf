@@ -1,0 +1,20 @@
+# Fedir's second set of animatronics (Nov 22, 2026)
+# image-to-3d (meshy-t2.5 smart topology 20k + meshy-n1, t-pose); app names in brackets
+showelephant 01a201ea-7033-7457-ad3f-435cec9e7d3f   [Elephant]
+pangolin 01a201ea-79f9-7279-a2d8-ae778f126c6a
+skateostrich 01a201ea-835c-7468-bdda-d13f027b341e   [Ostrich]
+lobster 01a201ea-8d17-754d-a784-6db43c63039d
+chameleon 01a201ea-97f9-72a2-b08e-f9dfa25bbe0c
+walrus 01a201ea-a192-73b9-a00f-acb6beba491f
+showkangaroo 01a201ea-ab49-717d-a5d7-be35b3ce7b32   [Kangaroo]
+sloth 01a201ea-b2b8-76ec-8dd5-63071458df29
+# rigging (Meshy auto-rig). The ostrich rig was refused ("not a well-formed humanoid", 0 credits): it
+# uses our own creature rig instead (CREATURES["skateostrich"], static model in creatures/skateostrich/).
+r_showelephant 01a201eb-c772-766c-9246-fdee81818ee6
+r_pangolin 01a201eb-d40a-766b-9781-cbd7c287c3b6
+r_skateostrich 01a201eb-e207-753a-9706-2e69418dc4df  FAILED
+r_lobster 01a201f2-5fcd-73b1-aa71-aeccf785a11e
+r_chameleon 01a201f4-fa3e-7038-aba2-6198e0f2a846
+r_walrus 01a201f5-0bf3-7309-a6c9-0f17b4085672
+r_showkangaroo 01a20203-d44a-75c1-a0a2-e02ed4293d23
+r_sloth 01a20203-e2c3-76e1-a52d-6e9000c203a7

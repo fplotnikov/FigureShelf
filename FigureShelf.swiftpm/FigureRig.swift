@@ -34,6 +34,15 @@ final class FigureRig {
     /// Animatronics turn in stiff steps (spin, and the turns while running round).
     private var isAnimatronic: Bool { real?.animal.isAnimatronic ?? false }
     private var isDinosaur: Bool { real?.animal.group == .dinosaurs }
+    /// Which dance tune this figure gets (SoundBoard.play danceMusic).
+    private var danceMusic: String? {
+        switch real?.animal.group {
+        case .dinosaurs: "dino"
+        case .robots: "robot"
+        case .creatures: "creature"
+        default: nil
+        }
+    }
     /// Vehicles are shown a little smaller than the robot so the trip fits on the shelf.
     private static let vehicleSize: Float = 0.75
     private var currentLook: Look?
@@ -96,7 +105,7 @@ final class FigureRig {
         actionTime = 0
         playClip(for: newAction)
         SoundBoard.shared.play(newAction, vehicle: vehicleKind, animatronic: isAnimatronic,
-                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon)
+                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon, danceMusic: danceMusic)
     }
 
     /// Robots run as their vehicle, which takes a little longer (change, trip, change back).
@@ -153,7 +162,7 @@ final class FigureRig {
                 if keepGoing {
                     actionTime = 0
                     SoundBoard.shared.play(current, vehicle: vehicleKind, animatronic: isAnimatronic,
-                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon)   // "Again" repeats the sound too
+                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon, danceMusic: danceMusic)   // "Again" repeats the sound too
                 } else {
                     action = nil
                     SoundBoard.shared.play(nil)
@@ -239,7 +248,7 @@ final class FigureRig {
         let d: Float = 6, change: Float = 0.8
         var p = Pose()
         var robot: Float = 0, car: Float = 1, pitch: Float = 0, roll: Float = 0
-        let r = max(runRadius, v.length * Self.vehicleSize * 0.5) * (v.kind == .digger ? 0.75 : 1)
+        let r = max(runRadius, v.length * Self.vehicleSize * 0.5) * (v.kind == .digger || v.kind == .forklift ? 0.75 : (v.kind == .airship ? 1.25 : 1))
         if t < change {
             // fold up with a quick spin; the vehicle grows from the same spot
             let k = smooth(t / change)
@@ -290,6 +299,45 @@ final class FigureRig {
             p.y = 0.002 * sin(t * 4)
             pitch = 0.06 * sin(t * 3.1) - 0.04 * mid
             roll = (-0.1 + 0.05 * sin(t * 2.3)) * mid
+        case .train:
+            // steady chug: a small rhythmic rock, hardly any lean
+            p.y = 0.001 * abs(sin(t * 12)) * mid
+            pitch = 0.012 * sin(t * 6) * mid
+            roll = -0.04 * mid
+        case .bus:
+            p.y = 0.0012 * abs(sin(t * 8)) * mid
+            pitch = 0.012 * sin(t * 4) * mid
+            roll = (-0.09 + 0.015 * sin(t * 3)) * mid
+        case .tractor:
+            // slow and bumpy, big wheels wobble it about
+            p.y = 0.003 * abs(sin(t * 7)) * mid
+            pitch = 0.035 * sin(t * 5.5) * mid
+            roll = (-0.04 + 0.035 * sin(t * 6.5)) * mid
+        case .forklift:
+            // putters round, tipping back now and then as if lifting the forks
+            p.y = 0.0012 * abs(sin(t * 10)) * mid
+            pitch = (-0.07 * max(0, sin(t * 1.6)) + 0.01 * sin(t * 9)) * mid
+            roll = -0.03 * mid
+        case .sub:
+            // floats a little above the ground, nose dipping and rising like a dive
+            p.y = (0.012 + 0.008 * sin(t * 2.1)) * mid
+            pitch = 0.14 * sin(t * 2.1 + 1.2) * mid
+            roll = -0.08 * mid
+        case .cable:
+            // up as if hanging from a cable, gliding round with a gentle pendulum sway
+            p.y = 0.1 * smooth(min(1, u / 0.2)) * smooth(min(1, (1 - u) / 0.2))
+            roll = 0.12 * sin(t * 2.4) * mid
+            pitch = 0.05 * sin(t * 1.7) * mid
+        case .rover:
+            // floaty low-gravity hops
+            p.y = 0.02 * abs(sin(t * 3.2)) * mid
+            pitch = 0.06 * sin(t * 3.2) * mid
+            roll = -0.05 * mid
+        case .airship:
+            // lifts off slowly and floats a wide loop
+            p.y = 0.11 * smooth(min(1, u / 0.3)) * smooth(min(1, (1 - u) / 0.3)) + 0.004 * sin(t * 1.5)
+            pitch = 0.03 * sin(t * 1.3) * mid
+            roll = -0.06 * mid
         }
         p.x = r * sin(theta)
         p.z = r * cos(theta) - r

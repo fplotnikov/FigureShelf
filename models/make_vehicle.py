@@ -15,7 +15,13 @@ KINDS = {  # how it travels, and its length in metres
     "motorcycle": ("bike", 0.21), "snowmobile": ("snow", 0.21), "excavator": ("digger", 0.23),
     "jet": ("jet", 0.26), "seaplane": ("plane", 0.26), "helicopter": ("heli", 0.26),
     "speedboat": ("boat", 0.24),
+    # second set (Nov 2026)
+    "locomotive": ("train", 0.27), "submarine": ("sub", 0.22), "tractor": ("tractor", 0.22),
+    "citybus": ("bus", 0.27), "forklift": ("forklift", 0.21), "cablecar": ("cable", 0.17),
+    "lunarrover": ("rover", 0.22), "airship": ("airship", 0.30),
 }
+# per-vehicle turn (degrees about up) when Meshy's model does not have its nose along -X
+TURN = {"lunarrover": 180}   # its nose came out along +X
 kind, length = KINDS[name]
 bpy.ops.wm.read_factory_settings(use_empty=True)
 bpy.ops.import_scene.gltf(filepath=os.path.join(HERE, "robots", "vehicles", name + "_vehicle.glb"))
@@ -31,7 +37,7 @@ for o in list(bpy.context.scene.objects):
 bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 me = ob.data
 co = np.array([v.co[:] for v in me.vertices])
-R = np.array(Matrix.Rotation(math.radians(90), 3, 'Z'))     # nose -X -> -Y (Blender front)
+R = np.array(Matrix.Rotation(math.radians(90 + TURN.get(name, 0)), 3, 'Z'))     # nose -X -> -Y (Blender front)
 co = co @ R.T
 lo, hi = co.min(0), co.max(0)
 s = length / (hi[1] - lo[1])

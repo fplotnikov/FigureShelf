@@ -72,18 +72,26 @@ ANIMALS = {
 # Fedir's robots (Meshy model + Meshy auto-rig, our moves). Each changes into a vehicle when it
 # runs (models/make_vehicle.py makes <name>_vehicle.usdz; the app does the change and the travel).
 ROBOTS = ("supercar", "jet", "motorcycle", "truck", "helicopter", "rally", "seaplane",
-          "snowmobile", "excavator", "speedboat")
+          "snowmobile", "excavator", "speedboat",
+          # second set (Nov 2026)
+          "locomotive", "submarine", "tractor", "citybus", "forklift", "cablecar", "lunarrover", "airship")
 ROBOT_HEIGHT = 0.25   # animatronics use 0.24 (set below)
 # Fedir's animatronics: same path as the robots (Meshy model + auto-rig), no vehicle, and every
 # move is "servo" style: hold a pose, snap to the next with a tiny overshoot and settle.
 ANIMATRONICS = ("raccoon", "moth", "crocodile", "ram", "pelican", "armadillo", "lynx",
-                "frogsinger", "vulture", "anteater")
+                "frogsinger", "vulture", "anteater",
+                # second set (Nov 2026); the ostrich uses our own creature rig (see CREATURES)
+                "showelephant", "pangolin", "lobster", "chameleon", "walrus", "showkangaroo", "sloth")
 IS_ANIMATRONIC = NAME in ANIMATRONICS
 # More animals (Meshy design + model + auto-rig, our usual animal moves) and the two-legged
 # dinosaurs and Pteranodon (same, with dinosaur touches). Four-legged dinosaurs use the
 # creature path (our own quadruped rig, CREATURES below).
 ANIMALS2 = ("lion", "zebra", "ostrich", "horse", "tiger", "beaver", "raccoonkid", "elephant",
-            "hippo", "rhino", "mouse", "turtle")
+            "hippo", "rhino", "mouse", "turtle",
+            # third batch (Nov 2026): same path
+            "shark", "mole", "bee", "parrot", "koala", "panda",
+            # fourth batch (Nov 22, 2026): same path
+            "deer", "redpanda", "moose", "kangaroo", "giraffe", "capybara")
 DINO_BIPEDS = ()   # dinosaurs now use our own creature rig (CREATURES, auto=True)
 IS_ANIMAL2 = NAME in ANIMALS2
 IS_DINO = NAME in DINO_BIPEDS
@@ -281,6 +289,88 @@ CREATURES.update({
     "pteranodon": _dino("ptero", 0.0, 0.0, 0.6, size=0.56, show=-25),
 })
 
+
+# Fedir's second set of creatures (Nov 22, 2026). Points are in the aligned frame (head toward -Y),
+# read from models/creatures/probe/<name>_views.png. legs=dict(top, count) finds the legs
+# automatically (each leg is its own piece of mesh below z=top).
+CREATURES.update({
+    "pleatbill": dict(kind="biped", yaw=0, size=0.22, tail_amp=0.5,   # wading bird, S neck, fan beak
+        eyes=(0.0, -0.0425, 0.185), eye_dx=0.01, face=0,
+        spine=[(0.0, 0.06, 0.125), (0.0, 0.02, 0.13), (0.0, -0.01, 0.135),
+               (0.0, -0.03, 0.18), (0.0, -0.105, 0.155)],
+        chains={"tail": ("Hips", [(0.0, 0.08, 0.13), (0.0, 0.095, 0.12), (0.0, 0.11, 0.1)])},
+        legs=dict(top=0.105, count=2)),
+    "coilusk": dict(kind="quad", yaw=38, size=0.22, tail_amp=0.3,     # snail on four sucker legs, swirl shell
+        eyes=(0.012, -0.08, 0.137), eye_dx=0.02, face=0,
+        spine=[(0.0, 0.03, 0.06), (0.0, -0.04, 0.06), (0.0, -0.06, 0.085),
+               (0.005, -0.075, 0.105), (0.01, -0.095, 0.12)],
+        chains={"tail": ("Hips", [(0.0, 0.03, 0.09), (0.0, 0.04, 0.14), (0.0, 0.03, 0.19)]),   # the shell sways a little
+                # the four sucker legs join under the belly, so they are placed by hand (bottom view)
+                "leg_FL": ("Chest", [(0.025, -0.04, 0.05), (0.04, -0.05, 0.025), (0.05, -0.055, 0.005)]),
+                "leg_FR": ("Chest", [(-0.025, -0.04, 0.05), (-0.045, -0.05, 0.025), (-0.0575, -0.055, 0.005)]),
+                "leg_BL": ("Hips", [(0.025, 0.05, 0.05), (0.04, 0.06, 0.025), (0.055, 0.0675, 0.005)]),
+                "leg_BR": ("Hips", [(-0.025, 0.05, 0.05), (-0.035, 0.06, 0.025), (-0.045, 0.07, 0.005)])},
+        legs=None),
+    "siftrunk": dict(kind="quad", yaw=36, size=0.27,                   # low, scaly, long trunk, leaf tail
+        eyes=(0.0000, -0.0798, 0.0282), eye_dx=0.0147, face=0,
+        spine=[(0.0000, 0.0491, 0.0552), (0.0000, -0.0368, 0.0552), (0.0000, -0.0552, 0.0491),
+               (0.0000, -0.0736, 0.0430), (0.0000, -0.0982, 0.0344)],
+        chains={"tail": ("Hips", [(0.0000, 0.0736, 0.0614), (0.0000, 0.1043, 0.0614), (0.0000, 0.1350, 0.0552)]),
+                "tailTrunk": ("Head", [(0.0000, -0.0920, 0.0270), (0.0000, -0.1105, 0.0147), (0.0000, -0.1289, 0.0074)])},
+        legs=dict(top=0.0270, count=4)),
+    "spindlecrab": dict(kind="quad", yaw=0, size=0.22,                 # shell hat, one big claw, six legs
+        eyes=(-0.025, -0.045, 0.12), eye_dx=0.025, face=0,
+        spine=[(0.0, 0.02, 0.11), (0.0, -0.01, 0.11), (0.0, -0.02, 0.12),
+               (-0.01, -0.03, 0.15), (-0.015, -0.02, 0.21)],
+        chains={"arm_L": ("Chest", [(0.02, -0.02, 0.11), (0.05, -0.04, 0.12), (0.08, -0.06, 0.15)]),
+                "arm_R": ("Chest", [(-0.02, -0.02, 0.11), (-0.06, -0.04, 0.11), (-0.095, -0.06, 0.115)])},
+        legs=dict(top=0.045, count=6)),
+    "ripplemantis": dict(kind="quad", yaw=0, size=0.22,                # mantis with a leaf cape and fan arms
+        eyes=(0.0, -0.025, 0.175), eye_dx=0.012, face=0,
+        spine=[(0.0, 0.04, 0.08), (0.0, -0.01, 0.1), (0.0, -0.02, 0.15),
+               (0.0, -0.025, 0.17), (0.0, -0.035, 0.19)],
+        chains={"arm_L": ("Chest", [(0.02, -0.03, 0.14), (0.04, -0.06, 0.15), (0.05, -0.08, 0.15)]),
+                "arm_R": ("Chest", [(-0.01, -0.03, 0.12), (-0.015, -0.06, 0.1), (-0.015, -0.08, 0.09)]),
+                "ear_L": ("Head", [(0.01, -0.025, 0.19), (0.04, -0.02, 0.21), (0.08, -0.015, 0.21)]),
+                "ear_R": ("Head", [(-0.01, -0.025, 0.19), (-0.04, -0.02, 0.21), (-0.08, -0.015, 0.21)])},
+        legs=dict(top=0.045, count=6)),
+    "tuftwhale": dict(kind="bat", yaw=0, size=0.22,                    # floats; big fins flap like wings
+        eyes=(-0.005, -0.09, 0.09), eye_dx=0.02, face=0,
+        spine=[(0.0, 0.03, 0.075), (0.0, -0.03, 0.075), (0.0, -0.06, 0.075),
+               (0.0, -0.075, 0.075), (0.0, -0.1, 0.075)],
+        chains={"wing_L": ("Chest", [(0.03, -0.03, 0.08), (0.07, -0.025, 0.09), (0.105, -0.02, 0.1)]),
+                "wing_R": ("Chest", [(-0.03, -0.03, 0.08), (-0.07, -0.025, 0.09), (-0.105, -0.02, 0.1)]),
+                "leg_BL": ("Hips", [(0.025, -0.02, 0.05), (0.04, -0.02, 0.025), (0.055, -0.02, 0.005)]),
+                "leg_BR": ("Hips", [(-0.025, -0.02, 0.05), (-0.04, -0.02, 0.025), (-0.055, -0.02, 0.005)]),
+                "tail": ("Hips", [(0.0, 0.05, 0.08), (0.0, 0.08, 0.095), (0.0, 0.1, 0.115)])},
+        legs=None),
+    "knotcko": dict(kind="biped", yaw=0, size=0.22, tail_amp=0.3,     # dancing gecko, knotted tail
+        eyes=(0.0325, -0.045, 0.1725), eye_dx=0.018, face=0,
+        spine=[(0.01, 0.0, 0.075), (0.02, -0.01, 0.13), (0.025, -0.02, 0.15),
+               (0.03, -0.03, 0.165), (0.035, -0.07, 0.17)],
+        chains={"arm_L": ("Chest", [(0.04, -0.02, 0.13), (0.06, -0.02, 0.135), (0.08, -0.02, 0.14)]),
+                "arm_R": ("Chest", [(0.0, -0.02, 0.125), (-0.03, -0.03, 0.12), (-0.06, -0.03, 0.12)]),
+                "leg_BL": ("Hips", [(0.03, 0.0, 0.07), (0.06, -0.03, 0.075), (0.085, -0.05, 0.08)]),
+                "leg_BR": ("Hips", [(0.0, 0.0, 0.065), (0.0, -0.01, 0.03), (0.0, -0.03, 0.005)]),
+                "tail": ("Hips", [(-0.01, 0.02, 0.06), (-0.04, 0.04, 0.05), (-0.07, 0.04, 0.06), (-0.095, 0.03, 0.07)])},
+        legs=None),
+    # the animatronic ostrich on roller skates: Meshy would not rig her (thin legs), so she gets
+    # our own two-legged rig like Pleatbill; the app keeps her with the animatronics
+    "skateostrich": dict(kind="biped", yaw=0, size=0.22, tail_amp=0.5,
+        eyes=(0.0, -0.0425, 0.195), eye_dx=0.0075, face=0,
+        spine=[(0.0, 0.02, 0.13), (0.0, -0.02, 0.15), (0.0, -0.035, 0.175),
+               (0.0, -0.04, 0.2), (0.0, -0.075, 0.19)],
+        chains={"arm_L": ("Chest", [(0.03, 0.0, 0.14), (0.06, 0.0, 0.14), (0.09, 0.0, 0.14)]),
+                "arm_R": ("Chest", [(-0.03, 0.0, 0.14), (-0.06, 0.0, 0.14), (-0.09, 0.0, 0.14)]),
+                "tail": ("Hips", [(0.0, 0.04, 0.14), (0.0, 0.06, 0.15), (0.0, 0.075, 0.16)])},
+        legs=dict(top=0.1, count=2)),
+    "cupspinner": dict(kind="quad", yaw=0, size=0.22,                  # fluffy spider carrying a cup, eight legs
+        eyes=(-0.01, -0.0925, 0.065), eye_dx=0.015, face=0,
+        spine=[(0.0, 0.03, 0.06), (0.0, -0.04, 0.06), (0.0, -0.06, 0.06),
+               (0.0, -0.075, 0.06), (0.0, -0.1, 0.055)],
+        chains={},
+        legs=dict(top=0.04, count=8)),
+})
 
 def derive_dino_skeleton(C, co):
     """Fill C's spine, chains and eyes from a dinosaur mesh lying along Y (head at -Y, feet on z=0)."""

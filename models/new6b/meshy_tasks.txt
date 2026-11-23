@@ -1,0 +1,22 @@
+# art (text-to-image, nano-banana-2), 2026-11-22
+animals4 01 deer 01a20146-6b32-7418-a82f-a7192127b124
+animals4 02 redpanda 01a20146-6d4c-77c6-b077-e6aa2b20a38c
+animals4 03 moose 01a20146-6f57-73cb-9a92-b63c1cf549fa
+animals4 04 kangaroo 01a20146-7102-7785-a260-10492073d498
+animals4 05 giraffe 01a20146-72df-7270-a979-3d0f4e4b040a
+animals4 06 capybara 01a20146-7499-7324-8309-0b6bcbe3baf0
+# deer picture stood on a disc: painted out with unpedestal (animals4/01-deer-original.png is untouched), 3D from the file
+# image-to-3d (meshy-t2.5 smart topology 20k, meshy-n1 texture, t-pose)
+deer 01a20148-57f4-76f8-b0a3-ce8554cd0f26
+redpanda 01a20148-5f73-7590-a14e-ec029419125f
+moose 01a20148-641f-73fb-832a-a5676f73c31c
+kangaroo 01a20148-683e-7773-811f-71001bddd7d1
+giraffe 01a20148-6c8e-76ef-9717-53f7a19e917d
+capybara 01a20148-7155-773d-a642-41133be705d6
+# rigging (Meshy auto-rig)
+deer 01a20149-ac04-72da-a13f-68543058ba0f
+redpanda 01a20149-b900-7619-b645-199f94f8f4c4
+moose 01a20149-c619-76a4-94ac-bf5db55d9e34
+kangaroo 01a20149-d318-73da-99bb-26d92024d4f9
+giraffe 01a20149-e0c4-73b8-b560-050c5af8062f
+capybara 01a20149-ee9f-70e0-a0de-7f35f1783a1b
