@@ -1,3 +1,4 @@
+import ImageIO
 import RealityKit
 import UIKit
 
@@ -16,19 +17,30 @@ final class RealModelLibrary {
         .mosskip: "mosskip", .glassfin: "glassfin", .cindermole: "cindermole", .cloudlope: "cloudlope",
         .thimblebat: "thimblebat", .pebblenewt: "pebblenewt", .bloomusk: "bloomusk",
         .velvetide: "velvetide", .lanternquill: "lanternquill", .dunewisp: "dunewisp",
+        .pleatbill: "pleatbill", .coilusk: "coilusk", .siftrunk: "siftrunk", .spindlecrab: "spindlecrab",
+        .ripplemantis: "ripplemantis", .tuftwhale: "tuftwhale", .knotcko: "knotcko", .cupspinner: "cupspinner",
         .supercar: "supercar", .jet: "jet", .motorcycle: "motorcycle", .truck: "truck",
         .helicopter: "helicopter", .rally: "rally", .seaplane: "seaplane", .snowmobile: "snowmobile",
         .excavator: "excavator", .speedboat: "speedboat",
+        .locomotive: "locomotive", .submarine: "submarine", .tractor: "tractor", .citybus: "citybus",
+        .forklift: "forklift", .cablecar: "cablecar", .lunarrover: "lunarrover", .airship: "airship",
         .raccoon: "raccoon", .moth: "moth", .crocodile: "crocodile", .ram: "ram", .pelican: "pelican",
         .armadillo: "armadillo", .lynx: "lynx", .frogsinger: "frogsinger", .vulture: "vulture",
         .anteater: "anteater",
+        .showelephant: "showelephant", .pangolin: "pangolin", .skateostrich: "skateostrich", .lobster: "lobster",
+        .chameleon: "chameleon", .walrus: "walrus", .showkangaroo: "showkangaroo", .sloth: "sloth",
         .lion: "lion", .zebra: "zebra", .ostrich: "ostrich", .horse: "horse", .tiger: "tiger", .beaver: "beaver", .raccoonkid: "raccoonkid", .elephant: "elephant", .hippo: "hippo", .rhino: "rhino", .mouse: "mouse", .turtle: "turtle",
+        .shark: "shark", .mole: "mole", .bee: "bee", .parrot: "parrot", .koala: "koala", .panda: "panda",
+        .deer: "deer", .redpanda: "redpanda", .moose: "moose", .kangaroo: "kangaroo", .giraffe: "giraffe", .capybara: "capybara",
         .trex: "trex", .triceratops: "triceratops", .stegosaurus: "stegosaurus", .velociraptor: "velociraptor", .brachiosaurus: "brachiosaurus", .spinosaurus: "spinosaurus", .ankylosaurus: "ankylosaurus", .pteranodon: "pteranodon", .parasaurolophus: "parasaurolophus", .diplodocus: "diplodocus", .pachycephalosaurus: "pachycephalosaurus", .allosaurus: "allosaurus"
     ]
 
     /// A robot's vehicle (models/make_vehicle.py): what it changes into when it runs.
     struct Vehicle {
-        enum Kind: String, Decodable { case car, truck, bike, snow, digger, jet, plane, heli, boat }
+        enum Kind: String, Decodable {
+            case car, truck, bike, snow, digger, jet, plane, heli, boat
+            case train, sub, tractor, bus, forklift, cable, rover, airship
+        }
         let entity: Entity
         let kind: Kind
         let length: Float
@@ -48,6 +60,56 @@ final class RealModelLibrary {
         let bodyYaw: Float
         /// Robots only.
         let vehicle: Vehicle?
+        /// The box the position map (<name>_pos.png) is measured in; nil = no patterns.
+        let posBox: [Float]?
+    }
+
+    /// Toy animals with a position map can wear a pattern over their colour.
+    static func supportsPatterns(_ animal: Animal) -> Bool {
+        guard animal.group == .animals, let name = files[animal] else { return false }
+        return Bundle.main.url(forResource: name + "_pos", withExtension: "png") != nil
+    }
+
+    private var maskCache: [String: PatternPainter.Mask] = [:]
+    private var patternCache: [String: TextureResource] = [:]
+    private var painting: Set<String> = []
+
+    /// A colour texture with a pattern painted on (PatternPainter). Painting takes a moment,
+    /// so it happens in the background: returns the texture when it is ready, otherwise
+    /// starts painting and calls `ready` on the main thread when done.
+    func patternTexture(_ template: Template, _ skin: Skin, _ pattern: Pattern,
+                        ready: @escaping @MainActor (TextureResource) -> Void) -> TextureResource? {
+        guard pattern != .plain, let box = template.posBox,
+              template.skinTextures.contains(skin.rawValue) else { return nil }
+        let key = "\(template.name)_\(skin.rawValue)_\(pattern.rawValue)"
+        if let cached = patternCache[key] { return cached }
+        guard !painting.contains(key),
+              let posURL = Bundle.main.url(forResource: template.name + "_pos", withExtension: "png") else { return nil }
+        let file = "\(template.name)_skin_\(skin.rawValue)"
+        guard let skinURL = Bundle.main.url(forResource: file, withExtension: "jpg")
+                ?? Bundle.main.url(forResource: file, withExtension: "png") else { return nil }
+        painting.insert(key)
+        let maskKey = "\(template.name)_\(pattern.rawValue)"
+        let knownMask = maskCache[maskKey]
+        Task.detached(priority: .userInitiated) {
+            let mask = knownMask ?? PatternPainter.mask(posURL: posURL, box: box, pattern: pattern)
+            var painted: CGImage?
+            if let mask, let src = CGImageSourceCreateWithURL(skinURL as CFURL, nil),
+               let base = CGImageSourceCreateImageAtIndex(src, 0, nil) {
+                painted = PatternPainter.paint(base: base, mask: mask, ink: PatternPainter.ink(for: skin))
+            }
+            let result = painted
+            await MainActor.run {
+                self.painting.remove(key)
+                if let mask { self.maskCache[maskKey] = mask }
+                guard let result,
+                      let texture = try? TextureResource(image: result, withName: nil,
+                                                         options: .init(semantic: .color)) else { return }
+                self.patternCache[key] = texture
+                ready(texture)
+            }
+        }
+        return nil
     }
 
     private var textureCache: [String: TextureResource] = [:]
@@ -108,6 +170,7 @@ final class RealModelLibrary {
             let height: Float
         }
         let vehicle: VehicleInfo?
+        let posBox: [Float]?
     }
 
     @MainActor
@@ -139,7 +202,8 @@ final class RealModelLibrary {
             vehicle = Vehicle(entity: ventity, kind: v.kind, length: v.length, height: v.height)
         }
         return Template(name: name, entity: entity, clips: clips, fit: info.fit,
-                        skinTextures: Set(info.skins ?? []), bodyYaw: info.bodyYaw ?? 0, vehicle: vehicle)
+                        skinTextures: Set(info.skins ?? []), bodyYaw: info.bodyYaw ?? 0, vehicle: vehicle,
+                        posBox: info.posBox)
     }
 }
 
@@ -238,6 +302,7 @@ final class RealFigure {
     private let clips: [String: AnimationResource]
     private let template: RealModelLibrary.Template
     private var skin: Skin?
+    private var pattern: Pattern = .plain
 
     private let headAnchor = Entity()
     private let neckAnchor = Entity()
@@ -305,10 +370,19 @@ final class RealFigure {
     /// Recolors (flat Main / Belly materials, or a pre-baked texture for painted
     /// models) and swaps the extra. Keeps the running animation.
     func apply(_ look: Look) {
-        if look.skin != skin {
+        let wantPattern: Pattern = RealModelLibrary.supportsPatterns(animal) ? look.pattern : .plain
+        if look.skin != skin || wantPattern != pattern {
             skin = look.skin
-            if let texture = RealModelLibrary.shared.skinTexture(template, look.skin) {
-                retexture(texture)
+            pattern = wantPattern
+            let lookSkin = look.skin
+            if let painted = RealModelLibrary.shared.patternTexture(template, lookSkin, wantPattern, ready: { [weak self] texture in
+                // still the same colour and pattern once painting is done
+                guard let self, self.skin == lookSkin, self.pattern == wantPattern else { return }
+                self.retexture(texture)
+            }) {
+                retexture(painted)
+            } else if let texture = RealModelLibrary.shared.skinTexture(template, look.skin) {
+                retexture(texture)       // the plain colour until the pattern is painted
             } else {
                 let (main, belly) = look.skin.colors(for: animal)
                 recolor(main: main, belly: belly)

@@ -18,10 +18,12 @@ final class SoundBoard {
     private init() {
         try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: [.mixWithOthers])
         try? AVAudioSession.sharedInstance().setActive(true)
-        let vehicles = ["car", "truck", "bike", "snow", "digger", "jet", "plane", "heli", "boat"].map { "run_" + $0 }
+        let vehicles = ["car", "truck", "bike", "snow", "digger", "jet", "plane", "heli", "boat",
+                        "train", "sub", "tractor", "bus", "forklift", "cable", "rover", "airship"].map { "run_" + $0 }
         let servos = ["dance", "jump", "run", "wave", "spin"].map { "anim_" + $0 }
         let dinos = ["dance", "jump", "run", "wave", "fly"].map { "dino_" + $0 }
-        for name in ["dance", "jump", "run", "spin", "wave", "pop"] + vehicles + servos + dinos {
+        let dances = ["dino", "robot", "creature"].map { "dance_" + $0 }   // models/make_dance_music.py
+        for name in ["dance", "jump", "run", "spin", "wave", "pop"] + vehicles + servos + dinos + dances {
             guard let url = Bundle.main.url(forResource: "sfx_" + name, withExtension: "m4a"),
                   let player = try? AVAudioPlayer(contentsOf: url) else { continue }
             player.prepareToPlay()
@@ -34,8 +36,10 @@ final class SoundBoard {
     /// `animatronic`: servo clicks (and a calliope for dance) instead of the soft sounds.
     /// `dinosaur`: a soft "rawr" for dance and wave, padded footsteps for run;
     /// `flyer` (Pteranodon) whooshes its wings on run instead.
+    /// `danceMusic`: the dance tune for the figure's kind ("dino", "robot", "creature";
+    /// nil = animals' marimba, animatronics keep their calliope).
     func play(_ action: FigureAction?, vehicle: String? = nil, animatronic: Bool = false,
-              dinosaur: Bool = false, flyer: Bool = false) {
+              dinosaur: Bool = false, flyer: Bool = false, danceMusic: String? = nil) {
         fadeOutCurrent()
         guard enabled, let action else { return }
         var name = action == .run && vehicle != nil ? "run_" + vehicle!
@@ -43,6 +47,10 @@ final class SoundBoard {
         if dinosaur {
             name = action == .run && flyer ? "dino_fly" : "dino_" + action.rawValue
             if players[name] == nil { name = action.rawValue }   // spin keeps the usual whoosh
+        }
+        // Each kind of figure dances to its own music.
+        if action == .dance, let kind = danceMusic, players["dance_" + kind] != nil {
+            name = "dance_" + kind
         }
         guard let player = players[name] else { return }
         player.currentTime = 0

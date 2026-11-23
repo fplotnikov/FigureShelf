@@ -48,12 +48,17 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
     case bunny, kitty, bear, penguin, frog, fox
     case mosskip, glassfin, cindermole, cloudlope, thimblebat
     case pebblenewt, bloomusk, velvetide, lanternquill, dunewisp
+    case pleatbill, coilusk, siftrunk, spindlecrab, ripplemantis, tuftwhale, knotcko, cupspinner
     // Fedir's robots: each one changes into its vehicle when it runs
     case supercar, jet, motorcycle, truck, helicopter, rally, seaplane, snowmobile, excavator, speedboat
+    case locomotive, submarine, tractor, citybus, forklift, cablecar, lunarrover, airship
     // Fedir's animatronics: vintage theme-park performers that move in stiff servo steps
     case raccoon, moth, crocodile, ram, pelican, armadillo, lynx, frogsinger, vulture, anteater
+    case showelephant, pangolin, skateostrich, lobster, chameleon, walrus, showkangaroo, sloth
     // more animals (toy style, Meshy humanoid rig)
     case lion, zebra, ostrich, horse, tiger, beaver, raccoonkid, elephant, hippo, rhino, mouse, turtle
+    case shark, mole, bee, parrot, koala, panda
+    case deer, redpanda, moose, kangaroo, giraffe, capybara
     // dinosaurs: realistic, museum-style models
     case trex, triceratops, stegosaurus, velociraptor, brachiosaurus, spinosaurus, ankylosaurus, pteranodon, parasaurolophus, diplodocus, pachycephalosaurus, allosaurus
 
@@ -65,11 +70,15 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
         switch self {
         case .bunny, .kitty, .bear, .penguin, .frog, .fox: .animals
         case .lion, .zebra, .ostrich, .horse, .tiger, .beaver, .raccoonkid, .elephant, .hippo, .rhino, .mouse, .turtle: .animals
+        case .shark, .mole, .bee, .parrot, .koala, .panda: .animals
+        case .deer, .redpanda, .moose, .kangaroo, .giraffe, .capybara: .animals
         case .trex, .triceratops, .stegosaurus, .velociraptor, .brachiosaurus, .spinosaurus, .ankylosaurus, .pteranodon, .parasaurolophus, .diplodocus, .pachycephalosaurus, .allosaurus: .dinosaurs
         case .supercar, .jet, .motorcycle, .truck, .helicopter, .rally, .seaplane, .snowmobile,
-             .excavator, .speedboat: .robots
+             .excavator, .speedboat,
+             .locomotive, .submarine, .tractor, .citybus, .forklift, .cablecar, .lunarrover, .airship: .robots
         case .raccoon, .moth, .crocodile, .ram, .pelican, .armadillo, .lynx, .frogsinger, .vulture,
-             .anteater: .animatronics
+             .anteater, .showelephant, .pangolin, .skateostrich, .lobster, .chameleon, .walrus,
+             .showkangaroo, .sloth: .animatronics
         default: .creatures
         }
     }
@@ -95,9 +104,16 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
         case .truck: "Big Truck"
         case .frogsinger: "Frog Singer"
         case .raccoonkid: "Raccoon"
+        case .redpanda: "Red Panda"
         case .hippo: "Hippo"
         case .rhino: "Rhino"
         case .trex: "T. rex"
+        case .showelephant: "Elephant"
+        case .skateostrich: "Ostrich"
+        case .showkangaroo: "Kangaroo"
+        case .citybus: "City Bus"
+        case .cablecar: "Cable Car"
+        case .lunarrover: "Lunar Rover"
         default: rawValue.prefix(1).uppercased() + rawValue.dropFirst()
         }
     }
@@ -140,6 +156,14 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
         case .velvetide: UIColor(hex: 0x2F4C9A)
         case .lanternquill: UIColor(hex: 0x984C28)
         case .dunewisp: UIColor(hex: 0xE6D3AE)
+        case .pleatbill: UIColor(hex: 0xAD6C63)
+        case .coilusk: UIColor(hex: 0xBA502C)
+        case .siftrunk: UIColor(hex: 0x816C85)
+        case .spindlecrab: UIColor(hex: 0x787283)
+        case .ripplemantis: UIColor(hex: 0x987446)
+        case .tuftwhale: UIColor(hex: 0x9C756B)
+        case .knotcko: UIColor(hex: 0xC46F54)
+        case .cupspinner: UIColor(hex: 0x955260)
         case .supercar: UIColor(hex: 0x2C4BB0)
         case .jet: UIColor(hex: 0xA8343F)
         case .motorcycle: UIColor(hex: 0x9ACD32)
@@ -150,6 +174,14 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
         case .snowmobile: UIColor(hex: 0x6E4BB5)
         case .excavator: UIColor(hex: 0xE09A22)
         case .speedboat: UIColor(hex: 0x2E9EA0)
+        case .locomotive: UIColor(hex: 0x2E6B4A)
+        case .submarine: UIColor(hex: 0xE0703A)
+        case .tractor: UIColor(hex: 0x8E2A35)
+        case .citybus: UIColor(hex: 0x2BA59B)
+        case .forklift: UIColor(hex: 0xF2B233)
+        case .cablecar: UIColor(hex: 0xA8323C)
+        case .lunarrover: UIColor(hex: 0xD9C7A8)
+        case .airship: UIColor(hex: 0x6B3F6E)
         case .raccoon: UIColor(hex: 0x5E8A86)
         case .moth: UIColor(hex: 0x7A5A8C)
         case .crocodile: UIColor(hex: 0x5E7A3A)
@@ -160,6 +192,14 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
         case .frogsinger: UIColor(hex: 0x8CB89A)
         case .vulture: UIColor(hex: 0x4A4048)
         case .anteater: UIColor(hex: 0xC48A8A)
+        case .showelephant: UIColor(hex: 0x6E6C93)
+        case .pangolin: UIColor(hex: 0xC9A24E)
+        case .skateostrich: UIColor(hex: 0xD99AAE)
+        case .lobster: UIColor(hex: 0xC2453A)
+        case .chameleon: UIColor(hex: 0xB9C24E)
+        case .walrus: UIColor(hex: 0xA8664E)
+        case .showkangaroo: UIColor(hex: 0xD9785A)
+        case .sloth: UIColor(hex: 0xA8948A)
         case .lion: UIColor(hex: 0xE89A3C)
         case .zebra: UIColor(hex: 0x3A3A3A)
         case .ostrich: UIColor(hex: 0xA06260)
@@ -172,6 +212,18 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
         case .rhino: UIColor(hex: 0x6A6A6A)
         case .mouse: UIColor(hex: 0xB8B8C8)
         case .turtle: UIColor(hex: 0x6E9A34)
+        case .shark: UIColor(hex: 0x7F95B5)
+        case .mole: UIColor(hex: 0x5A4A44)
+        case .bee: UIColor(hex: 0xF2C230)
+        case .parrot: UIColor(hex: 0x6CC04A)
+        case .koala: UIColor(hex: 0x9A9EA6)
+        case .panda: UIColor(hex: 0x2B2B2B)
+        case .deer: UIColor(hex: 0xAE7147)
+        case .redpanda: UIColor(hex: 0x793317)
+        case .moose: UIColor(hex: 0x5C3C29)
+        case .kangaroo: UIColor(hex: 0xD48238)
+        case .giraffe: UIColor(hex: 0xDFA34C)
+        case .capybara: UIColor(hex: 0xB8623B)
         case .trex: UIColor(hex: 0x6B6440)
         case .triceratops: UIColor(hex: 0x7A7670)
         case .stegosaurus: UIColor(hex: 0x8A8A4A)
@@ -205,11 +257,23 @@ enum Animal: String, CaseIterable, Identifiable, Codable {
         case .velvetide: UIColor(hex: 0xA8F0D2)
         case .lanternquill: UIColor(hex: 0xFFC27A)
         case .dunewisp: UIColor(hex: 0x4FB8C2)
+        case .pleatbill: UIColor(hex: 0xF6E2D0)
+        case .coilusk: UIColor(hex: 0xFFC46B)
+        case .siftrunk: UIColor(hex: 0xBFEFE6)
+        case .spindlecrab: UIColor(hex: 0xEFE6D6)
+        case .ripplemantis: UIColor(hex: 0xEDE48A)
+        case .tuftwhale: UIColor(hex: 0xF7D2BE)
+        case .knotcko: UIColor(hex: 0xF6E5CF)
+        case .cupspinner: UIColor(hex: 0xF4DDE0)
         case .supercar, .jet, .motorcycle, .truck, .helicopter, .rally, .seaplane, .snowmobile,
-             .excavator, .speedboat: UIColor(hex: 0xD8DCE2)
+             .excavator, .speedboat,
+             .locomotive, .submarine, .tractor, .citybus, .forklift, .cablecar, .lunarrover, .airship: UIColor(hex: 0xD8DCE2)
         case .raccoon, .moth, .crocodile, .ram, .pelican, .armadillo, .lynx, .frogsinger, .vulture,
-             .anteater: UIColor(hex: 0xEADFC8)
-        case .lion, .zebra, .ostrich, .horse, .tiger, .beaver, .raccoonkid, .elephant, .hippo, .rhino, .mouse, .turtle: UIColor(hex: 0xF4EBDD)
+             .anteater, .showelephant, .pangolin, .skateostrich, .lobster, .chameleon, .walrus,
+             .showkangaroo, .sloth: UIColor(hex: 0xEADFC8)
+        case .lion, .zebra, .ostrich, .horse, .tiger, .beaver, .raccoonkid, .elephant, .hippo, .rhino, .mouse, .turtle,
+             .shark, .mole, .bee, .parrot, .koala, .panda,
+             .deer, .redpanda, .moose, .kangaroo, .giraffe, .capybara: UIColor(hex: 0xF4EBDD)
         case .trex, .triceratops, .stegosaurus, .velociraptor, .brachiosaurus, .spinosaurus, .ankylosaurus, .pteranodon, .parasaurolophus, .diplodocus, .pachycephalosaurus, .allosaurus: UIColor(hex: 0xD8CDB8)
         }
     }
@@ -258,6 +322,36 @@ enum Skin: String, CaseIterable, Identifiable, Codable {
     }
 }
 
+// MARK: - Patterns (drawn over the color, toy animals only)
+
+enum Pattern: String, CaseIterable, Identifiable, Codable {
+    case plain, dots, stripes, checks, stars, hearts
+
+    var id: String { rawValue }
+
+    var name: String {
+        switch self {
+        case .plain: "Plain"
+        case .dots: "Dots"
+        case .stripes: "Stripes"
+        case .checks: "Checks"
+        case .stars: "Stars"
+        case .hearts: "Hearts"
+        }
+    }
+
+    var symbol: String {
+        switch self {
+        case .plain: "circle"
+        case .dots: "circle.grid.3x3.fill"
+        case .stripes: "line.3.horizontal"
+        case .checks: "checkerboard.rectangle"
+        case .stars: "star.fill"
+        case .hearts: "heart.fill"
+        }
+    }
+}
+
 // MARK: - Things to wear
 
 /// One item per slot can be worn at the same time.
@@ -278,22 +372,30 @@ enum Wearable: String, CaseIterable, Identifiable, Codable {
     // hats (and the flower clip, which also sits on the head)
     case partyHat, crown, topHat, cowboyHat, beanie, cap, wizardHat, pirateHat, chefHat
     case flowerCrown, vikingHelmet, propellerCap, flower
+    case santaHat, strawHat, unicornHorn, bunnyEars, hardHat
     // glasses
     case sunglasses, roundGlasses, heartGlasses, starGlasses, goggles, glasses3D, monocle
+    case googlyEyes, visor, pixelShades, catEyeGlasses
     // masks
     case heroMask, butterflyMask, clownNose, moustache, ninjaWrap, snorkel
+    case beard, whiskers, pigSnout
     // neck
     case bowTie, scarf, cape, flowerNecklace, medal
+    case necktie, pearls, bellCollar, fairyWings, backpack
 
     var id: String { rawValue }
 
     var slot: WearSlot {
         switch self {
         case .partyHat, .crown, .topHat, .cowboyHat, .beanie, .cap, .wizardHat, .pirateHat, .chefHat,
-             .flowerCrown, .vikingHelmet, .propellerCap, .flower: .hat
-        case .sunglasses, .roundGlasses, .heartGlasses, .starGlasses, .goggles, .glasses3D, .monocle: .glasses
-        case .heroMask, .butterflyMask, .clownNose, .moustache, .ninjaWrap, .snorkel: .mask
-        case .bowTie, .scarf, .cape, .flowerNecklace, .medal: .neck
+             .flowerCrown, .vikingHelmet, .propellerCap, .flower,
+             .santaHat, .strawHat, .unicornHorn, .bunnyEars, .hardHat: .hat
+        case .sunglasses, .roundGlasses, .heartGlasses, .starGlasses, .goggles, .glasses3D, .monocle,
+             .googlyEyes, .visor, .pixelShades, .catEyeGlasses: .glasses
+        case .heroMask, .butterflyMask, .clownNose, .moustache, .ninjaWrap, .snorkel,
+             .beard, .whiskers, .pigSnout: .mask
+        case .bowTie, .scarf, .cape, .flowerNecklace, .medal,
+             .necktie, .pearls, .bellCollar, .fairyWings, .backpack: .neck
         }
     }
 
@@ -332,6 +434,23 @@ enum Wearable: String, CaseIterable, Identifiable, Codable {
         case .cape: "Cape"
         case .flowerNecklace: "Lei"
         case .medal: "Medal"
+        case .santaHat: "Santa"
+        case .strawHat: "Sun hat"
+        case .unicornHorn: "Unicorn"
+        case .bunnyEars: "Bunny ears"
+        case .hardHat: "Builder"
+        case .googlyEyes: "Googly"
+        case .visor: "Visor"
+        case .pixelShades: "Pixel"
+        case .catEyeGlasses: "Cat-eye"
+        case .beard: "Beard"
+        case .whiskers: "Whiskers"
+        case .pigSnout: "Piggy"
+        case .necktie: "Tie"
+        case .pearls: "Pearls"
+        case .bellCollar: "Bell"
+        case .fairyWings: "Wings"
+        case .backpack: "Backpack"
         }
     }
 
@@ -368,6 +487,23 @@ enum Wearable: String, CaseIterable, Identifiable, Codable {
         case .cape: "🦹"
         case .flowerNecklace: "💐"
         case .medal: "🏅"
+        case .santaHat: "🎅"
+        case .strawHat: "👒"
+        case .unicornHorn: "🦄"
+        case .bunnyEars: "🐰"
+        case .hardHat: "👷"
+        case .googlyEyes: "👀"
+        case .visor: "🤖"
+        case .pixelShades: "😎"
+        case .catEyeGlasses: "😺"
+        case .beard: "🧔"
+        case .whiskers: "🐱"
+        case .pigSnout: "🐷"
+        case .necktie: "👔"
+        case .pearls: "📿"
+        case .bellCollar: "🔔"
+        case .fairyWings: "🧚"
+        case .backpack: "🎒"
         }
     }
 }
@@ -416,6 +552,7 @@ enum FigureAction: String, CaseIterable, Identifiable, Codable {
 struct Look: Codable, Equatable {
     var animal: Animal = .bunny
     var skin: Skin = .natural
+    var pattern: Pattern = .plain
     /// What is worn, one item per slot (missing slot = nothing there).
     var worn: [WearSlot: Wearable] = [:]
 
@@ -431,12 +568,13 @@ struct Look: Codable, Equatable {
         }
     }
 
-    enum CodingKeys: String, CodingKey { case animal, skin, worn, accessory }
+    enum CodingKeys: String, CodingKey { case animal, skin, pattern, worn, accessory }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         animal = (try? c.decode(Animal.self, forKey: .animal)) ?? .bunny
         skin = (try? c.decode(Skin.self, forKey: .skin)) ?? .natural
+        pattern = (try? c.decode(Pattern.self, forKey: .pattern)) ?? .plain
         if let list = try? c.decode([Wearable].self, forKey: .worn) {
             for item in list { worn[item.slot] = item }
         } else if let old = try? c.decode(String.self, forKey: .accessory),
@@ -449,6 +587,7 @@ struct Look: Codable, Equatable {
         var c = encoder.container(keyedBy: CodingKeys.self)
         try c.encode(animal, forKey: .animal)
         try c.encode(skin, forKey: .skin)
+        try c.encode(pattern, forKey: .pattern)
         try c.encode(WearSlot.allCases.compactMap { worn[$0] }, forKey: .worn)
     }
 }
@@ -493,6 +632,7 @@ final class ShelfState: ObservableObject {
 
     func choose(animal: Animal) { change { $0.animal = animal } }
     func choose(skin: Skin) { change { $0.skin = skin } }
+    func choose(pattern: Pattern) { change { $0.pattern = pattern } }
     /// Tapping a worn item again takes it off.
     func toggle(_ item: Wearable) {
         change { $0.worn[item.slot] = $0.worn[item.slot] == item ? nil : item }
@@ -505,13 +645,13 @@ final class ShelfState: ObservableObject {
     @Published var viewTurned = false
 
     /// Nothing worn, Normal color, default angle: the Reset button has nothing to do.
-    var isDefault: Bool { look.skin == .natural && look.worn.isEmpty && !viewTurned }
+    var isDefault: Bool { look.skin == .natural && look.pattern == .plain && look.worn.isEmpty && !viewTurned }
 
     /// Reset: take everything off, Normal color, stop moving, turn back to the default
     /// angle. Keeps the chosen animal. One undo step brings the look back.
     func reset() {
-        let wasDefaultLook = look.skin == .natural && look.worn.isEmpty
-        change { $0.skin = .natural; $0.worn = [:] }
+        let wasDefaultLook = look.skin == .natural && look.pattern == .plain && look.worn.isEmpty
+        change { $0.skin = .natural; $0.pattern = .plain; $0.worn = [:] }
         if wasDefaultLook { SoundBoard.shared.pop() }   // change() pops only when the look changed
         stop()
         viewTurned = false

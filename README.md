@@ -12,12 +12,13 @@ app remembers the last animal when it is opened again.
 
 | | |
 |---|---|
-| Animals | Bunny, Kitty, Bear, Penguin, Frog, Fox |
-| Animatronics | Raccoon, Moth, Crocodile, Ram, Pelican, Armadillo, Lynx, Frog Singer, Vulture, Anteater (Fedir's vintage theme-park performers; they move in stiff servo steps) |
-| Robots | Supercar, Jet, Motorcycle, Big Truck, Helicopter, Rally, Seaplane, Snowmobile, Excavator, Speedboat (Fedir's robot designs; each turns into its vehicle to run) |
-| Creatures | Mosskip, Glassfin, Cindermole, Cloudlope, Thimblebat, Pebblenewt, Bloomusk, Velvetide, Lanternquill, Dunewisp (Fedir's own imaginary creatures) |
+| Animals | Bunny, Kitty, Bear, Penguin, Frog, Fox, plus Lion, Zebra, Ostrich, Horse, Tiger, Beaver, Raccoon, Elephant, Hippo, Rhino, Mouse, Turtle, plus Shark, Mole, Bee, Parrot, Koala, Panda, plus Deer, Red Panda, Moose, Kangaroo, Giraffe, Capybara |
+| Animatronics | Raccoon, Moth, Crocodile, Ram, Pelican, Armadillo, Lynx, Frog Singer, Vulture, Anteater, plus Elephant, Pangolin, Ostrich, Lobster, Chameleon, Walrus, Kangaroo, Sloth (Fedir's vintage theme-park performers; they move in stiff servo steps) |
+| Robots | Supercar, Jet, Motorcycle, Big Truck, Helicopter, Rally, Seaplane, Snowmobile, Excavator, Speedboat, plus Locomotive, Submarine, Tractor, City Bus, Forklift, Cable Car, Lunar Rover, Airship (Fedir's robot designs; each turns into its vehicle to run) |
+| Creatures | Mosskip, Glassfin, Cindermole, Cloudlope, Thimblebat, Pebblenewt, Bloomusk, Velvetide, Lanternquill, Dunewisp, plus Pleatbill, Coilusk, Siftrunk, Spindlecrab, Ripplemantis, Tuftwhale, Knotcko, Cupspinner (Fedir's own imaginary creatures) |
 | Colors | Normal, Sunny, Ocean, Mint, Berry, Night, Snow |
-| Accessories (one per group, all at once) | Hats: party hat, crown, top hat, cowboy, beanie, cap, wizard, pirate, chef, flower crown, viking, propeller, flower clip. Glasses: sunglasses, round, hearts, stars, goggles, 3D, monocle. Masks: hero, butterfly, red nose, moustache, ninja, snorkel. Neck: bow tie, scarf, cape, lei, medal |
+| Patterns (the 30 animals) | Plain, Dots, Stripes, Checks, Stars, Hearts, on any color |
+| Accessories (one per group, all at once) | Hats: party hat, crown, top hat, cowboy, beanie, cap, wizard, pirate, chef, flower crown, viking, propeller, flower clip, Santa, sun hat, unicorn horn, bunny ears, builder's hard hat. Glasses: sunglasses, round, hearts, stars, goggles, 3D, monocle, googly eyes, robot visor, pixel shades, cat-eye. Masks: hero, butterfly, red nose, moustache, ninja, snorkel, white beard, whiskers, piggy snout. Neck: bow tie, scarf, cape, lei, medal, tie, pearls, bell collar, fairy wings, backpack |
 | Actions | Dance, Jump, Run, Spin, Wave, plus **Again** to keep repeating |
 
 On the shelf, drag sideways on the animal to turn it around. In the room, tap the
@@ -78,6 +79,35 @@ Rebuild one creature, then copy it into the app (also checks it with `usdchecker
     blender -b --factory-startup --python models/make_meshy_animal.py -- mosskip
     models/install_creature.sh mosskip
 
+### The second set of creatures (11–18)
+
+Nov 22, 2026: Pleatbill, Coilusk, Siftrunk, Spindlecrab, Ripplemantis, Tuftwhale, Knotcko and
+Cupspinner. Pictures are `creatures/11-…png` to `18-…png` and task ids are in
+`models/creatures/meshy_tasks.txt`. They use the same path as the first ten; their entries are at
+the end of `CREATURES` in `make_meshy_animal.py` (read from the probe views).
+
+How each one moves:
+
+- **Pleatbill and Knotcko** stand on two legs. Pleatbill's legs are found automatically.
+  Knotcko's raised leg, its arms and its knotted tail (soft sway) are placed by hand.
+- **Coilusk, Siftrunk, Spindlecrab, Ripplemantis and Cupspinner** walk on four or more legs.
+  - The legs are found automatically (`legs=dict(top, count)`), except Coilusk's four sucker legs,
+    which join under its belly and are placed by hand.
+  - The legs that moves use are the front and back pair. Middle legs (the crab's, the mantis's and
+    the spider's extras) ride along with the body.
+- **Extra parts:**
+  - The crab's claws and the mantis's fan arms are arms, so they wave.
+  - The mantis's antennae sway like ears.
+  - Siftrunk's trunk is a soft chain on the head.
+  - Coilusk's swirl shell sways a little.
+- **Tuftwhale** uses the bat moves: its big side fins flap like wings, its lower fins are its legs,
+  and its tail sways.
+- **Coilusk and Siftrunk** stand at an angle in their pictures (yaw 38° and 36°). Siftrunk is built
+  a little bigger (0.27 m long) because it is so low.
+
+Accessory fit fixed by hand: `python3 models/creatures2/fit_fix.py` (Tuftwhale's hat, the crab's
+and Siftrunk's bow ties and Siftrunk's hat). Screenshots: `screenshots-creatures-2/`.
+
 ## How the animatronics are made
 
 Fedir designed ten vintage theme-park performers (pictures in `animatronics/`). Same path as the
@@ -91,6 +121,24 @@ left and right in snaps, dance is a showtime routine (arm raises, head bobs and 
 In the app, Spin turns in eight clunky steps like a turntable and the turns while running round
 are stepped too. Sounds: very quiet servo ticks on the snaps and a little calliope tune for the
 dance (`models/make_sounds.py`). Each arm is settled on its own (performers often hold one arm out).
+
+### The second set of animatronics (11–18)
+
+Nov 22, 2026: Elephant, Pangolin, Ostrich, Lobster, Chameleon, Walrus, Kangaroo and Sloth.
+Pictures are `animatronics/11-…png` to `18-…png` and task ids are in
+`models/animatronics2/meshy_tasks.txt`.
+
+- **Seven of them** use the same path as the first ten (`ANIMATRONICS` in `make_meshy_animal.py`):
+  Meshy model, Meshy auto-rig, our stiff servo-step moves, the quiet servo sounds and the calliope
+  dance tune.
+- **Different file names:** Elephant, Ostrich and Kangaroo are also toy animals, so their files and
+  app cases are `showelephant`, `skateostrich` and `showkangaroo`. The chooser shows the plain
+  names, in the Animatronics section.
+- **The Ostrich:** Meshy refused to rig her (thin legs on roller skates; no credits charged). She
+  gets our own two-legged creature rig instead (`CREATURES["skateostrich"]`, static model in
+  `models/creatures/skateostrich/`). Her moves are the smoother creature ones rather than servo
+  steps; she still has the animatronic sounds and dance tune.
+- **Screenshots:** `screenshots-animatronics-2/`.
 
 ## How the robots are made
 
@@ -119,6 +167,31 @@ Rebuild one robot: `blender -b --factory-startup --python models/make_vehicle.py
 `blender -b --factory-startup --python models/make_meshy_animal.py -- jet`, then
 `models/install_creature.sh jet`.
 
+### The second set of robots (11–18)
+
+Nov 22, 2026: Locomotive, Submarine, Tractor, City Bus, Forklift, Cable Car, Lunar Rover and
+Airship. Pictures are `robots/11-…png` to `18-…png` and task ids are in
+`models/robots/meshy_tasks.txt`. They use the same path as the first ten (`ROBOTS` in
+`make_meshy_animal.py`, `KINDS` in `make_vehicle.py`). The Lunar Rover's vehicle model came out
+facing backwards, so it is turned round (`TURN` in `make_vehicle.py`).
+
+Each vehicle has its own way of travelling on Run (`FigureRig.robotRun`):
+
+- **Locomotive:** a steady chug with a small rock.
+- **City Bus:** a smooth drive with a little sway.
+- **Tractor:** slow and bumpy, with a big-wheel wobble.
+- **Forklift:** a smaller circle, tipping back now and then as if lifting its forks. The forks
+  themselves do not move; the vehicle is one piece.
+- **Submarine:** floats just above the ground with its nose dipping and rising like a dive.
+- **Cable Car:** rises as if hanging from a cable and glides round with a pendulum sway (no cable
+  is drawn).
+- **Lunar Rover:** floaty low-gravity hops.
+- **Airship:** lifts off slowly and floats a wider loop.
+
+Engine sounds (soft, 6 s, with the change click-whirr) come from
+`models/make_vehicle_sounds2.py`: `sfx_run_train`, `_sub`, `_tractor`, `_bus`, `_forklift`,
+`_cable`, `_rover` and `_airship`. Screenshots: `screenshots-robots-2/`.
+
 ### Meshy credits used
 
 | | Credits |
@@ -139,6 +212,72 @@ Second batch: 12 more animals and 12 dinosaurs (Nov 2026)
 | 12 realistic dinosaur pictures + 2 retries (Velociraptor, Allosaurus) | 84 |
 | 12 realistic dinosaur models (meshy-t2.5 smart topology + meshy-n1) | 180 |
 | **Total** | **858** of the 880 allowed (balance afterwards 1,320) |
+
+Third batch: 6 more animals (Nov 20, 2026)
+
+| | Credits |
+|---|---|
+| Shark, Mole, Bee, Parrot, Koala, Panda: picture 6 + model 15 + rig 5 each, no retries | **156** (balance afterwards 1,164) |
+
+Fourth batch: 6 more animals (Nov 22, 2026)
+
+| | Credits |
+|---|---|
+| Deer, Red Panda, Moose, Kangaroo, Giraffe, Capybara: picture 6 + model 15 + rig 5 each, no retries | **156** (balance afterwards 1,008) |
+
+Fedir's second set of creatures (Nov 22, 2026)
+
+| | Credits |
+|---|---|
+| Pleatbill, Coilusk, Siftrunk, Spindlecrab, Ripplemantis, Tuftwhale, Knotcko, Cupspinner: image-to-3D 15 each from Fedir's pictures, no retries | **120** (balance afterwards 888) |
+
+Fedir's second set of robots (Nov 22, 2026)
+
+| | Credits |
+|---|---|
+| Locomotive, Submarine, Tractor, City Bus, Forklift, Cable Car, Lunar Rover, Airship: robot model 15 + rig 5 + vehicle picture 6 + vehicle model 15 each, no retries | **328** (balance afterwards 560) |
+
+Fedir's second set of animatronics (Nov 22, 2026)
+
+| | Credits |
+|---|---|
+| Elephant, Pangolin, Ostrich, Lobster, Chameleon, Walrus, Kangaroo, Sloth: model 15 each + 7 rigs at 5 (the Ostrich rig was refused, free) | **155** (balance afterwards 405) |
+
+## The fourth batch (Deer, Red Panda, Moose, Kangaroo, Giraffe, Capybara)
+
+Nov 22, 2026, the same path as the batch below: `ANIMALS2` in `models/make_meshy_animal.py`, art in
+`animals4/`, task ids in `models/new6b/meshy_tasks.txt`. Python was swapped for Capybara (a snake
+has no legs for the two-legged rig and moves).
+
+- **Deer picture:** the deer stood on a display disc. I painted the disc out before the 3D step
+  (`animals4/01-deer-original.png` is the untouched picture).
+- **Pattern maps:** baked with `bake_position_map.py` (768, then 512 px in the app). All 30 maps
+  together are 9.1 MB.
+- **Fit by hand:** `python3 models/new6b/fit_fix.py`, run after `measure_nose.py`.
+  - The glasses had been placed at the snout tip, so they slid sideways in the angled shelf view;
+    they now sit at eye height on the face.
+  - The moose's dark eyes on dark fur were missed: its eyes, nose and bow tie are set by hand.
+  - The red panda's scarf went round its muzzle; it now sits under the chin.
+  - The kangaroo's hats sank between its ears.
+- **Finding eyes:** `models/new6b/find_eyes.py -- <name> [lumMax] [minY]` finds the eye centres from
+  the colour texture and the position map (the darkest spots on the front of the head).
+- **Screenshots:** `screenshots-new-animals-4/`.
+
+## The six newest animals (Shark, Mole, Bee, Parrot, Koala, Panda)
+
+Same path as the 12 animals below (`ANIMALS2` in `models/make_meshy_animal.py`): Meshy picture
+(nano-banana-2, art in `animals3/`), image-to-3D (meshy-t2.5 smart topology 20k + meshy-n1, T-pose),
+Meshy auto-rig, then the Blender script and `models/install_creature.sh`. Task ids are in
+`models/new6/meshy_tasks.txt`. The mole's picture stood on a pedestal: it was painted out before the
+3D step (`animals3/02-mole-original.png` is the untouched one). The shark and the bee stand upright
+like the other toys (the shark on short legs with fin arms, the bee's wings ride on the back).
+
+Fit by hand after a rebuild: `measure_nose.py` for each, then `python3 models/new6/fit_fix.py`.
+It fixes the bow tie and scarf on the round one-piece bodies (shark, parrot: the ring is centred
+forward with `neckCZ`), the mole's bow tie (under the chin, not on the snout), the parrot's glasses
+(on the eyes, not the beak tip), the koala's eyes (the dark nose had been read as the eyes) and the
+shark's hat (on the head beside the fin). `models/new6/probe_fit.py -- <name>` prints the surface
+profile used to pick the numbers.
 
 ## The 12 new animals and the dinosaurs
 
@@ -174,9 +313,39 @@ Second batch: 12 more animals and 12 dinosaurs (Nov 2026)
   own scripts; Meshy's preset animations are not shipped.
 - **Blender** (GPL) is only a tool here; its license does not apply to the models it exports.
 
+## Patterns
+
+The **Colors** tab has a second row for the 24 animals: **Plain, Dots, Stripes, Checks, Stars
+and Hearts**. Any pattern goes with any of the 7 colors (6 x 7 looks per animal). For dinosaurs,
+creatures, robots and animatronics the row is hidden. Each change is one undo step, it is saved with
+the look, and Reset sets it back to Plain. No Meshy credits were used.
+
+How it works: Meshy textures are cut into many small pieces, so a pattern drawn flat on the
+picture would break at every seam. `models/bake_position_map.py` (Blender, headless) bakes a
+**position map** for each animal: every texel of its texture gets the 3D point on the body it
+belongs to (rest pose).
+
+    blender -b --factory-startup --python models/bake_position_map.py -- panda 768
+    sips -Z 512 models/panda_pos.png --out FigureShelf.swiftpm/Resources/panda_pos.png
+
+It also writes `"posBox"` (the body's box) into `<animal>_clips.json`. The 24 maps are 512 px PNGs,
+7.3 MB in all. In the app, `PatternPainter.swift` works the pattern out from those 3D points, so
+dots stay round and stripes run round the body without breaks. Dots and checks are a 3D grid and
+stripes are bands round the body. Stars and hearts are wrapped round the body (and laid flat on the
+top of the head). Each pattern is painted over the chosen color texture.
+
+- **Pattern colors:** each color has its own pattern ink: orange on Sunny, deep blue on Ocean,
+  teal on Mint, purple on Berry, gold on Night and sky blue on Snow. Normal uses a lighter or deeper
+  shade of the fur.
+- **Details stay:** eyes, noses and dark lines keep their own color.
+- **Painting:** it takes a moment, in the background, the first time a color and pattern are
+  combined (the plain color shows meanwhile). Then it is kept for that session.
+
+Screenshots: `screenshots-patterns/`.
+
 ## Things to wear
 
-The **Accessories** tab has four groups: Hats, Glasses, Masks and Neck. One item from each group
+The **Accessories** tab has four groups: Hats, Glasses, Masks and Neck (48 things in all; 17 were added in Nov 2026: Santa, sun hat, unicorn, bunny ears, builder; googly, visor, pixel, cat-eye; beard, whiskers, piggy; tie, pearls, bell, wings, backpack). One item from each group
 can be worn at the same time; tap a worn item again (or "None") to take it off, and every
 change is one undo step. The snorkel mask covers the eyes, so glasses hide while it is on.
 All items are built in code from simple rounded shapes (`FigureBuilder.addWear`), so they
@@ -190,9 +359,15 @@ unusual). Older saved looks with one extra are moved into the right slot.
 
 ## App icon
 
-The icon is the app's own Kitty, rendered in Blender close up on a sky-blue background
-(`models/make_icon.py -- c`). Options A (shelf with three figures) and B (Kitty on the turntable)
-and a size test sheet are in `icon/`. It lives in `FigureShelf.swiftpm/Assets.xcassets/AppIcon.appiconset`.
+The icon (Nov 2026) is a clay-style bunny in a party hat between a fox and a panda on a little
+wooden shelf, on a warm orange background. Fedir picked it from options made with Figma's image
+generator, in the same clay style as the Figure Worlds icon, so the two apps look like one family.
+1024 px, sRGB, no transparency. It lives in `FigureShelf.swiftpm/Assets.xcassets/AppIcon.appiconset`;
+the Xcode project (`FigureShelf-Xcode/`, used for App Store builds) points at the same asset catalog,
+so there is only one file to change. Copies in `icon/`: `AppIcon-figma-1024.png` (this icon),
+`AppIcon-figma-kitten-1024.png` (an unused option: kitten on a turntable), `AppIcon-1024-old.png`
+(the earlier Blender-rendered Kitty, `models/make_icon.py -- c`, with options A and B and a size
+test sheet), and `home-screen.png` (both apps' icons on the home screen).
 
 ## Sounds
 
@@ -204,14 +379,15 @@ notes, filtered noise; no samples) into `FigureShelf.swiftpm/Resources/Sounds/`,
 |---|---|
 | Jump | a soft rising "boing" at each of the 3 hops, then a soft landing thump |
 | Run | light pitter-patter of little paws that fades in and out |
-| Dance | a short cheerful marimba tune with a gentle bass |
+| Dance | each kind of figure has its own 4 s tune: **animals** a cheerful marimba tune with a gentle bass; **animatronics** a calliope (vintage theme park); **dinosaurs** a prehistoric groove (deep frame drums, log drums, a bone shaker, a low wooden flute and two friendly rawrs); **robots** a friendly electro tune (soft square-wave arpeggio, gentle beat, beep-boops); **creatures** a magical tune (music-box bells on a dreamy whole-tone scale, a harp sweep, a soft shimmering pad) |
 | Wave | a friendly two-note "hel-lo" chime with a tiny sparkle |
 | Spin | a soft whoosh that rises and falls, with a small chime at the end |
 | Choosing | a very quiet round "pop" when an animal, color or extra is picked |
 
 Sounds only start from a tap (a move, "Again" repeating it, or a choice). They use the
 ambient audio mode, so the silent switch mutes them and music keeps playing. The speaker
-button next to undo turns them off and the app remembers it. Rebuild: `python3 models/make_sounds.py`.
+button next to undo turns them off and the app remembers it. Rebuild: `python3 models/make_sounds.py`;
+the dinosaur, robot and creature dance tunes come from `python3 models/make_dance_music.py`.
 
 ## How to run it
 
@@ -232,8 +408,9 @@ free Swift Playgrounds app and tap Run. The room camera works there too.
 - `Model.swift`: animals, colors, extras, actions, and saved state with undo
 - `FigureBuilder.swift`: builds each animal and extra from shapes
 - `FigureRig.swift`: the dance, jump, run, spin and wave movements
+- `PatternPainter.swift`: paints dots, stripes, checks, stars and hearts onto a color texture using the animal's position map
 - `RealFigure.swift`: loads the six animated models, swaps their color textures, plays their clips and keeps extras on the head and neck bones
-- `Resources/`: `<animal>.usdz`, `<animal>_clips.json` (clips + where extras sit) and `<animal>_skin_<color>.jpg` for all six animals
+- `Resources/`: `<animal>.usdz`, `<animal>_clips.json` (clips + where extras sit) `<animal>_skin_<color>.jpg`, and `<animal>_pos.png` (position map for patterns, the 24 animals)
 - `StageView.swift`: the 3D shelf view and the AR room view
 - `ContentView.swift`: the screens and buttons
 

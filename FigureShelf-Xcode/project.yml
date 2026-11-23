@@ -26,6 +26,8 @@ targets:
         group: Code
       - path: ../FigureShelf.swiftpm/ParentsInfo.swift
         group: Code
+      - path: ../FigureShelf.swiftpm/PatternPainter.swift
+        group: Code
       - path: ../FigureShelf.swiftpm/RealFigure.swift
         group: Code
       - path: ../FigureShelf.swiftpm/SoundBoard.swift

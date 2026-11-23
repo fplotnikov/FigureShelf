@@ -531,6 +531,42 @@ struct ChooserPanel<Swipe: Gesture>: View {
             } else if tab == .extras {
                 WearGrid(state: state, compact: compact)
             } else {
+                VStack(spacing: 10) {
+                    colorRow
+                    if RealModelLibrary.supportsPatterns(state.look.animal) { patternRow }
+                }
+            }
+    }
+
+    /// Patterns over the colour (toy animals only): each tile shows the pattern on the
+    /// chosen colour.
+    private var patternRow: some View {
+        let c = state.look.skin.colors(for: state.look.animal)
+        let main = Color(uiColor: c.main)
+        let mark: Color = c.main.lightness < 0.6 ? .white.opacity(0.9) : .black.opacity(0.45)
+        return ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(Pattern.allCases) { pattern in
+                    Tile(label: pattern.name, selected: state.look.pattern == pattern, size: tileSize) {
+                        ZStack {
+                            Circle().fill(main)
+                            if pattern != .plain {
+                                Image(systemName: pattern.symbol)
+                                    .font(.system(size: tileSize * 0.22, weight: .bold))
+                                    .foregroundStyle(mark)
+                            }
+                        }
+                        .frame(width: tileSize * 0.5, height: tileSize * 0.5)
+                        .overlay(Circle().stroke(Color.black.opacity(0.08), lineWidth: 1))
+                    } action: { state.choose(pattern: pattern) }
+                }
+            }
+            .padding(.vertical, 4)
+            .padding(.horizontal, 2)
+        }
+    }
+
+    private var colorRow: some View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         do {
@@ -550,7 +586,15 @@ struct ChooserPanel<Swipe: Gesture>: View {
                     .padding(.vertical, 4)
                     .padding(.horizontal, 2)
                 }
-            }
+    }
+}
+
+private extension UIColor {
+    /// 0 (black) ... 1 (white), how light the colour looks.
+    var lightness: CGFloat {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        return 0.299 * r + 0.587 * g + 0.114 * b
     }
 }
 

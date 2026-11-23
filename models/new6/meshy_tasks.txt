@@ -1,0 +1,21 @@
+# art (text-to-image, nano-banana-2), 2026-11-20
+animals3 01 shark 01a1f6bb-02aa-7488-9598-a181577b6d03
+animals3 02 mole 01a1f6bb-044a-7183-b7fd-47920185bc1b
+animals3 03 bee 01a1f6bb-05a6-73e6-8374-70eadc89f6a8
+animals3 04 parrot 01a1f6bb-073c-70fe-ada1-fa0a09741624
+animals3 05 koala 01a1f6bb-08fe-7362-a933-ecf367898206
+animals3 06 panda 01a1f6bb-0a93-768a-bec8-54e98f7eb4b8
+# image-to-3d (meshy-t2.5 smart topology 20k, meshy-n1 texture, t-pose)
+shark 01a1f6bd-2c00-7290-8332-dfd64dabac39
+mole 01a1f6bd-3060-736d-be70-27e88d97b1e2
+bee 01a1f6bd-377f-7412-b2a4-2c3d5c836a3e
+parrot 01a1f6bd-3ef6-75c4-9d10-ccd2dc44db2d
+koala 01a1f6bd-4325-72e4-9d01-6c1daf23c2d0
+panda 01a1f6bd-4959-754e-b541-25323aea3531
+# rigging (Meshy auto-rig)
+shark 01a1f6bf-992d-72b3-934c-6ecdf7c209c8
+mole 01a1f6bf-a5be-740e-af0c-c456d9645771
+bee 01a1f6bf-bc1f-7489-a1cd-c55f8ddf2d78
+parrot 01a1f6bf-ca09-7003-8454-49367e5160f8
+koala 01a1f6bf-d756-7098-bf39-0812f8f1b3e2
+panda 01a1f6bf-e538-76cc-ba3b-e13ca80b729b

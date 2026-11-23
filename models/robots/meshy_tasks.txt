@@ -42,3 +42,40 @@ r_seaplane 01a1ebf6-c80c-7085-b426-acd4de8d7ad8
 r_snowmobile 01a1ebf6-d7ff-72a9-9634-c7371ef6cacf
 r_excavator 01a1ebf6-e50a-742f-a481-1fa5b9bbf306
 r_speedboat 01a1ebf6-f27f-7269-b640-841de11168db
+# second set (Nov 22, 2026)
+# robot image-to-3d (meshy-t2.5 smart topology 20k + meshy-n1, t-pose)
+locomotive 01a2016e-f6e8-75f5-808a-ff349c2f4de1
+submarine 01a2016f-00aa-7604-8edd-9bb03136014a
+tractor 01a2016f-0909-719b-b822-a48834f78cfe
+citybus 01a2016f-149b-7491-8ddf-e9265675adda
+forklift 01a2016f-1f54-706f-9a12-21dc027783d8
+cablecar 01a2016f-271c-71ab-9c0c-8b82ba0f1ca9
+lunarrover 01a2016f-2ff3-7403-b079-475534c25486
+airship 01a2016f-3907-74e0-9cd2-4170cbf3ef98
+# vehicle image-to-image (nano-banana-2)
+v_locomotive 01a2016f-91dc-7417-b9ec-c50027780f35
+v_submarine 01a2016f-9b2b-703b-afde-998a0870a179
+v_tractor 01a2016f-a2ac-721a-a2e3-8264a71da435
+v_citybus 01a2016f-aad2-7209-8bc0-6fc9570a01ac
+v_forklift 01a2016f-b3cc-7392-a81f-bd011b73f64b
+v_cablecar 01a2016f-baef-7087-92bb-513bcc602ccb
+v_lunarrover 01a2016f-c22c-729a-ad12-6faa9bf47d8f
+v_airship 01a2016f-c946-73fc-910c-01f1d46073cf
+# vehicle image-to-3d (meshy-t2.5 smart topology 15k + meshy-n1)
+m_locomotive 01a20170-caaa-773b-9df0-62e284237e5b
+m_submarine 01a20170-ce68-73a3-9c8e-e6702b161930
+m_tractor 01a20170-d213-7401-a740-e94e20f25e88
+m_citybus 01a20170-d5aa-7505-9087-e1bc03b5c231
+m_forklift 01a20170-d8fb-7513-b724-e746486c8801
+m_cablecar 01a20170-dcac-7045-839a-da8ba552cdcf
+m_lunarrover 01a20170-e003-76bd-85d3-235456268dac
+m_airship 01a20170-e3d1-706f-a7d5-ba3b01a5c87a
+# robot rigging (meshy_rig)
+r_locomotive 01a201d0-5228-726e-af0f-5aec6d90043f
+r_submarine 01a201d0-5f83-75ae-8d0a-4fc5d9528bbb
+r_tractor 01a201d0-6c90-727c-bd58-4049d96804d5
+r_citybus 01a201d0-796f-725d-bafc-a7cf30b7f03e
+r_forklift 01a201d0-8677-73a9-8283-f6c6e1cf34d3
+r_cablecar 01a201d0-92fe-7206-90c5-e053c529a37a
+r_lunarrover 01a201d0-a231-720d-b306-d6c9bc8c5147
+r_airship 01a201d0-af2e-7454-b5f0-e34c2e0b59c7

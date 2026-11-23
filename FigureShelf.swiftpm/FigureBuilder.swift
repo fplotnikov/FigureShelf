@@ -247,7 +247,7 @@ enum FigureBuilder {
             case .hat: addHat(item, on: hat, head: head, fit: fit)
             case .glasses: addGlasses(item, on: face, ex: ex, g: g, frog: frog)
             case .mask:
-                if item == .clownNose || item == .moustache {
+                if [.clownNose, .moustache, .beard, .whiskers, .pigSnout].contains(item) {
                     addNoseItem(item, fit: fit, frog: frog, g: g, turn: turn, head: head)
                 } else {
                     addMask(item, on: face, ex: ex, g: g)
@@ -349,6 +349,42 @@ enum FigureBuilder {
                      scale: [1, 1, 0.5], in: flower)
             }
             ball(0.0055, UIColor(hex: 0xFFD45C), at: [0, 0, 0.002], in: flower)
+        case .santaHat:
+            cylinder(height: 0.009, radius: 0.026, .white, at: [0, 0.004, 0], in: hat)
+            let p = pivot(at: [0, 0.008, 0], angleZ: -0.3, in: hat)
+            cone(height: 0.054, radius: 0.023, UIColor(hex: 0xD6283B), at: [0, 0.027, 0], in: p)
+            ball(0.008, .white, at: [0, 0.055, 0], in: p)
+        case .strawHat:
+            let straw = UIColor(hex: 0xE8C77A)
+            ball(0.042, straw, at: [0, 0.001, 0], scale: [1, 0.07, 1], in: hat)
+            cylinder(height: 0.016, radius: 0.019, straw, at: [0, 0.009, 0], in: hat)
+            ball(0.019, straw, at: [0, 0.017, 0], scale: [1, 0.3, 1], in: hat)
+            cylinder(height: 0.005, radius: 0.0195, UIColor(hex: 0xFF8FB1), at: [0, 0.004, 0], in: hat)
+            ball(0.005, UIColor(hex: 0xFFD45C), at: [0.014, 0.005, 0.013], in: hat)
+        case .unicornHorn:
+            let horn = cone(height: 0.042, radius: 0.0075, UIColor(hex: 0xFFE7A8), at: [0, 0.018, 0.012],
+                            rotation: rotX(0.3), in: hat)
+            horn.model?.materials = [material(UIColor(hex: 0xFFE7A8), shiny: true)]
+            for k in 0..<3 {   // pink stripes round the horn
+                let y = 0.006 + Float(k) * 0.009
+                let t = y / 0.042
+                cylinder(height: 0.0016, radius: 0.0075 * (1 - t) + 0.0006, UIColor(hex: 0xFF8FB1),
+                         at: [0, 0.003 + y * 0.95, 0.012 + y * 0.3], in: hat).orientation = rotX(0.3)
+            }
+            for s: Float in [-1, 1] { ball(0.0055, UIColor(hex: 0xC8A2F0), at: [s * 0.01, 0.002, 0.01], in: hat) }
+        case .bunnyEars:
+            let pink = UIColor(hex: 0xFF8FB1)
+            box([0.05, 0.004, 0.008], corner: 0.002, pink, at: [0, 0.001, 0], in: hat)
+            for s: Float in [-1, 1] {
+                ball(0.011, .white, at: [s * 0.012, 0.022, 0], scale: [0.55, 1.9, 0.35], rotation: rotZ(-s * 0.18), in: hat)
+                ball(0.007, pink, at: [s * 0.0122, 0.022, 0.0025], scale: [0.5, 1.8, 0.3], rotation: rotZ(-s * 0.18), in: hat)
+            }
+        case .hardHat:
+            let yellow = UIColor(hex: 0xFFC83D)
+            let dome = ball(0.026, yellow, at: [0, -0.002, 0], scale: [1, 0.78, 1], in: hat)
+            dome.model?.materials = [SimpleMaterial(color: yellow, roughness: .float(0.3), isMetallic: false)]   // glossy plastic, not gold
+            ball(0.032, yellow, at: [0, -0.001, 0.004], scale: [1, 0.08, 1], in: hat)
+            box([0.006, 0.006, 0.042], corner: 0.002, UIColor(hex: 0xF0B020), at: [0, 0.017, 0], in: hat)
         default:
             break
         }
@@ -414,6 +450,37 @@ enum FigureBuilder {
             for i in 1...5 {
                 ball(0.0012, gold, at: [x + 0.009 * g + Float(i) * 0.0015, -0.006 * g - Float(i) * 0.0035, -0.001], in: face)
             }
+        case .googlyEyes:
+            for s: Float in [-1, 1] {
+                disc(0.012 * g, dark, at: [s * x, 0, 0], in: face)
+                disc(0.011 * g, .white, at: [s * x, 0, 0.0008], in: face)
+                ball(0.0048 * g, dark, at: [s * x + s * 0.002 * g, -0.0045 * g, 0.0015], scale: [1, 1, 0.4], in: face)
+            }
+            bridge(dark, 0.024 * g)
+        case .visor:
+            let w = x * 2 + 0.032 * g
+            box([w + 0.004, 0.017 * g, 0.004], corner: 0.004, UIColor(hex: 0x4A5060), at: [0, 0, -0.001], in: face)
+            let glass = box([w, 0.012 * g, 0.004], corner: 0.004, UIColor(hex: 0x52E0FF), at: [0, 0, 0.0015], in: face)
+            glass.model?.materials = [material(UIColor(hex: 0x52E0FF), shiny: true)]
+            box([w * 0.35, 0.002 * g, 0.001], corner: 0.0005, .white, at: [-w * 0.18, 0.003 * g, 0.004], in: face)
+        case .pixelShades:
+            let u = 0.004 * g    // one "pixel"
+            for s: Float in [-1, 1] {
+                box([u * 6, u * 2, 0.004], corner: 0, dark, at: [s * x, u * 0.5, 0], in: face)
+                box([u * 4, u, 0.004], corner: 0, dark, at: [s * x, -u, 0], in: face)
+                box([u * 2, u, 0.004], corner: 0, dark, at: [s * x, -u * 2, 0], in: face)
+                box([u, u, 0.001], corner: 0, .white, at: [s * x - u * 1.5, u, 0.0025], in: face)
+            }
+            box([x * 2 + u * 6, u, 0.004], corner: 0, dark, at: [0, u * 1.5, 0], in: face)
+        case .catEyeGlasses:
+            let pink = UIColor(hex: 0xE85A9B)
+            for s: Float in [-1, 1] {
+                ball(0.0115 * g, pink, at: [s * x, 0, 0], scale: [1.35, 0.9, 0.3], in: face)
+                ball(0.0088 * g, lensBlue, at: [s * x, 0, 0.002], scale: [1.35, 0.85, 0.25], in: face)
+                cone(height: 0.011 * g, radius: 0.004 * g, pink, at: [s * (x + 0.013 * g), 0.007 * g, 0],
+                     rotation: rotZ(-s * 0.9), scale: [1, 1, 0.4], in: face)
+            }
+            bridge(pink, 0.03 * g)
         default:
             break
         }
@@ -441,6 +508,29 @@ enum FigureBuilder {
                      scale: [1.9, 0.55, 0.6], rotation: rotZ(side * 0.32), in: anchor)
                 ball(0.0025 * s, brown, at: [side * 0.0128 * s, -0.0036 * s, -0.003],
                      scale: [1.3, 0.6, 0.6], rotation: rotZ(side * 0.9), in: anchor)
+            }
+        case .beard:
+            let white = UIColor(hex: 0xF7F4EE)
+            ball(0.016 * s, white, at: [0, -0.02 * s, -0.006], scale: [1.15, 1.0, 0.55], in: anchor)
+            ball(0.009 * s, white, at: [0, -0.033 * s, -0.004], scale: [1, 1.1, 0.5], in: anchor)
+            for side: Float in [-1, 1] {
+                ball(0.0055 * s, white, at: [side * 0.007 * s, -0.006 * s, -0.001],
+                     scale: [1.8, 0.7, 0.6], rotation: rotZ(side * 0.3), in: anchor)
+            }
+        case .whiskers:
+            ball(0.0042 * s, UIColor(hex: 0xFF8FB1), at: [0, 0, 0.0015], scale: [1.2, 0.9, 0.8], in: anchor)
+            for side: Float in [-1, 1] {
+                for k in -1...1 {
+                    box([0.022 * s, 0.0011, 0.0011], corner: 0, dark,
+                        at: [side * 0.016 * s, -0.004 * s + Float(k) * 0.0035 * s, -0.002],
+                        rotation: rotZ(side * Float(k) * 0.18), in: anchor)
+                }
+            }
+        case .pigSnout:
+            let pink = UIColor(hex: 0xFFA6C1)
+            ball(0.0085 * s, pink, at: [0, -0.001, 0.002], scale: [1.25, 0.9, 0.6], in: anchor)
+            for side: Float in [-1, 1] {
+                ball(0.0022 * s, UIColor(hex: 0xB8506E), at: [side * 0.0042 * s, -0.001, 0.0068 * s], scale: [0.8, 1.2, 0.4], in: anchor)
             }
         default:
             break
@@ -522,6 +612,48 @@ enum FigureBuilder {
             }
             disc(0.008, gold, at: [0, -0.019, front + 0.003], shiny: true, in: ring)
             ball(0.003, UIColor(hex: 0xFFE38A), at: [0, -0.019, front + 0.005], scale: [1, 1, 0.4], in: ring)
+        case .necktie:
+            let blue = UIColor(hex: 0x3A6FD8)
+            ball(0.0045, blue, at: [0, -0.002, front + 0.001], scale: [1.2, 1, 0.6], in: ring)
+            box([0.009, 0.03, 0.003], corner: 0.002, blue, at: [0, -0.02, front + 0.001], in: ring)
+            cone(height: 0.007, radius: 0.0062, blue, at: [0, -0.0375, front + 0.001], rotation: rotZ(.pi),
+                 scale: [1, 1, 0.35], in: ring)
+            for k in 0..<2 {
+                box([0.009, 0.002, 0.001], corner: 0, UIColor(hex: 0xFFD45C), at: [0, -0.012 - Float(k) * 0.01, front + 0.003],
+                    rotation: rotZ(0.4), in: ring)
+            }
+        case .pearls:
+            for i in 0..<18 {
+                let a = Float(i) / 18 * 2 * .pi
+                let pearl = ball(0.0032, UIColor(hex: 0xFBF6EE),
+                                 at: [(r + 0.0015) * sin(a), -0.004 - 0.003 * cos(a), (r + 0.0015) * cos(a)], in: ring)
+                pearl.model?.materials = [material(UIColor(hex: 0xFBF6EE), shiny: true)]
+            }
+        case .bellCollar:
+            cylinder(height: 0.006, radius: r * 1.02, red, at: [0, 0, 0], in: ring)
+            let bell = ball(0.0058, gold, at: [0, -0.007, front + 0.004], in: ring)
+            bell.model?.materials = [material(gold, shiny: true)]
+            box([0.006, 0.0012, 0.001], corner: 0, dark, at: [0, -0.009, front + 0.0095], in: ring)
+        case .fairyWings:
+            let p = Entity()
+            p.position = [0, -0.004, -r * 0.95]
+            ring.addChild(p)
+            let wing = UIColor(hex: 0xEEF6FF), edge = UIColor(hex: 0xD9C4F7)
+            for s: Float in [-1, 1] {
+                // big upper wing spreading up and out, smaller lower wing below it
+                ball(0.021, wing, at: [s * 0.024, 0.014, -0.004], scale: [0.95, 1.45, 0.14],
+                     rotation: rotZ(-s * 0.6), in: p)
+                ball(0.0135, edge, at: [s * 0.018, -0.012, -0.003], scale: [0.95, 1.25, 0.14],
+                     rotation: rotZ(-s * 0.3), in: p)
+                ball(0.003, UIColor(hex: 0xFFD45C), at: [s * 0.03, 0.026, -0.001], in: p)   // a little sparkle
+            }
+        case .backpack:
+            let orange = UIColor(hex: 0xF28C38)
+            box([r * 1.5, 0.036, 0.018], corner: 0.006, orange, at: [0, -0.024, -r - 0.008], in: ring)
+            box([r * 1.1, 0.014, 0.006], corner: 0.003, UIColor(hex: 0xE06A1C), at: [0, -0.031, -r - 0.019], in: ring)
+            for s: Float in [-1, 1] {
+                box([0.004, 0.003, r * 1.6], corner: 0.001, UIColor(hex: 0x3B4252), at: [s * r * 0.45, 0.002, 0], in: ring)
+            }
         default:
             break
         }
