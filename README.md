@@ -249,6 +249,22 @@ Ten more prehistoric figures (Nov 28, 2026)
 |---|---|
 | Styracosaurus, Iguanodon, Carnotaurus, Therizinosaurus, Gallimimus, Dilophosaurus, Mosasaur, Elasmosaurus, Ichthyosaur, Megalodon: picture 6 + model 15 each, no Meshy rig, no retries | **210** (balance afterwards 195) |
 
+Kentrosaurus and Microraptor (Nov 28, 2026)
+
+| | Credits |
+|---|---|
+| Kentrosaurus, Microraptor: picture 6 + model 15 each, no Meshy rig, no retries | **42** (balance afterwards 153) |
+
+## Kentrosaurus and Microraptor
+
+Nov 28, 2026, the same path as the dinosaurs below (`_dino(...)` in `models/make_meshy_animal.py`,
+our own rig and moves, 7 skins, Dinosaurs group, no gating). Art: `dinosaurs/23-kentrosaurus.png`,
+`dinosaurs/24-microraptor.png`; task ids: `models/new2dino/meshy_tasks.txt`. Kentrosaurus is
+four-legged with plates turning into spikes; Microraptor stands calmly like a bird with its feathered
+wings folded, so it uses the two-legged rig (its folded wings are the "arms" for the wave). Eye points
+were moved back on the head (`eye` 0.8 and 0.75) after checking the glasses in the simulator.
+Screenshots in `screenshots-dinosaurs-2/` (`fs_`, `wear_`, `move_microraptor_wave`). Build 5.
+
 ## Ten more prehistoric figures (6 dinosaurs, 4 sea species)
 
 Nov 28, 2026, in the Dinosaurs group, all available straight away. Art: `dinosaurs/13-…png` to
@@ -279,7 +295,7 @@ Calm poses, closed mouths, feathers on Therizinosaurus and Gallimimus.
 - **Screenshots:** `screenshots-dinosaurs-2/` (`fs_*` on the shelf, `wear_*` with a hat, glasses and
   bow tie, `move_*` mid-move, `fs_new10_sheet.png` all ten). `models/new10dino/shot.sh` takes them in
   the Simulator (the look goes in as a launch argument; autoplay starts about 6.5 s after launch).
-- Build 4 (version 1.1) in the Xcode project and Package.swift.
+- Build 4 (version 1.1) in the Xcode project and Package.swift (now 5, see above).
 
 ## The fourth batch (Deer, Red Panda, Moose, Kangaroo, Giraffe, Capybara)
 
@@ -454,7 +470,7 @@ free Swift Playgrounds app and tap Run. The room camera works there too.
 
 ## App Store
 
-- Bundle ID `app.figureshelf.FigureShelf`, version 1.1 (4), team B6LBNVRNQ4, iPhone and iPad.
+- Bundle ID `app.figureshelf.FigureShelf`, version 1.1 (5), team B6LBNVRNQ4, iPhone and iPad.
 - `Resources/PrivacyInfo.xcprivacy`: no tracking, no collected data, UserDefaults (CA92.1).
 - `InfoExtra.plist` adds `ITSAppUsesNonExemptEncryption = NO` (`additionalInfoPlistContentFilePath` in Package.swift;
   Swift Playgrounds may drop it if it rewrites Package.swift, so check after editing there).

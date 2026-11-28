@@ -294,6 +294,9 @@ CREATURES.update({
     "therizinosaurus": dict(_dino("biped", 0.08, 0.12, 0.55, arms=True), arm_wave=0.5),
     "gallimimus": _dino("biped", 0.07, 0.13, 0.55, arms=True),
     "dilophosaurus": _dino("biped", 0.12, 0.07, 0.6, arms=True),
+    # Nov 28, 2026 (models/new2dino)
+    "kentrosaurus": _dino("quad", 0.09, 0.08, 0.8),
+    "microraptor": _dino("biped", 0.10, 0.07, 0.75, arms=True),
 })
 
 
