@@ -1,0 +1,23 @@
+# Nov 28, 2026: 6 dinosaurs + 4 sea species
+# art (text-to-image, nano-banana-2)
+dinosaurs 13 styracosaurus 01a21fef-4349-754f-8034-625f1c4d1df1
+dinosaurs 14 iguanodon 01a21fef-44bc-7381-9933-f778035f004a
+dinosaurs 15 carnotaurus 01a21fef-461b-7630-8d27-d2d3e367584c
+dinosaurs 16 therizinosaurus 01a21fef-4796-771f-8679-3415f50a0a58
+dinosaurs 17 gallimimus 01a21fef-48ff-700c-b782-1f02663ccfbf
+dinosaurs 18 dilophosaurus 01a21fef-4a97-70a7-837e-c05cc4b85876
+dinosaurs 19 mosasaurus 01a21fef-4c9a-72fc-9218-be9d6de55ec8
+dinosaurs 20 elasmosaurus 01a21fef-4e10-7223-b3f7-013b25dddc17
+dinosaurs 21 ichthyosaurus 01a21fef-4fb5-73d7-bbe5-47d091a2091c
+dinosaurs 22 megalodon 01a21fef-50ec-72f3-8db5-78adc50bf7ad
+# image-to-3d (meshy-t2.5 smart topology 20k + meshy-n1, glb)
+styracosaurus 01a21ff0-fe57-74df-b901-7554d4a984af
+iguanodon 01a21ff1-01d8-7538-aed8-1198b45d8b78
+carnotaurus 01a21ff1-052e-735e-9cb5-e0c9062e4fe0
+therizinosaurus 01a21ff1-08f6-71da-9d54-b87bb2dce7f5
+gallimimus 01a21ff1-0c52-712f-b927-c3f84400c24f
+dilophosaurus 01a21ff1-0fb8-724a-b71e-d0aed7466442
+mosasaurus 01a21ff1-136d-71ff-b6fb-f373bb735c9d
+elasmosaurus 01a21ff1-166b-756e-9fcb-5c1c58ece1f0
+ichthyosaurus 01a21ff1-1908-739d-b10f-5edc7b0ca9d3
+megalodon 01a21ff1-1c38-737b-9d2b-e948409e9597

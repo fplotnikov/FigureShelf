@@ -23,7 +23,8 @@ final class SoundBoard {
         let servos = ["dance", "jump", "run", "wave", "spin"].map { "anim_" + $0 }
         let dinos = ["dance", "jump", "run", "wave", "fly"].map { "dino_" + $0 }
         let dances = ["dino", "robot", "creature"].map { "dance_" + $0 }   // models/make_dance_music.py
-        for name in ["dance", "jump", "run", "spin", "wave", "pop"] + vehicles + servos + dinos + dances {
+        let seas = ["jump", "run", "wave"].map { "sea_" + $0 }            // models/new10dino/make_sea_sounds.py
+        for name in ["dance", "jump", "run", "spin", "wave", "pop"] + vehicles + servos + dinos + dances + seas {
             guard let url = Bundle.main.url(forResource: "sfx_" + name, withExtension: "m4a"),
                   let player = try? AVAudioPlayer(contentsOf: url) else { continue }
             player.prepareToPlay()
@@ -35,17 +36,19 @@ final class SoundBoard {
     /// `vehicle`: robots run as a vehicle, with its own soft engine sound.
     /// `animatronic`: servo clicks (and a calliope for dance) instead of the soft sounds.
     /// `dinosaur`: a soft "rawr" for dance and wave, padded footsteps for run;
-    /// `flyer` (Pteranodon) whooshes its wings on run instead.
+    /// `flyer` (Pteranodon) whooshes its wings on run instead; `swimmer` (the sea reptiles and
+    /// Megalodon) gets gentle water swishes and splashes instead of the rawr and footsteps.
     /// `danceMusic`: the dance tune for the figure's kind ("dino", "robot", "creature";
     /// nil = animals' marimba, animatronics keep their calliope).
     func play(_ action: FigureAction?, vehicle: String? = nil, animatronic: Bool = false,
-              dinosaur: Bool = false, flyer: Bool = false, danceMusic: String? = nil) {
+              dinosaur: Bool = false, flyer: Bool = false, swimmer: Bool = false, danceMusic: String? = nil) {
         fadeOutCurrent()
         guard enabled, let action else { return }
         var name = action == .run && vehicle != nil ? "run_" + vehicle!
             : (animatronic ? "anim_" + action.rawValue : action.rawValue)
         if dinosaur {
             name = action == .run && flyer ? "dino_fly" : "dino_" + action.rawValue
+            if swimmer, players["sea_" + action.rawValue] != nil { name = "sea_" + action.rawValue }
             if players[name] == nil { name = action.rawValue }   // spin keeps the usual whoosh
         }
         // Each kind of figure dances to its own music.

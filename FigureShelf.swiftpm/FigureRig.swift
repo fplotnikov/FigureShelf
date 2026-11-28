@@ -105,7 +105,8 @@ final class FigureRig {
         actionTime = 0
         playClip(for: newAction)
         SoundBoard.shared.play(newAction, vehicle: vehicleKind, animatronic: isAnimatronic,
-                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon, danceMusic: danceMusic)
+                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon,
+                                   swimmer: real?.animal.isSwimmer ?? false, danceMusic: danceMusic)
     }
 
     /// Robots run as their vehicle, which takes a little longer (change, trip, change back).
@@ -162,7 +163,8 @@ final class FigureRig {
                 if keepGoing {
                     actionTime = 0
                     SoundBoard.shared.play(current, vehicle: vehicleKind, animatronic: isAnimatronic,
-                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon, danceMusic: danceMusic)   // "Again" repeats the sound too
+                                   dinosaur: isDinosaur, flyer: real?.animal == .pteranodon,
+                                   swimmer: real?.animal.isSwimmer ?? false, danceMusic: danceMusic)   // "Again" repeats the sound too
                 } else {
                     action = nil
                     SoundBoard.shared.play(nil)
