@@ -18,8 +18,8 @@ let package = Package(
             targets: ["AppModule"],
             bundleIdentifier: "app.figureshelf.FigureShelf",
             teamIdentifier: "B6LBNVRNQ4",
-            displayVersion: "1.0",
-            bundleVersion: "2",
+            displayVersion: "1.1",
+            bundleVersion: "3",
             appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.orange),
             supportedDeviceFamilies: [
