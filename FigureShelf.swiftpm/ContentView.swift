@@ -1,11 +1,13 @@
 import SwiftUI
 import Combine
 import ARKit
+import Photos
 
 // MARK: - Shelf screen
 
 struct ContentView: View {
     @StateObject private var state = ShelfState()
+    @StateObject private var photos = PhotoTaker()
     @AppStorage("figureShelf.tab") private var tab: ChooserTab = .animals
 
     private let roomSupported = ARWorldTrackingConfiguration.isSupported
@@ -32,7 +34,9 @@ struct ContentView: View {
                             actionRequest: state.actionRequest,
                             keepGoing: state.keepGoing,
                             resetViewID: state.resetViewID,
-                            onTurned: { if !state.viewTurned { state.viewTurned = true } }
+                            onTurned: { if !state.viewTurned { state.viewTurned = true } },
+                            photoRequest: photos.request,
+                            onPhoto: { photos.got($0) }
                         )
                     }
                 }
@@ -77,6 +81,19 @@ struct ContentView: View {
                     }
                     .transition(.opacity)
                 }
+
+                PhotoFeedback(taker: photos, alignment: .bottomTrailing,
+                              cardPadding: EdgeInsets(top: 0, leading: 0, bottom: 112, trailing: 28))
+
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        PhotoButton(taker: photos)
+                    }
+                }
+                .padding(.horizontal, 28)
+                .padding(.bottom, 16)
             }
             .frame(maxHeight: .infinity)
 
@@ -195,6 +212,7 @@ struct RoomView: View {
     /// The soft "landed" chime plays only the first time the figure stands on the floor.
     @State private var landedChimed = false
     @State private var cameraOff = false
+    @StateObject private var photos = PhotoTaker()
     /// The bottom menu slides away after 15 s without a touch; any touch brings it back.
     /// Swipe down steps the menu: everything -> only the action buttons -> hidden. Swipe up
     /// (or tap the pill) brings it back. Only the menu itself changes it, not touches on the room.
@@ -223,9 +241,14 @@ struct RoomView: View {
                 },
                 onCameraOff: { cameraOff = true },
                 turnRequest: state.turnRequest,
-                onTouch: { touched() }
+                onTouch: { touched() },
+                photoRequest: photos.request,
+                onPhoto: { photos.got($0) }
             )
             .ignoresSafeArea()
+
+            PhotoFeedback(taker: photos, alignment: .topTrailing,
+                          cardPadding: EdgeInsets(top: 172, leading: 0, bottom: 0, trailing: 16))
 
             VStack(spacing: 12) {
                 HStack {
@@ -247,6 +270,14 @@ struct RoomView: View {
                     SoundButton()
                     ResetButton(state: state)
                     UndoButton(state: state)
+                }
+                .simultaneousGesture(TapGesture().onEnded { touched() })
+
+                // The camera button sits under the top buttons, clear of the menu, and stays
+                // even when the menu is hidden: a photo of the room is always one tap away.
+                HStack {
+                    Spacer()
+                    PhotoButton(taker: photos)
                 }
                 .simultaneousGesture(TapGesture().onEnded { touched() })
 
@@ -752,5 +783,137 @@ struct SoftPressStyle: ButtonStyle {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.96 : 1)
             .animation(.easeOut(duration: 0.12), value: configuration.isPressed)
+    }
+}
+
+// MARK: - Photos
+
+/// The camera button on the shelf and in the room. One tap: a white flash, a soft click,
+/// and the picture flies into the corner while it is saved to Photos. Nothing to set up
+/// and nothing can go wrong for the child: if Photos access is off, the picture still shows
+/// and a calm note says a grown-up can allow it in Settings.
+@MainActor
+final class PhotoTaker: ObservableObject {
+    /// A new id asks the StageView for a snapshot.
+    @Published var request: UUID?
+    @Published var flash = false
+    @Published var lastPhoto: UIImage?
+    @Published var note: String?
+    private var lastShot = Date.distantPast
+    private var hideWork: DispatchWorkItem?
+
+    func shoot() {
+        // A short pause between photos, so a burst of happy taps doesn't fill the library.
+        guard Date().timeIntervalSince(lastShot) > 0.8 else { return }
+        lastShot = Date()
+        SoundBoard.shared.ui(.latch, volume: 0.6)
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        flash = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) { [weak self] in
+            withAnimation(.easeOut(duration: 0.45)) { self?.flash = false }
+        }
+        request = UUID()
+    }
+
+    func got(_ image: UIImage) {
+        withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) { lastPhoto = image; note = nil }
+        PhotoTaker.save(image) { [weak self] saved in
+            guard let self else { return }
+            if saved {
+                SoundBoard.shared.ui(.perk, volume: 0.35)
+            } else {
+                withAnimation { self.note = "Ask a grown-up to allow Photos in Settings." }
+            }
+            self.hideSoon(after: saved ? 2.2 : 4)
+        }
+    }
+
+    private func hideSoon(after seconds: Double) {
+        hideWork?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            withAnimation(.easeIn(duration: 0.35)) { self?.lastPhoto = nil; self?.note = nil }
+        }
+        hideWork = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: work)
+    }
+
+    /// Adds the picture to the Photos library (add-only access: the app never sees other photos).
+    nonisolated static func save(_ image: UIImage, done: @escaping @MainActor (Bool) -> Void) {
+        PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
+            guard status == .authorized || status == .limited else {
+                Task { @MainActor in done(false) }
+                return
+            }
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }) { ok, _ in
+                Task { @MainActor in done(ok) }
+            }
+        }
+    }
+}
+
+/// The big round camera button.
+struct PhotoButton: View {
+    @ObservedObject var taker: PhotoTaker
+
+    var body: some View {
+        Button {
+            taker.shoot()
+        } label: {
+            ZStack {
+                Circle().fill(Palette.panel)
+                Circle().strokeBorder(Palette.selected, lineWidth: 5).padding(6)
+                Image(systemName: "camera.fill")
+                    .font(.system(size: 30, weight: .bold))
+                    .foregroundStyle(Palette.selected)
+            }
+            .frame(width: 80, height: 80)
+            .shadow(color: .black.opacity(0.25), radius: 6, y: 3)
+        }
+        .buttonStyle(SoftPressStyle())
+        .accessibilityLabel("Take a photo")
+    }
+}
+
+/// The flash and the little photo card that pops up after a shot. Never blocks touches.
+struct PhotoFeedback: View {
+    @ObservedObject var taker: PhotoTaker
+    /// Where the photo card pops up: next to that screen's camera button.
+    let alignment: Alignment
+    let cardPadding: EdgeInsets
+
+    var body: some View {
+        ZStack(alignment: alignment) {
+            Color.white
+                .opacity(taker.flash ? 0.9 : 0)
+                .ignoresSafeArea()
+            if let photo = taker.lastPhoto {
+                VStack(alignment: .trailing, spacing: 8) {
+                    Image(uiImage: photo)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 120, height: 160)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .padding(6)
+                        .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Palette.panel))
+                        .shadow(color: .black.opacity(0.3), radius: 8, y: 4)
+                        .rotationEffect(.degrees(-4))
+                    Text(taker.note ?? "Saved to Photos")
+                        .font(.subheadline.weight(.semibold))
+                        .multilineTextAlignment(.trailing)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 8)
+                        .background(Capsule().fill(Palette.panel).shadow(color: .black.opacity(0.2), radius: 4, y: 2))
+                        .foregroundStyle(Palette.ink)
+                }
+                .frame(maxWidth: 260, alignment: .trailing)
+                .padding(cardPadding)
+                .transition(.scale(scale: 0.3, anchor: alignment == .topTrailing ? .topTrailing : .bottomTrailing)
+                    .combined(with: .opacity))
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
+        .allowsHitTesting(false)
     }
 }
