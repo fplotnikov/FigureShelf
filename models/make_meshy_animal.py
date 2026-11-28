@@ -23,7 +23,7 @@ Steps
 Per-animal regions live in ANIMALS below (metres, Blender axes: X = animal's left,
 -Y = front, Z = up).  Probe a new model and add an entry.
 """
-import bpy, bmesh, json, math, os, sys, subprocess
+import bpy, bmesh, itertools, json, math, os, sys, subprocess
 import numpy as np
 from mathutils import Vector, Matrix, Euler, Quaternion
 
@@ -287,6 +287,13 @@ CREATURES.update({
     "parasaurolophus": _dino("quad", 0.13, 0.07, 0.55),
     "diplodocus": _dino("quad", 0.05, 0.0, 0.6, long_neck=True, size=0.48),
     "pteranodon": _dino("ptero", 0.0, 0.0, 0.6, size=0.56, show=-25),
+    # Nov 28, 2026 batch (models/new10dino)
+    "styracosaurus": _dino("quad", 0.28, 0.02, 0.38),
+    "iguanodon": _dino("quad", 0.12, 0.08, 0.55),
+    "carnotaurus": _dino("biped", 0.13, 0.06, 0.6, arms=True),
+    "therizinosaurus": dict(_dino("biped", 0.08, 0.12, 0.55, arms=True), arm_wave=0.5),
+    "gallimimus": _dino("biped", 0.07, 0.13, 0.55, arms=True),
+    "dilophosaurus": _dino("biped", 0.12, 0.07, 0.6, arms=True),
 })
 
 
@@ -372,9 +379,113 @@ CREATURES.update({
         legs=dict(top=0.04, count=8)),
 })
 
+# sea reptiles and Megalodon (Nov 28, 2026): they swim, so no feet. The skeleton runs along the
+# body centre line (spine, neck, tail) with two-bone flippers found as the parts that stick out
+# sideways. hip/chest are fractions of the length from the snout.
+def _sea(head, neck, hip, chest, fins=2, eye=0.6, neck_segs=1, size=0.40, show=-68, lift=0.03):
+    return dict(kind="swim", yaw=0, size=size, auto=True, dino=True, sea=True, head_frac=head,
+                neck_frac=neck, hip_frac=hip, chest_frac=chest, fins=fins, eye_frac=eye,
+                neck_segs=neck_segs, show_yaw=show, lift=lift, tail_amp=1.0, legs=None)
+CREATURES.update({
+    "mosasaurus": _sea(0.14, 0.05, 0.50, 0.30, eye=0.8),
+    "elasmosaurus": _sea(0.04, 0.36, 0.72, 0.50, neck_segs=3, eye=0.7),
+    "ichthyosaurus": _sea(0.20, 0.04, 0.55, 0.36, eye=0.85),
+    "megalodon": _sea(0.20, 0.06, 0.58, 0.34, fins=1, eye=0.45),
+})
+
+
+def derive_swim_skeleton(C, co):
+    """Spine, neck, tail and flippers for a swimmer lying along Y (head at -Y)."""
+    y0, y1 = co[:, 1].min(), co[:, 1].max(); L = y1 - y0
+    # centre line: robust middle of each slice, smoothed along the body
+    ys = np.linspace(y0 + 0.01 * L, y1 - 0.01 * L, 48)
+    cxs, czs, hws = [], [], []
+    for y in ys:
+        P = co[np.abs(co[:, 1] - y) < 0.006 * L / 0.4 + 0.002]
+        if len(P) < 6:
+            P = co[np.abs(co[:, 1] - y) < 0.012]
+        cx_ = float(np.median(P[:, 0]))
+        ax = np.abs(P[:, 0] - cx_)
+        core = P[ax < np.percentile(ax, 60) + 1e-4]
+        # top from just off the midline (skips a thin dorsal fin), bottom from the midline (skips
+        # the flippers, which hang out at the sides); vertex density varies too much for medians
+        thin = min(0.006, max(0.002, 0.15 * np.percentile(ax, 90)))
+        offm, onm = P[ax > thin], P[ax <= thin]
+        top_ = offm[:, 2].max() if len(offm) > 3 else P[:, 2].max()
+        bot_ = onm[:, 2].min() if len(onm) > 3 else P[:, 2].min()
+        zc = 0.5 * (top_ + bot_)
+        ztop = core[:, 2].max()
+        up = P[P[:, 2] > zc + 0.25 * (ztop - zc)]
+        hw = float(np.percentile(np.abs(up[:, 0] - cx_), 92)) if len(up) > 3 else 0.01
+        cxs.append(cx_); czs.append(zc); hws.append(hw)
+    def smooth(a, k=2):
+        a = np.array(a, float)
+        med = np.array([np.median(a[max(0, i - k):i + k + 1]) for i in range(len(a))])
+        return np.array([med[max(0, i - 1):i + 2].mean() for i in range(len(a))])
+    cxs, czs, hws = smooth(cxs), smooth(czs, 3), smooth(hws)
+    cx = lambda y: float(np.interp(y, ys, cxs))
+    cz = lambda y: float(np.interp(y, ys, czs))
+    hw = lambda y: float(np.interp(y, ys, hws))
+    tipP = co[co[:, 1] < y0 + 0.006]
+    tip = (float(tipP[:, 0].mean()), float(y0 + 0.002), float(tipP[:, 2].mean()))
+    hl = C["head_frac"] * L
+    head_y = y0 + hl; neck_y = head_y + C["neck_frac"] * L
+    chest_y = y0 + C["chest_frac"] * L; hips_y = y0 + C["hip_frac"] * L
+    P3 = lambda y: (cx(y), float(y), cz(y))
+    C["spine"] = [P3(hips_y), P3(chest_y), P3(neck_y), P3(head_y), tip]
+    n = C.get("neck_segs", 1)
+    C["neck_mid"] = [P3(neck_y + (head_y - neck_y) * k / n) for k in range(1, n)]
+    chains = {"tail": ("Hips", [P3(y) for y in np.linspace(hips_y + 0.01 * L, y1 - 0.004, 7)])}
+    # flippers: what sticks out sideways past the body, grouped into connected patches
+    out_idx = [i for i, p in enumerate(co) if abs(p[0] - cx(p[1])) > 1.25 * hw(p[1]) + 0.004
+               and y0 + 0.6 * hl < p[1] < y1 - 0.08 * L]
+    out = co[out_idx]
+    cell = 0.006; keys = {}
+    for i, p in enumerate(out):
+        keys.setdefault((int(p[0] // cell), int(p[1] // cell), int(p[2] // cell)), []).append(i)
+    seen = set(); comps = []
+    for k0 in keys:
+        if k0 in seen: continue
+        stack = [k0]; seen.add(k0); mem = []
+        while stack:
+            k = stack.pop(); mem += keys[k]
+            for d in itertools.product((-1, 0, 1), repeat=3):
+                nb = (k[0] + d[0], k[1] + d[1], k[2] + d[2])
+                if nb in keys and nb not in seen:
+                    seen.add(nb); stack.append(nb)
+        comps.append(out[mem])
+    for side, sname in ((1, "L"), (-1, "R")):
+        mine = [m for m in comps if len(m) > 25 and np.median(m[:, 0] - [cx(y) for y in m[:, 1]]) * side > 0]
+        mine.sort(key=len, reverse=True)
+        mine = sorted(mine[:C["fins"]], key=lambda m: m[:, 1].mean())
+        for k, m in enumerate(mine):
+            lat = side * (m[:, 0] - np.array([cx(y) for y in m[:, 1]]))
+            base = m[lat < np.percentile(lat, 15)]
+            by = float(base[:, 1].mean())
+            root = np.array([cx(by) + side * 0.7 * hw(by), by, float(base[:, 2].mean())])
+            d = np.linalg.norm(m - root, axis=1)
+            tip_ = m[d > 0.85 * d.max()].mean(0)
+            mid = m[(d > 0.42 * d.max()) & (d < 0.58 * d.max())]
+            mid = mid.mean(0) if len(mid) > 3 else 0.5 * (root + tip_)
+            nm = "fin_%s%s" % ("F" if k == 0 else "B", sname)
+            chains[nm] = ("Chest" if k == 0 else "Hips", [tuple(root), tuple(mid), tuple(tip_)])
+    C["chains"] = chains
+    ey = y0 + C["eye_frac"] * hl
+    E = co[(np.abs(co[:, 1] - ey) < 0.003) & (np.abs(co[:, 2] - cz(ey)) < max(hl, 0.015))]
+    zt, zb = E[:, 2].max(), E[:, 2].min()
+    C["eyes"] = (cx(ey), float(ey), float(zb + 0.62 * (zt - zb)))
+    C["eye_dx"] = float(max(0.004, 0.85 * np.percentile(np.abs(E[:, 0] - cx(ey)), 90)))
+    C["face"] = 0
+    print("SWIM spine", [tuple(np.round(p, 3)) for p in C["spine"]], "neck_mid", len(C["neck_mid"]))
+    print("SWIM chains", {k: [tuple(np.round(p, 3)) for p in v[1]] for k, v in chains.items()})
+    print("SWIM eyes", np.round(C["eyes"], 3), round(C["eye_dx"], 4), "flipper patches", len(comps))
+
+
 def derive_dino_skeleton(C, co):
     """Fill C's spine, chains and eyes from a dinosaur mesh lying along Y (head at -Y, feet on z=0)."""
     kind = C["kind"]
+    if kind == "swim":
+        return derive_swim_skeleton(C, co)
     y0, y1 = co[:, 1].min(), co[:, 1].max(); L = y1 - y0
     def sl(y, w=0.004, m=None):
         k = np.abs(co[:, 1] - y) < w
@@ -547,6 +658,10 @@ def build_creature(name):
     lo, hi = co.min(0), co.max(0)
     S = C["size"] / (hi - lo).max()
     co = (co - [(lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, lo[2]]) * S
+    if C.get("sea"):
+        # swimmers float: lift the rest pose itself, so the accessory fit (measured at rest) and
+        # the app's rest pins already sit at the floating height
+        co[:, 2] += C.get("lift", 0.03)
     me.vertices.foreach_set("co", co.ravel())
     me.update()
     body.name = me.name = name
@@ -675,8 +790,13 @@ def build_creature(name):
     bone("Hips", hips_p, mid, "root")
     bone("Spine", mid, chest_p, "Hips", connect=True)
     bone("Chest", chest_p, neck_p, "Spine", connect=True)
-    bone("neck", neck_p, head_p, "Chest", connect=True)
-    bone("Head", head_p, tip_p, "neck", connect=True)
+    # long necks (Elasmosaurus) get extra segments: neck, neck2, neck3 ...
+    npts = [neck_p] + [V(*q) for q in C.get("neck_mid", [])] + [head_p]
+    neck_names = ["neck"] + ["neck%d" % (k + 2) for k in range(len(npts) - 2)]
+    prev_b = "Chest"
+    for k, nm in enumerate(neck_names):
+        bone(nm, npts[k], npts[k + 1], prev_b, connect=True); prev_b = nm
+    bone("Head", head_p, tip_p, prev_b, connect=True)
     chain_len = {}
     for nm, (par, pts) in chains.items():
         pts = [V(*p) for p in pts]
@@ -1040,11 +1160,115 @@ def build_creature(name):
             if ptero:
                 p.r("wing_R_1", ("Y", (30 + 20 * wv) * e)).r("wing_R_2", ("Y", (15 + 25 * wv) * e))
             elif "arm_R" in chains:          # a tiny arm wave
-                p.r("arm_R_1", ("X", -70 * e), ("Z", -15 * e)).r("arm_R_2", ("X", (-25 + 30 * wv) * e))
+                aw = C.get("arm_wave", 1.0)  # long arms (Therizinosaurus) lift less
+                p.r("arm_R_1", ("X", -70 * aw * e), ("Z", -15 * e)).r("arm_R_2", ("X", (-25 + 30 * wv) * aw * e))
                 p.r("Chest", ("Y", 3 * e))
             elif "leg_FR" in chains:         # lifts a front foot
                 p.r("leg_FR_1", ("X", -40 * e), ("Y", 6 * wv * e)).r("leg_FR_2", ("X", (40 + 25 * wv) * e))
                 p.r("Hips", ("Y", 3 * e)).r("Chest", ("Y", 5 * e))
+            return p
+    if C.get("sea"):
+        # Swimmers float a little above the ground. Calm moves: a floating sway, a body wave,
+        # a breach leap, a swim loop and a flipper (or tail) flick. "root" turns the whole body
+        # round its middle; root_loc keeps that middle in place and adds the float height.
+        LIFT = C.get("lift", 0.03)
+        cen = (hips_p + chest_p) / 2
+        fins = sorted(n for n in chains if n.startswith("fin_"))
+        shark = name == "megalodon"
+        def bodyturn(p, pitch=0.0, roll=0.0, yaw=0.0, dz=0.0):
+            R = Matrix.Identity(3); steps = []
+            for axis, deg in (("Y", roll), ("X", pitch), ("Z", yaw)):
+                if deg:
+                    R = Matrix.Rotation(math.radians(deg), 3, axis) @ R; steps.append((axis, deg))
+            if steps:
+                p.r("root", *steps)
+            p.root_loc = cen - R @ cen + Vector((0, 0, dz))   # the rest pose is already lifted by LIFT
+        def neckhead(p, pitch=0.0, yaw=0.0):
+            n = len(neck_names)
+            for nm in neck_names:
+                p.r(nm, ("X", 0.5 * pitch / n), ("Z", 0.6 * yaw / n))
+            p.r("Head", ("X", 0.5 * pitch), ("Z", 0.4 * yaw))
+        def wavebody(p, amp, ph, lag=0.7):
+            # a travelling side-to-side wave from the chest down the tail; the head stays steadier
+            p.r("Chest", ("Z", 0.25 * amp * math.sin(ph)))
+            p.r("Spine", ("Z", 0.35 * amp * math.sin(ph - lag)))
+            p.r("Hips", ("Z", 0.3 * amp * math.sin(ph - 2 * lag)))
+            chainw(p, "tail", "Z", amp, ph - 3 * lag, lag, 0.6)
+            n = len(neck_names)
+            for nm in neck_names:
+                p.r(nm, ("Z", -0.3 * amp * math.sin(ph + lag) / n))
+        def flap(p, nm, up, sweep=0.0, bend=0.0):
+            s = 1 if nm.endswith("L") else -1
+            p.r(nm + "_1", ("Y", -s * up), ("Z", s * sweep))
+            p.r(nm + "_2", ("Y", -s * (0.5 * up + bend)))
+        def paddle(p, amp, ph, sweep_amp=0.0):
+            for nm in fins:
+                k = 0.0 if "_F" in nm else math.pi   # front and back flippers take turns
+                flap(p, nm, amp * math.sin(ph + k), sweep_amp * math.cos(ph + k), 0.4 * amp * math.sin(ph + k - 0.8))
+        def idle(t):
+            s_ = math.sin(TAU_ * t)
+            p = Pz()
+            bodyturn(p, pitch=1.5 * s_, roll=2.0 * math.sin(TAU_ * t + 1.2), dz=0.004 * s_)
+            wavebody(p, 7, TAU_ * t)
+            paddle(p, 7, TAU_ * t)
+            neckhead(p, -2 * s_, 4 * math.sin(TAU_ * t + 0.6))
+            return p
+        def dance(t):
+            e = env(t, 0.08)
+            p = Pz()
+            beat = abs(math.sin(4 * TAU_ * t))
+            bodyturn(p, pitch=4 * math.sin(2 * TAU_ * t) * e, roll=9 * math.sin(2 * TAU_ * t + 0.5) * e,
+                 yaw=8 * math.sin(TAU_ * t) * e, dz=(0.006 * beat + 0.008 * math.sin(2 * TAU_ * t)) * e)
+            wavebody(p, 16 * e, 4 * TAU_ * t, 0.8)
+            paddle(p, 22 * e, 4 * TAU_ * t, 10 * e)
+            neckhead(p, 5 * math.sin(4 * TAU_ * t) * e, 10 * math.sin(2 * TAU_ * t) * e)
+            return p
+        def jump(t):
+            p = Pz()
+            dz = pitch = 0.0; kick = 0.0; tuck = 0.0
+            # (nose up is a negative X turn: the head lies toward -Y)
+            if t < 0.25:                       # dips and gathers speed
+                q = t / 0.25
+                dz = -0.01 * math.sin(math.pi * q); pitch = 6 * math.sin(math.pi * q); kick = q
+            elif t < 0.75:                     # leaps out in an arc: nose up, over the top, nose down
+                q = (t - 0.25) / 0.5
+                dz = 0.11 * 4 * q * (1 - q) + 0.03 * smooth_(q)
+                pitch = -28 * math.cos(math.pi * q) * smooth_(min(1.0, q / 0.18))
+                kick = 1 - q; tuck = math.sin(math.pi * q)
+            else:                              # dives back in, bobs and settles
+                q = (t - 0.75) / 0.25
+                dz = 0.03 * (1 - smooth_(q)) - 0.008 * math.sin(math.pi * q) * (1 - q)
+                pitch = 28 * math.exp(-3 * q) * math.cos(5 * q) * (1 - q)
+            bodyturn(p, pitch=pitch, dz=dz)
+            wavebody(p, 18 * kick + 6, TAU_ * 5 * t, 0.7)
+            for nm in fins:
+                flap(p, nm, 10 * tuck, 35 * tuck)
+            neckhead(p, -6 * tuck)
+            return p
+        def run(t):
+            e = env(t, 0.08)
+            ph = 8 * TAU_ * t
+            p = Pz()
+            bodyturn(p, pitch=2 * math.sin(ph * 0.5) * e, roll=(-6 + 3 * math.sin(ph * 0.25)) * e,
+                 dz=0.005 * math.sin(ph * 0.5) * e)
+            wavebody(p, 14 * e, ph, 0.75)
+            paddle(p, 20 * e, ph, 12 * e)
+            neckhead(p, -3 * e, 3 * math.sin(ph) * e)
+            return p
+        def wave(t):
+            e = env(t, 0.22); inner = env(t, 0.32)
+            wv = math.sin(TAU_ * 3 * (t - 0.25) / 0.5) * inner if 0.25 < t < 0.75 else 0.0
+            p = Pz()
+            bodyturn(p, roll=-8 * e, dz=0.004 * e)
+            neckhead(p, -4 * e, 12 * e)        # looks round at you
+            if shark:                         # a friendly tail flick
+                chainw(p, "tail", "Z", 22 * inner, TAU_ * 3 * t, 0.6, 0.7)
+            else:
+                wavebody(p, 6 * e, TAU_ * 2 * t)
+            if "fin_FR" in chains:
+                flap(p, "fin_FR", (30 + 15 * wv) * e, -10 * e, 18 * wv * e)
+            if "fin_FL" in chains:
+                flap(p, "fin_FL", 6 * e)
             return p
     CL = [("idle", 1, 60, idle), ("dance", 61, 180, dance), ("jump", 181, 252, jump),
           ("run", 253, 372, run), ("wave", 373, 444, wave)]

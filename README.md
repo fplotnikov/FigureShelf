@@ -243,6 +243,44 @@ Fedir's second set of animatronics (Nov 22, 2026)
 |---|---|
 | Elephant, Pangolin, Ostrich, Lobster, Chameleon, Walrus, Kangaroo, Sloth: model 15 each + 7 rigs at 5 (the Ostrich rig was refused, free) | **155** (balance afterwards 405) |
 
+Ten more prehistoric figures (Nov 28, 2026)
+
+| | Credits |
+|---|---|
+| Styracosaurus, Iguanodon, Carnotaurus, Therizinosaurus, Gallimimus, Dilophosaurus, Mosasaur, Elasmosaurus, Ichthyosaur, Megalodon: picture 6 + model 15 each, no Meshy rig, no retries | **210** (balance afterwards 195) |
+
+## Ten more prehistoric figures (6 dinosaurs, 4 sea species)
+
+Nov 28, 2026, in the Dinosaurs group, all available straight away. Art: `dinosaurs/13-…png` to
+`22-…png` (Meshy text-to-image, nano-banana-2, the same museum style as the first 12), 3D:
+meshy-t2.5 smart topology 20k + meshy-n1, no Meshy rig. Task ids: `models/new10dino/meshy_tasks.txt`.
+Calm poses, closed mouths, feathers on Therizinosaurus and Gallimimus.
+
+- **Dinosaurs** (Styracosaurus, Iguanodon, Carnotaurus, Therizinosaurus, Gallimimus, Dilophosaurus):
+  the same path as the 12 dinosaurs below (`_dino(...)` entries in `models/make_meshy_animal.py`, our
+  own rig, same moves, sounds and dance tune). Therizinosaurus has long arms, so its wave lifts the
+  arm half as far (`arm_wave`).
+- **Sea species** (Mosasaur, Elasmosaurus, Ichthyosaur, Megalodon): a new swimming kind (`_sea(...)`,
+  `derive_swim_skeleton`). The spine runs along the body centre line (top of the body just off the
+  midline, bottom on the midline, so dorsal fins and flippers don't pull it about), the tail has six
+  bones, the neck is split into three bones for Elasmosaurus, and two-bone flippers are found as the
+  parts that stick out sideways (Megalodon: the two pectoral fins; its tail does the rest). They
+  float 3 cm above the ground: the rest pose itself is lifted, so hats and glasses (measured at rest)
+  sit right. Clips, same frame layout: idle = a gentle floating sway, dance = a body wave with
+  flipper strokes, jump = a breach leap (dip, arc out nose up, over the top, back in and bob),
+  run = a swim loop (the app moves it round the circle), wave = a flipper wave (Megalodon: a friendly
+  tail flick). Megalodon keeps its mouth closed.
+- **Sounds:** the sea species get soft water swishes, a splash and bubbles for run, jump and wave
+  (`python3 models/new10dino/make_sea_sounds.py` -> `sfx_sea_run/jump/wave.m4a`; `SoundBoard`
+  `swimmer:`); dance keeps the prehistoric tune.
+- **Rebuild:** `blender -b --factory-startup --python models/make_meshy_animal.py -- megalodon`, then
+  `models/install_creature.sh megalodon`. Eye points for the sea species are set with `eye=` (a
+  fraction of the head length from the snout) after checking the glasses in the simulator.
+- **Screenshots:** `screenshots-dinosaurs-2/` (`fs_*` on the shelf, `wear_*` with a hat, glasses and
+  bow tie, `move_*` mid-move, `fs_new10_sheet.png` all ten). `models/new10dino/shot.sh` takes them in
+  the Simulator (the look goes in as a launch argument; autoplay starts about 6.5 s after launch).
+- Build 4 (version 1.1) in the Xcode project and Package.swift.
+
 ## The fourth batch (Deer, Red Panda, Moose, Kangaroo, Giraffe, Capybara)
 
 Nov 22, 2026, the same path as the batch below: `ANIMALS2` in `models/make_meshy_animal.py`, art in
@@ -416,7 +454,7 @@ free Swift Playgrounds app and tap Run. The room camera works there too.
 
 ## App Store
 
-- Bundle ID `app.figureshelf.FigureShelf`, version 1.0 (1), team B6LBNVRNQ4, iPhone and iPad.
+- Bundle ID `app.figureshelf.FigureShelf`, version 1.1 (4), team B6LBNVRNQ4, iPhone and iPad.
 - `Resources/PrivacyInfo.xcprivacy`: no tracking, no collected data, UserDefaults (CA92.1).
 - `InfoExtra.plist` adds `ITSAppUsesNonExemptEncryption = NO` (`additionalInfoPlistContentFilePath` in Package.swift;
   Swift Playgrounds may drop it if it rewrites Package.swift, so check after editing there).
