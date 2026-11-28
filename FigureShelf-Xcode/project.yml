@@ -48,6 +48,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSCameraUsageDescription: The camera lets your animal appear in your room.
+        NSPhotoLibraryAddUsageDescription: Saves the photos you take of your figures to your Photos.
         ITSAppUsesNonExemptEncryption: false
         LSRequiresIPhoneOS: true
         UILaunchScreen: {}

@@ -110,7 +110,7 @@ struct ParentsSheet: View {
 
                     VStack(alignment: .leading, spacing: 8) {
                         Label("No data collected", systemImage: "hand.raised.fill").font(.headline)
-                        Text("No accounts, ads, tracking or purchases. The camera picture is only used live on this device for the room view; nothing is recorded, saved or sent.")
+                        Text("No accounts, ads, tracking or purchases. The camera picture is only used live on this device for the room view. The camera button saves a photo to your own Photos library on this device; nothing is ever sent anywhere.")
                             .font(.subheadline)
                     }
                     .padding(16)

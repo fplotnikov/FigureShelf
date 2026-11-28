@@ -20,6 +20,9 @@ struct StageView: UIViewRepresentable {
     var onTurned: (() -> Void)? = nil
     var turnRequest: TurnRequest? = nil
     var onTouch: (() -> Void)? = nil
+    /// A new id takes a photo of what the view shows (in the room: with the camera picture).
+    var photoRequest: UUID? = nil
+    var onPhoto: ((UIImage) -> Void)? = nil
 
     func makeCoordinator() -> StageCoordinator {
         StageCoordinator(mode: mode, initialRequestID: actionRequest?.id)
@@ -35,6 +38,8 @@ struct StageView: UIViewRepresentable {
         c.onCameraOff = onCameraOff
         c.onTurned = onTurned
         c.onTouch = onTouch
+        c.onPhoto = onPhoto
+        c.takePhoto(id: photoRequest)
         c.resetView(id: resetViewID)
         c.turn(turnRequest)
         c.apply(look: look, request: actionRequest, keepGoing: keepGoing)
@@ -52,6 +57,8 @@ final class StageCoordinator: NSObject {
     var onCameraOff: (() -> Void)?
     var onTurned: (() -> Void)?
     var onTouch: (() -> Void)?
+    var onPhoto: ((UIImage) -> Void)?
+    private var lastPhotoID: UUID?
     private var lastResetID: UUID?
     private var lastTurnID: UUID?
     private static let shelfAngle = simd_quatf(angle: 0.35, axis: [0, 1, 0])
@@ -83,6 +90,17 @@ final class StageCoordinator: NSObject {
             self?.tick(event.deltaTime)
         }
         return view
+    }
+
+    /// Camera button: grabs the rendered picture (figure, shelf or the real room behind it).
+    /// Only the 3D picture is taken, never the buttons on top.
+    func takePhoto(id: UUID?) {
+        guard let id, id != lastPhotoID, let view = arView else { return }
+        lastPhotoID = id
+        view.snapshot(saveToHDR: false) { [weak self] image in
+            guard let image else { return }
+            DispatchQueue.main.async { self?.onPhoto?(image) }
+        }
     }
 
     /// Turn buttons in the room: ease the figure round by the requested angle.
