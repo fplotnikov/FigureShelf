@@ -82,8 +82,7 @@ struct ContentView: View {
                     .transition(.opacity)
                 }
 
-                PhotoFeedback(taker: photos, alignment: .bottomTrailing,
-                              cardPadding: EdgeInsets(top: 0, leading: 0, bottom: 112, trailing: 28))
+                PhotoFlash(taker: photos)
 
                 VStack {
                     Spacer()
@@ -247,8 +246,7 @@ struct RoomView: View {
             )
             .ignoresSafeArea()
 
-            PhotoFeedback(taker: photos, alignment: .topTrailing,
-                          cardPadding: EdgeInsets(top: 172, leading: 0, bottom: 0, trailing: 16))
+            PhotoFlash(taker: photos)
 
             VStack(spacing: 12) {
                 HStack {
@@ -273,14 +271,6 @@ struct RoomView: View {
                 }
                 .simultaneousGesture(TapGesture().onEnded { touched() })
 
-                // The camera button sits under the top buttons, clear of the menu, and stays
-                // even when the menu is hidden: a photo of the room is always one tap away.
-                HStack {
-                    Spacer()
-                    PhotoButton(taker: photos)
-                }
-                .simultaneousGesture(TapGesture().onEnded { touched() })
-
                 if let tip = tipText {
                     Text(tip)
                         .font(.subheadline.weight(.medium))
@@ -294,14 +284,24 @@ struct RoomView: View {
                 Spacer()
 
                 if menuHidden {
-                    ShowMenuPill { showMenu(.actions) }
-                        .transition(.opacity)
+                    // The camera button stays low on the right, next to the pill.
+                    ZStack(alignment: .bottomTrailing) {
+                        ShowMenuPill { showMenu(.actions) }
+                            .frame(maxWidth: .infinity)
+                        PhotoButton(taker: photos)
+                    }
+                    .transition(.opacity)
                 } else {
                     VStack(spacing: 10) {
                         VStack(spacing: 10) {
                             // grab handle: swipe the menu down to see the room
                             MenuHandle { if level == .actions { showMenu(.full) } }
-                            TurnButtons(state: state)
+                            // The camera button rides with the menu, low on the right like on
+                            // the shelf, so the room stays clear to look at.
+                            HStack(spacing: 12) {
+                                TurnButtons(state: state)
+                                PhotoButton(taker: photos)
+                            }
                             ActionBar(state: state)
                         }
                         .simultaneousGesture(sheetSwipe)
@@ -873,21 +873,34 @@ struct PhotoButton: View {
         }
         .buttonStyle(SoftPressStyle())
         .accessibilityLabel("Take a photo")
+        // The photo card pops up just above the button, wherever the button is.
+        .overlay(alignment: .bottomTrailing) {
+            PhotoCard(taker: taker)
+                .fixedSize()
+                .offset(y: -92)
+                .allowsHitTesting(false)
+        }
     }
 }
 
-/// The flash and the little photo card that pops up after a shot. Never blocks touches.
-struct PhotoFeedback: View {
+/// The white flash after a shot. Never blocks touches.
+struct PhotoFlash: View {
     @ObservedObject var taker: PhotoTaker
-    /// Where the photo card pops up: next to that screen's camera button.
-    let alignment: Alignment
-    let cardPadding: EdgeInsets
 
     var body: some View {
-        ZStack(alignment: alignment) {
-            Color.white
-                .opacity(taker.flash ? 0.9 : 0)
-                .ignoresSafeArea()
+        Color.white
+            .opacity(taker.flash ? 0.9 : 0)
+            .ignoresSafeArea()
+            .allowsHitTesting(false)
+    }
+}
+
+/// The little tilted photo card with "Saved to Photos" (or the calm Settings note).
+struct PhotoCard: View {
+    @ObservedObject var taker: PhotoTaker
+
+    var body: some View {
+        ZStack(alignment: .bottomTrailing) {
             if let photo = taker.lastPhoto {
                 VStack(alignment: .trailing, spacing: 8) {
                     Image(uiImage: photo)
@@ -902,18 +915,15 @@ struct PhotoFeedback: View {
                     Text(taker.note ?? "Saved to Photos")
                         .font(.subheadline.weight(.semibold))
                         .multilineTextAlignment(.trailing)
+                        .frame(maxWidth: 230, alignment: .trailing)
+                        .fixedSize(horizontal: false, vertical: true)
                         .padding(.horizontal, 14)
                         .padding(.vertical, 8)
                         .background(Capsule().fill(Palette.panel).shadow(color: .black.opacity(0.2), radius: 4, y: 2))
                         .foregroundStyle(Palette.ink)
                 }
-                .frame(maxWidth: 260, alignment: .trailing)
-                .padding(cardPadding)
-                .transition(.scale(scale: 0.3, anchor: alignment == .topTrailing ? .topTrailing : .bottomTrailing)
-                    .combined(with: .opacity))
+                .transition(.scale(scale: 0.3, anchor: .bottomTrailing).combined(with: .opacity))
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
-        .allowsHitTesting(false)
     }
 }
