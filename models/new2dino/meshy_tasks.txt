@@ -1,0 +1,7 @@
+# Nov 28, 2026: 2 more dinosaurs
+# art (text-to-image, nano-banana-2)
+dinosaurs 23 kentrosaurus 01a22011-cb32-757b-9352-f115022429fa
+dinosaurs 24 microraptor 01a22010-a39e-72d3-be06-775ea43230b4
+# image-to-3d (meshy-t2.5 smart topology 20k + meshy-n1, glb)
+kentrosaurus 01a22012-791d-70d4-a06f-959c14af6e74
+microraptor 01a22011-cc8e-7027-b62c-1e2a7add404a

@@ -52,6 +52,7 @@
 		0AF33C05FCFA965F378CA540 /* lion_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 89296548C913A78ECFBCE362 /* lion_thumb.png */; };
 		0BC794E0A6BB79235F38ACB0 /* knotcko_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A309BFBC74361FC083BAD21 /* knotcko_skin_mint.jpg */; };
 		0BD6805238086FA453CB0F5B /* horse_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27769A19CB1827B05B738358 /* horse_skin_natural.jpg */; };
+		0BF42DF22EB44BAF56B6C122 /* microraptor_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 130D0970C342EEAC3D613EF7 /* microraptor_skin_mint.jpg */; };
 		0C5680A1DDB9B9183ED185F7 /* penguin_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2FD92BE4743E806B7C2AE61 /* penguin_skin_ocean.jpg */; };
 		0C64931B476D9C00207C2A3B /* pteranodon_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C58199F454E9A034E891D7BF /* pteranodon_skin_ocean.jpg */; };
 		0C7328A6C1F8AE4D754AA5FB /* cindermole_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1F6955CD93DBD741AE1D692 /* cindermole_skin_mint.jpg */; };
@@ -70,6 +71,7 @@
 		0E94F4D70D040A0127027527 /* spinosaurus_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 467AC3D8BD917DE381CA25BC /* spinosaurus_skin_snow.jpg */; };
 		0EED46A7FDD249AC66868360 /* hippo_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3684136D5C014759B1F5519C /* hippo_skin_berry.jpg */; };
 		0EF402E5758C9542959C0582 /* siftrunk.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A922C6E6AF80BAC6F12B01E9 /* siftrunk.usdz */; };
+		0F075223151A24B562CC033E /* kentrosaurus_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40D73972FF9A998E43BD0B /* kentrosaurus_thumb.png */; };
 		0F0F73D8479F25246057D58A /* bunny_pos.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FF861F7DA5586528AAEEC /* bunny_pos.png */; };
 		0F32A25F6BF50099FB744DEC /* panda_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79F99C1F7448BCDF3039E0E4 /* panda_skin_natural.jpg */; };
 		0F75FF29BFDA68AF51250B46 /* iguanodon_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F3502E22B10BA1CBF5D3764 /* iguanodon_skin_ocean.jpg */; };
@@ -123,6 +125,7 @@
 		18996ADBC8352A3451570870 /* kitty_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE4A6AB8B3F1A90E61304F7D /* kitty_skin_sunny.jpg */; };
 		191BAC890FC86AF664C8796E /* shark_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = 95596C7F0B236BC56249FC34 /* shark_clips.json */; };
 		19C1B1ED88B074BCCC288B14 /* jet_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 8308A3C379561BA1648FD899 /* jet_thumb.png */; };
+		1AEA2496953C9909345F2D73 /* microraptor_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = 01AF0ABDB35C189A1DD88B59 /* microraptor_clips.json */; };
 		1B0C90C684BE8455EE938C6F /* helicopter_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF7BCE37BA5685747721438 /* helicopter_thumb.png */; };
 		1B9216356FBD24D21E775A9D /* seaplane_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 799DA689AC8864E8B4207389 /* seaplane_skin_galaxy.jpg */; };
 		1BA36DD925D46B588ED3B1E5 /* showkangaroo_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = 4174B219EFA52F04C1F30FE9 /* showkangaroo_clips.json */; };
@@ -192,6 +195,7 @@
 		2984EE080118E879AE1303E5 /* pachycephalosaurus_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCF16E8B6E878C772F03CB3B /* pachycephalosaurus_skin_snow.jpg */; };
 		298F5E0BDD761758ED536F83 /* giraffe_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A5B8AD7FBEC0CCA6BC2B99D /* giraffe_skin_sunny.jpg */; };
 		29916844CC6082DC47058FD9 /* sfx_dino_dance.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DEEFC43E5C8A2A7EF0C82C43 /* sfx_dino_dance.m4a */; };
+		29CAFAE8B3C75191842DAB4D /* kentrosaurus_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B3FF1CB1D635883108D64C1 /* kentrosaurus_skin_galaxy.jpg */; };
 		29FA56303BA12CE4CE2B85EF /* lanternquill_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A538D559F5F0DA91700CD969 /* lanternquill_skin_galaxy.jpg */; };
 		2A3DCB4218C39D5EEB15074F /* hippo_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FD65C2DF07D5157011251CF /* hippo_skin_galaxy.jpg */; };
 		2A6C3AE5744A8EC0507930E0 /* walrus_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A174711AFE327E68D2C6BB1F /* walrus_skin_snow.jpg */; };
@@ -266,6 +270,7 @@
 		39E524D63E55F7121F1A0CF0 /* stegosaurus_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FD98E465649703FB7CF7139 /* stegosaurus_skin_natural.jpg */; };
 		3A0F9694EAC9174E6E056E6F /* parasaurolophus_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBDC2069EEC9D5169BE291F6 /* parasaurolophus_skin_natural.jpg */; };
 		3A2A0E4157CFFC101D03BF9C /* beaver_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F848988F1562A8C5E8B86194 /* beaver_skin_snow.jpg */; };
+		3A4A65C30E9D1ED1BB94AC3E /* kentrosaurus_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A14C9EA533FAED9DD885E753 /* kentrosaurus_skin_snow.jpg */; };
 		3A4AC06358D09838909F4E28 /* ankylosaurus_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECF0F145816436983A4E869 /* ankylosaurus_thumb.png */; };
 		3A4E3F3E097C9623F08FCED8 /* speedboat_vehicle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 83B13540AC42A86BA46E6F7B /* speedboat_vehicle.usdz */; };
 		3AC9D7EB19EA5B8535B4031A /* cablecar_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = F386E2CA4BFFD4C28F330BDB /* cablecar_thumb.png */; };
@@ -291,6 +296,7 @@
 		3F19410FDA12C1D8A59B9072 /* mosasaurus.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 68E37EF05E5AFC5638FD9454 /* mosasaurus.usdz */; };
 		3F1CA8614EC282DA5C0572F0 /* diplodocus_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1432A19317D27CD89D80BFD4 /* diplodocus_skin_ocean.jpg */; };
 		3F4129059C1DD043172A4405 /* airship_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185E780BEC59DCF2E16DA9CD /* airship_skin_snow.jpg */; };
+		3F5C22B762D944723A38A98E /* kentrosaurus_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCA9D9BBC990DE3823763748 /* kentrosaurus_skin_ocean.jpg */; };
 		3FAA3A53F418306C366601D7 /* pleatbill_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EEECAF054083D75CA546FEF /* pleatbill_skin_natural.jpg */; };
 		3FC00548D14140EFA42F1A70 /* speedboat_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E8D4F5414DB6D68503F19 /* speedboat_skin_galaxy.jpg */; };
 		3FDA0FE97960CF23169A84A7 /* jet_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = E1A49AEB985A1ACA8168792A /* jet_clips.json */; };
@@ -387,6 +393,7 @@
 		5657954B9F798EE38C2C606B /* seaplane_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23EACDFE411B03644A47C887 /* seaplane_skin_sunny.jpg */; };
 		565CD35CC71465456AF214A9 /* redpanda_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = EF83D9DF9A816888BA09F195 /* redpanda_clips.json */; };
 		5716DE05D8CD0D4F4D2ACB28 /* dunewisp_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6074BF7C51A88E1E0726B14 /* dunewisp_skin_sunny.jpg */; };
+		571D1C26349CFF9D036CF732 /* kentrosaurus_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 50E6048839097BEA9F79C6B5 /* kentrosaurus_skin_natural.jpg */; };
 		57271D053A3199A9D57C19E8 /* spinosaurus_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97F831FBE73DDE4F995166AD /* spinosaurus_skin_mint.jpg */; };
 		573B41FA60A413F24A0D48F1 /* ripplemantis.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27EDC91E00754E245436C5E6 /* ripplemantis.usdz */; };
 		579268A49004FEA977F9A4AC /* dunewisp.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 1501EF7124B0A2E899BA11A6 /* dunewisp.usdz */; };
@@ -442,6 +449,7 @@
 		62001C7F54CC6A641A266576 /* ram_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B8D3AFBDB5699390C7E382B /* ram_skin_mint.jpg */; };
 		6254F609307546C63A7F6B83 /* mouse_pos.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EAA6FF5C0EE6CAA62EF2B9 /* mouse_pos.png */; };
 		628104EC0D8A6263D86B9C92 /* coilusk_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB6C39BC9CB73E98E89BCC48 /* coilusk_skin_ocean.jpg */; };
+		62828DDD26849EDAA08D331C /* kentrosaurus.usdz in Resources */ = {isa = PBXBuildFile; fileRef = E1284A812FCE53AFC3796D10 /* kentrosaurus.usdz */; };
 		62A248C670E6FC35A216393B /* locomotive_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = A0A2E1D4A541AB2A9AC1B665 /* locomotive_clips.json */; };
 		62B4355882DF5B2EC35A4CBA /* trex_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0CC1AB30855F81D80ED8A1A /* trex_skin_berry.jpg */; };
 		62E47F24AD7C454891B3C0B4 /* bee_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37DB7E707F8A2F49FFED2820 /* bee_skin_berry.jpg */; };
@@ -543,6 +551,7 @@
 		75F4DAAF3D1E785E4D687F36 /* frogsinger_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = BEE9AE9672DC2AEABA196506 /* frogsinger_thumb.png */; };
 		766AC06E78D5AFC70E3CE279 /* spinosaurus_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 08224CB01EFE8FBA639086C4 /* spinosaurus_skin_sunny.jpg */; };
 		7716EE7DFA2C1CE30438231C /* cloudlope_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DC34779B8FC7B5AA0DA8039 /* cloudlope_skin_ocean.jpg */; };
+		7740FEFE54ADC222B477365D /* microraptor_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB67DB162B9922DEAF870535 /* microraptor_skin_sunny.jpg */; };
 		774D03A7037E9B125591C890 /* redpanda_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCD911450D0D03CDE66DB4C3 /* redpanda_skin_snow.jpg */; };
 		7863F584601C6119D6498744 /* pebblenewt_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5FEACDB5C3EE3FC13C1D546B /* pebblenewt_skin_galaxy.jpg */; };
 		78C43CC0C78E655230B76372 /* elephant_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1154D295BDA7B673AE2D6B3A /* elephant_skin_natural.jpg */; };
@@ -553,6 +562,7 @@
 		79A038735F4FAE3DEFDFFFDA /* knotcko_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = 4002BDA0963DA7C797EB33B7 /* knotcko_clips.json */; };
 		79CCF834513A133EDCF7BE7A /* giraffe_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F82A94951C7AD3F2DD4BD538 /* giraffe_skin_ocean.jpg */; };
 		79E59E2124265455713879F8 /* moose_pos.png in Resources */ = {isa = PBXBuildFile; fileRef = 277F5036342B0707338C3130 /* moose_pos.png */; };
+		79F14282CE64C94E15FCC33D /* microraptor_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = A92F6465D0A09C872A04B546 /* microraptor_thumb.png */; };
 		7A3B9D6C40F7015A79564F63 /* crocodile_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A045F48705993C42DE5716E6 /* crocodile_skin_sunny.jpg */; };
 		7A77F6B9D6D8DD751623118C /* pteranodon_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F1181D2CE7BF1020100FFAED /* pteranodon_skin_berry.jpg */; };
 		7A9E57B45C1851BDB81E3712 /* ankylosaurus_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5834836FFF25127F7A385F8 /* ankylosaurus_skin_berry.jpg */; };
@@ -593,6 +603,7 @@
 		830624FAE047B7AAE34E1CC8 /* bee_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 154AD38DD4D751D17FDF4433 /* bee_skin_snow.jpg */; };
 		833791F4B01D2A9965E30551 /* pangolin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 577D5EEF03203FFC25101699 /* pangolin.usdz */; };
 		833865845A28D66F8F352BBF /* vulture_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B646147592711F09CF590CE /* vulture_skin_mint.jpg */; };
+		834966A9C0E7833A3B68C47A /* kentrosaurus_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A1007D859CD9F006D762D0E /* kentrosaurus_skin_mint.jpg */; };
 		835517926E2B47342AB4D12D /* velociraptor_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84CB71487A3458D749CBAFF3 /* velociraptor_skin_galaxy.jpg */; };
 		83C3A07DC571859D4EDFE1A8 /* rally_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67BF739EC445DDC44099AB41 /* rally_skin_ocean.jpg */; };
 		844F244A21294C2CD07F4915 /* pebblenewt_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2E22F610312463CFD41519F /* pebblenewt_skin_mint.jpg */; };
@@ -643,6 +654,7 @@
 		8EA676A156A633F59C8E96FA /* deer_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B92B5B452734FBAC177E2 /* deer_skin_berry.jpg */; };
 		8ED148F3AFE0FC69BB1F89E4 /* brachiosaurus.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 43E517E5AE7AD7C3770273F1 /* brachiosaurus.usdz */; };
 		8EED25054BA2D6352376FAF5 /* tiger.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F645B5BE89F64EAD9EE4391D /* tiger.usdz */; };
+		8F267A2470EAE5D201275DF8 /* kentrosaurus_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CF1CDFC872F472267E508A25 /* kentrosaurus_skin_berry.jpg */; };
 		8F4CAB422077F0ADD5EA3FB1 /* kitty.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AEC2B192DD808A213B5F0C9B /* kitty.usdz */; };
 		8F728E9258A47E9F23954515 /* siftrunk_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B23EF574ECE484B2A0A67C32 /* siftrunk_skin_natural.jpg */; };
 		8F9399B517242E5AA675A204 /* ankylosaurus_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = A0DDCAF5C25FA34EFDC0585A /* ankylosaurus_clips.json */; };
@@ -760,6 +772,7 @@
 		A73573CD64BE8BD394E46CE0 /* allosaurus_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7F16CE6FFA38FE3F1AC14FA /* allosaurus_skin_ocean.jpg */; };
 		A75E8EE520787DEBEED5BA5B /* tiger_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC4DED4F792C755E1C171C92 /* tiger_skin_sunny.jpg */; };
 		A784A51E8B605AD494F6476E /* capybara_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01CCE1AADF946FF213BE4480 /* capybara_skin_natural.jpg */; };
+		A79587281DAE022C189FFAA4 /* kentrosaurus_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA726A11B4754334242CC6A3 /* kentrosaurus_skin_sunny.jpg */; };
 		A7A55DC83A5870C06CFD2408 /* coilusk_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 608ABA8D606B50E7FA190348 /* coilusk_skin_natural.jpg */; };
 		A7DEEAAC5FB46911C087CBEE /* carnotaurus_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB25BBF8BA2FCC0CF67A945 /* carnotaurus_skin_berry.jpg */; };
 		A80FF628002A20AD2489B507 /* redpanda_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA0A0A454E05A111EC01DEB7 /* redpanda_skin_natural.jpg */; };
@@ -830,6 +843,7 @@
 		B3931B316D32C5BA950313CF /* capybara_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9500FF52E9F72DFDC070D /* capybara_skin_ocean.jpg */; };
 		B3B11B54A604969EF44C9423 /* excavator_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19AF43230EA36612C5C98206 /* excavator_skin_natural.jpg */; };
 		B3C272939C52CD987AA90007 /* rally_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 395111DC636A9D878D99EC7A /* rally_skin_berry.jpg */; };
+		B41ADA6D25C0DDFFBACAD1A5 /* microraptor_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6C07A58BBE1D2E38E64018B /* microraptor_skin_berry.jpg */; };
 		B48BA42C6EA51D102BE63A4C /* koala_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52A1B3152C9C4494B73B7A8F /* koala_skin_mint.jpg */; };
 		B48EF28D631AD6207F4D8DED /* cablecar.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AA73B6F88388CD71D7BF0 /* cablecar.usdz */; };
 		B582C20505000EFFB5DD15FB /* showkangaroo_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 479BC8352A6C844CFDC9C974 /* showkangaroo_skin_galaxy.jpg */; };
@@ -858,6 +872,7 @@
 		BAF54E6E9038A20D4C7408A4 /* ripplemantis_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA769A6D2E58E45200A686E5 /* ripplemantis_skin_berry.jpg */; };
 		BAFABCA1F47EFFCB5E7F8780 /* coilusk_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 44FDE76E9608C49E2415BF6D /* coilusk_skin_berry.jpg */; };
 		BB5CBC810B6AD20AAE2F4D89 /* therizinosaurus_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = E64E80E6C678F398ADEA3418 /* therizinosaurus_thumb.png */; };
+		BB5ED797B39E98D52C19580B /* microraptor_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41FBF333FCA14B76642E3845 /* microraptor_skin_natural.jpg */; };
 		BB8F55EDEE07B353F752D6CE /* supercar_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 492FB7019A2F7BF40560335F /* supercar_skin_berry.jpg */; };
 		BBCFA0607C33388A475D3CBC /* lynx_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75D63393389C1095954943B2 /* lynx_skin_natural.jpg */; };
 		BC2D328F5DEE87A0873ACB88 /* bencho_tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8AA4540959DA9AB0CD4B34C6 /* bencho_tick.wav */; };
@@ -911,6 +926,7 @@
 		C47DBCD6AA2AE486032F90B4 /* lunarrover_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1A140CD9E0A675029FF516D /* lunarrover_skin_ocean.jpg */; };
 		C4B0577E3961E62242535ACE /* iguanodon_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = B9925E180CCCAC61E356D0E1 /* iguanodon_thumb.png */; };
 		C4C7FDA3638E9E872E81CACF /* kitty_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C316455F532F3050DDBC0AD1 /* kitty_skin_ocean.jpg */; };
+		C4F6C67D18A10F278E63A1DA /* microraptor_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16AF44B23089C56C5F8834A8 /* microraptor_skin_ocean.jpg */; };
 		C508BEEF9C60C9E8537E17DC /* triceratops_skin_ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2310F52D9CC47B7A2F2B753A /* triceratops_skin_ocean.jpg */; };
 		C51AD3FEF5B4C28086DCF9A7 /* jet_vehicle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7B9FD780A5EE3938C5375FBF /* jet_vehicle.usdz */; };
 		C5548AAAE89A893CEE2EE65D /* velociraptor.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 8FA2BC648FB4B52A0B823623 /* velociraptor.usdz */; };
@@ -952,6 +968,7 @@
 		CD2B614DBB099F6CB2400E6C /* sfx_anim_jump.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2B3E76D1C61AA755F729EC18 /* sfx_anim_jump.m4a */; };
 		CD47871D0E8CAC68B0ACDDB9 /* lobster_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0B3D349A92B4D6E7F41B2 /* lobster_skin_mint.jpg */; };
 		CD493825B010B347E9297F8E /* bear.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 83D55D89FE2D1FDD0FF318C1 /* bear.usdz */; };
+		CD56305800F9E2F4907DEFE0 /* microraptor_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64213546306FB19E0A2E6B9D /* microraptor_skin_galaxy.jpg */; };
 		CD97BCF7EDB2920AAC0BE4EA /* rhino_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 672994CE27385795B6D2CD7B /* rhino_skin_galaxy.jpg */; };
 		CE2C2814E0728F2C4704D034 /* airship_vehicle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D1143A24BDCB34D4EE55084C /* airship_vehicle.usdz */; };
 		CEEBE13CD0E41C60E78F3337 /* ParentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAAAA13EE7923EE205014F /* ParentsInfo.swift */; };
@@ -1019,6 +1036,7 @@
 		DA58E8682B7114367617D619 /* fox_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CD808EE56A31B9A7E76C16 /* fox_clips.json */; };
 		DA6AA2487644EEBA0475013A /* showelephant_skin_berry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0432FDF8DF84EE33B6D374C /* showelephant_skin_berry.jpg */; };
 		DA949004818BF1942371BD7C /* mole_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF66EDAC2DEA34D2244E1420 /* mole_skin_snow.jpg */; };
+		DAB400E7B7A667EDA951DD65 /* kentrosaurus_clips.json in Resources */ = {isa = PBXBuildFile; fileRef = 112B0C4FCBD75FDDE7DF2095 /* kentrosaurus_clips.json */; };
 		DAE5441D5CB472D4E66B3B9B /* airship.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 42E533D0C21A92F8EACF220C /* airship.usdz */; };
 		DAFF6CE455EAE148461E772B /* kangaroo_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = A217111DDCE60326B0E43474 /* kangaroo_thumb.png */; };
 		DB00DBE04904E50CC7333871 /* pteranodon_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CF1A0E5ABCEC15D5FE9C5C /* pteranodon_thumb.png */; };
@@ -1116,6 +1134,7 @@
 		F00FC93A6EA5FA98CAF68EC8 /* parasaurolophus_skin_sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 246A00BB25A9C88E808052B3 /* parasaurolophus_skin_sunny.jpg */; };
 		F0856628D527A3AFEB71FC23 /* speedboat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AFD5F08B1987049A8996ECA3 /* speedboat.usdz */; };
 		F1122E4EC8C0FC3990E362C4 /* bencho_step.wav in Resources */ = {isa = PBXBuildFile; fileRef = 414DCD804F345DF2AE8ADFF0 /* bencho_step.wav */; };
+		F19BAEC3390916942469F3E1 /* microraptor_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 534EE693DA557962F056A0C5 /* microraptor_skin_snow.jpg */; };
 		F1A9F888764E3B884EFF4C3C /* lion_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2533F3319D226ABC79F6734A /* lion_skin_galaxy.jpg */; };
 		F1D7D9420FB9BC626EE0DC2F /* forklift_skin_galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62716360CC346DC52A8FDADC /* forklift_skin_galaxy.jpg */; };
 		F21EE39EE3D57FC3646F1F32 /* pleatbill_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 815E2171BDA610BAEE1C63FB /* pleatbill_skin_snow.jpg */; };
@@ -1124,6 +1143,7 @@
 		F316D58AF91A82A2B1F4ED8D /* zebra_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC7AFE7CDC26F77603817601 /* zebra_skin_snow.jpg */; };
 		F38E77A77C39721CFC517B5B /* brachiosaurus_skin_natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 942D5D96072EC51D3F347917 /* brachiosaurus_skin_natural.jpg */; };
 		F39BDCA78B157DDA0E2EF079 /* stegosaurus_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2063AF5870D6E3C3A733E1EE /* stegosaurus_skin_mint.jpg */; };
+		F3A30191B57070A18C8ECE59 /* microraptor.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B2F983F2C148B08AFA659BEF /* microraptor.usdz */; };
 		F3BC888419649AB6B4DA4D97 /* pelican.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 94D3F91B2A05B92B1611B3F0 /* pelican.usdz */; };
 		F400F519FD63D524EA80C402 /* raccoon_skin_mint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA10E25FE7CD78AC1831F2E8 /* raccoon_skin_mint.jpg */; };
 		F40DDEC99A45B6255DA05862 /* velvetide_skin_snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27E2EF045FDAEB17A58060A0 /* velvetide_skin_snow.jpg */; };
@@ -1185,6 +1205,7 @@
 		00FE68C503F30DD8125EFFB2 /* bee_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bee_skin_ocean.jpg; sourceTree = "<group>"; };
 		01437DFBB39BFBE61CC8E54B /* diplodocus_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diplodocus_skin_galaxy.jpg; sourceTree = "<group>"; };
 		019A0AA5655CA6005251EFC2 /* tractor_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tractor_skin_ocean.jpg; sourceTree = "<group>"; };
+		01AF0ABDB35C189A1DD88B59 /* microraptor_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = microraptor_clips.json; sourceTree = "<group>"; };
 		01BF38190440F3B814F81BAF /* bunny_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bunny_skin_sunny.jpg; sourceTree = "<group>"; };
 		01CCE1AADF946FF213BE4480 /* capybara_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = capybara_skin_natural.jpg; sourceTree = "<group>"; };
 		020F02ED2455B2938AE17FCB /* ram_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ram_skin_ocean.jpg; sourceTree = "<group>"; };
@@ -1246,6 +1267,7 @@
 		102AAB9A8F1BE02B76D4636D /* bunny_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bunny_skin_berry.jpg; sourceTree = "<group>"; };
 		10B95CECD254D6AE3460330E /* rally_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rally_thumb.png; sourceTree = "<group>"; };
 		10CD04877CD1AB2224F0BEBD /* mouse_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mouse_skin_galaxy.jpg; sourceTree = "<group>"; };
+		112B0C4FCBD75FDDE7DF2095 /* kentrosaurus_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kentrosaurus_clips.json; sourceTree = "<group>"; };
 		1154D295BDA7B673AE2D6B3A /* elephant_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = elephant_skin_natural.jpg; sourceTree = "<group>"; };
 		1178B493919A8DC3588626BA /* lanternquill_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lanternquill_skin_mint.jpg; sourceTree = "<group>"; };
 		1190F7778625606000EC1C41 /* zebra_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zebra_skin_sunny.jpg; sourceTree = "<group>"; };
@@ -1255,6 +1277,7 @@
 		125BF106639E14A3842F7D6D /* frogsinger_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = frogsinger_clips.json; sourceTree = "<group>"; };
 		1283AD82235612FFDCB21345 /* zebra_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zebra_skin_galaxy.jpg; sourceTree = "<group>"; };
 		12E0A6FCF2C2A3F5DE5137CF /* raccoon_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = raccoon_clips.json; sourceTree = "<group>"; };
+		130D0970C342EEAC3D613EF7 /* microraptor_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microraptor_skin_mint.jpg; sourceTree = "<group>"; };
 		134FF9E2544DEEFEF362F24A /* tuftwhale_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tuftwhale_skin_berry.jpg; sourceTree = "<group>"; };
 		1354145D9F8512BF12277535 /* sfx_run_cable.m4a */ = {isa = PBXFileReference; path = sfx_run_cable.m4a; sourceTree = "<group>"; };
 		13C9E2E5ADCE7429AD52AD93 /* tiger_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tiger_skin_ocean.jpg; sourceTree = "<group>"; };
@@ -1267,6 +1290,7 @@
 		1652E96334DCFCD81C48178B /* stegosaurus_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stegosaurus_skin_galaxy.jpg; sourceTree = "<group>"; };
 		166F94C94084563C06684A87 /* trex_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trex_skin_natural.jpg; sourceTree = "<group>"; };
 		16A40FC9B4865C30CCA0A803 /* armadillo_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = armadillo_skin_berry.jpg; sourceTree = "<group>"; };
+		16AF44B23089C56C5F8834A8 /* microraptor_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microraptor_skin_ocean.jpg; sourceTree = "<group>"; };
 		16D24BC968A2FBC7640986FF /* walrus_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walrus_skin_mint.jpg; sourceTree = "<group>"; };
 		170904DA6029EF5D45923A7C /* capybara_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = capybara_skin_mint.jpg; sourceTree = "<group>"; };
 		171F3DEB90D9CFE4596E340F /* bloomusk_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bloomusk_skin_snow.jpg; sourceTree = "<group>"; };
@@ -1367,6 +1391,7 @@
 		2AF4DB0129728CA56F051DB9 /* penguin_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = penguin_skin_berry.jpg; sourceTree = "<group>"; };
 		2B064227D5523D25BD57AFBF /* rhino_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rhino_skin_sunny.jpg; sourceTree = "<group>"; };
 		2B3E76D1C61AA755F729EC18 /* sfx_anim_jump.m4a */ = {isa = PBXFileReference; path = sfx_anim_jump.m4a; sourceTree = "<group>"; };
+		2B3FF1CB1D635883108D64C1 /* kentrosaurus_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kentrosaurus_skin_galaxy.jpg; sourceTree = "<group>"; };
 		2C2744A651A5D64F9FFBFE7E /* truck_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = truck_skin_natural.jpg; sourceTree = "<group>"; };
 		2C54A280B96FBE4A7DFFDCAB /* raccoon_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = raccoon_skin_berry.jpg; sourceTree = "<group>"; };
 		2CCA10A8356DD2CE3BA49B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../FigureShelf.swiftpm/ContentView.swift; sourceTree = "<group>"; };
@@ -1432,6 +1457,7 @@
 		39CE0ABFF6FD63D2E3E2C35A /* rally_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = rally_clips.json; sourceTree = "<group>"; };
 		39E6D77B624C6223B60B0B94 /* moose.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = moose.usdz; sourceTree = "<group>"; };
 		39FFD0B27B0CB16A7F4D00EA /* megalodon_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = megalodon_skin_sunny.jpg; sourceTree = "<group>"; };
+		3A1007D859CD9F006D762D0E /* kentrosaurus_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kentrosaurus_skin_mint.jpg; sourceTree = "<group>"; };
 		3A1E2CEA6F5B26449DB151DA /* styracosaurus.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = styracosaurus.usdz; sourceTree = "<group>"; };
 		3A753C9198AE6B65BC66D7CB /* capybara.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = capybara.usdz; sourceTree = "<group>"; };
 		3A822BBCB840A2FCCD1683AB /* capybara_pos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capybara_pos.png; sourceTree = "<group>"; };
@@ -1466,6 +1492,7 @@
 		4174B219EFA52F04C1F30FE9 /* showkangaroo_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = showkangaroo_clips.json; sourceTree = "<group>"; };
 		4179945A286C836833CFF5DF /* gallimimus_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gallimimus_skin_berry.jpg; sourceTree = "<group>"; };
 		4186182711AFCC68D9BA24D7 /* knotcko_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knotcko_thumb.png; sourceTree = "<group>"; };
+		41FBF333FCA14B76642E3845 /* microraptor_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microraptor_skin_natural.jpg; sourceTree = "<group>"; };
 		424BA66454BBF44B44697711 /* diplodocus_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diplodocus_skin_berry.jpg; sourceTree = "<group>"; };
 		428A7AABD3A4532ACB0E4104 /* turtle_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtle_skin_sunny.jpg; sourceTree = "<group>"; };
 		42D53BF74E6C496D01B6A655 /* motorcycle_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = motorcycle_skin_berry.jpg; sourceTree = "<group>"; };
@@ -1541,6 +1568,7 @@
 		5036B44A096331EBBCB2F630 /* mouse_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mouse_clips.json; sourceTree = "<group>"; };
 		504EA380BF845BE10B4FA42F /* rally_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rally_skin_natural.jpg; sourceTree = "<group>"; };
 		509185EA9E8B6BAE9E2D4ABC /* vulture_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vulture_skin_sunny.jpg; sourceTree = "<group>"; };
+		50E6048839097BEA9F79C6B5 /* kentrosaurus_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kentrosaurus_skin_natural.jpg; sourceTree = "<group>"; };
 		50EB20CDAE8A9FC58F412941 /* parasaurolophus_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = parasaurolophus_skin_berry.jpg; sourceTree = "<group>"; };
 		50EF3AC33EC100ED033F92D4 /* styracosaurus_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = styracosaurus_skin_snow.jpg; sourceTree = "<group>"; };
 		516D4C07A1DC5AA634AC9B1C /* seaplane_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seaplane_skin_ocean.jpg; sourceTree = "<group>"; };
@@ -1552,6 +1580,7 @@
 		52CF81289CD97D9544756284 /* elephant_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = elephant_clips.json; sourceTree = "<group>"; };
 		5312A3CCE8ADC76D0113312B /* turtle_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtle_skin_berry.jpg; sourceTree = "<group>"; };
 		532E77567AE0C0B4DB00BB78 /* ostrich_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ostrich_skin_berry.jpg; sourceTree = "<group>"; };
+		534EE693DA557962F056A0C5 /* microraptor_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microraptor_skin_snow.jpg; sourceTree = "<group>"; };
 		536325677C017DF2832956DE /* snowmobile_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snowmobile_skin_natural.jpg; sourceTree = "<group>"; };
 		53F616E97BE2D69FEBC4D482 /* raccoon.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = raccoon.usdz; sourceTree = "<group>"; };
 		545DAFA009E0F03D738791C0 /* ostrich_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ostrich_skin_mint.jpg; sourceTree = "<group>"; };
@@ -1626,6 +1655,7 @@
 		63679AB47C381F54DBFED60E /* rhino_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rhino_skin_berry.jpg; sourceTree = "<group>"; };
 		641A32E9B5A911365FFF2B93 /* dunewisp_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dunewisp_skin_snow.jpg; sourceTree = "<group>"; };
 		641D6B13964F6A1098CAE911 /* crocodile.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crocodile.usdz; sourceTree = "<group>"; };
+		64213546306FB19E0A2E6B9D /* microraptor_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microraptor_skin_galaxy.jpg; sourceTree = "<group>"; };
 		64811C6E673ACBB25DCB2BB3 /* excavator_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = excavator_skin_berry.jpg; sourceTree = "<group>"; };
 		649F35F91526052FED99723B /* raccoonkid_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = raccoonkid_skin_sunny.jpg; sourceTree = "<group>"; };
 		64B1BAF8A79AA8F420192BEC /* trex.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = trex.usdz; sourceTree = "<group>"; };
@@ -1929,6 +1959,7 @@
 		A0A2E1D4A541AB2A9AC1B665 /* locomotive_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locomotive_clips.json; sourceTree = "<group>"; };
 		A0DDCAF5C25FA34EFDC0585A /* ankylosaurus_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ankylosaurus_clips.json; sourceTree = "<group>"; };
 		A10F7F2F5CC171272FB0CB39 /* redpanda_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = redpanda_skin_sunny.jpg; sourceTree = "<group>"; };
+		A14C9EA533FAED9DD885E753 /* kentrosaurus_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kentrosaurus_skin_snow.jpg; sourceTree = "<group>"; };
 		A15D25B8A3E3192611760724 /* panda_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panda_skin_mint.jpg; sourceTree = "<group>"; };
 		A174711AFE327E68D2C6BB1F /* walrus_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walrus_skin_snow.jpg; sourceTree = "<group>"; };
 		A191D56323EBFA244156FEC5 /* megalodon_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = megalodon_thumb.png; sourceTree = "<group>"; };
@@ -1976,9 +2007,11 @@
 		A8DA2958A40B7016F7D94E11 /* lobster_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lobster_skin_sunny.jpg; sourceTree = "<group>"; };
 		A90C232A1942CE1621CE95A5 /* iguanodon_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iguanodon_skin_natural.jpg; sourceTree = "<group>"; };
 		A922C6E6AF80BAC6F12B01E9 /* siftrunk.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = siftrunk.usdz; sourceTree = "<group>"; };
+		A92F6465D0A09C872A04B546 /* microraptor_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microraptor_thumb.png; sourceTree = "<group>"; };
 		A97A2B6BFB0FB0FBFD152427 /* glassfin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = glassfin.usdz; sourceTree = "<group>"; };
 		A9D9E58F76D25DE1A579F83C /* snowmobile_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snowmobile_skin_berry.jpg; sourceTree = "<group>"; };
 		AA8F7870EB12308CD28D8BAB /* gallimimus_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gallimimus_skin_natural.jpg; sourceTree = "<group>"; };
+		AB67DB162B9922DEAF870535 /* microraptor_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microraptor_skin_sunny.jpg; sourceTree = "<group>"; };
 		AB6BC34CE2969864E4EFFC44 /* elasmosaurus_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elasmosaurus_thumb.png; sourceTree = "<group>"; };
 		AB75E8CE97E03B59752D09B5 /* rhino_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rhino_skin_mint.jpg; sourceTree = "<group>"; };
 		AB894C4AAB9392792307E480 /* glassfin_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = glassfin_skin_berry.jpg; sourceTree = "<group>"; };
@@ -2009,6 +2042,7 @@
 		B23EF574ECE484B2A0A67C32 /* siftrunk_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = siftrunk_skin_natural.jpg; sourceTree = "<group>"; };
 		B2A1C9FE46480CB9039A75DF /* pleatbill_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pleatbill_clips.json; sourceTree = "<group>"; };
 		B2EDCDFEE54CF50D92E01880 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		B2F983F2C148B08AFA659BEF /* microraptor.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = microraptor.usdz; sourceTree = "<group>"; };
 		B39B770A8AAD7E4312121A10 /* kitty_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitty_skin_mint.jpg; sourceTree = "<group>"; };
 		B3A44387C6A6088F16F6B1DF /* cupspinner_skin_mint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cupspinner_skin_mint.jpg; sourceTree = "<group>"; };
 		B3C7DFC99594FD5501507B81 /* locomotive_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = locomotive_skin_galaxy.jpg; sourceTree = "<group>"; };
@@ -2039,8 +2073,10 @@
 		BB80450F82541135730C6C48 /* cupspinner_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cupspinner_skin_berry.jpg; sourceTree = "<group>"; };
 		BBB3283632BAF1F64CFC639E /* raccoonkid.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = raccoonkid.usdz; sourceTree = "<group>"; };
 		BC01F8D74E887D3D396EB910 /* forklift_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forklift_thumb.png; sourceTree = "<group>"; };
+		BC40D73972FF9A998E43BD0B /* kentrosaurus_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kentrosaurus_thumb.png; sourceTree = "<group>"; };
 		BC58FF8A9532C344AAA6C51D /* carnotaurus_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carnotaurus_thumb.png; sourceTree = "<group>"; };
 		BC76211E20C5FAB6CA1DD681 /* triceratops_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = triceratops_skin_sunny.jpg; sourceTree = "<group>"; };
+		BCA9D9BBC990DE3823763748 /* kentrosaurus_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kentrosaurus_skin_ocean.jpg; sourceTree = "<group>"; };
 		BCACC968078DB50699909AC3 /* ostrich_pos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ostrich_pos.png; sourceTree = "<group>"; };
 		BCC00CEDC8AF7078364E91CB /* supercar_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = supercar_skin_ocean.jpg; sourceTree = "<group>"; };
 		BCDB8942C3CAFF69BABA7757 /* tuftwhale_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tuftwhale_skin_sunny.jpg; sourceTree = "<group>"; };
@@ -2133,6 +2169,7 @@
 		CE28432F1302987F235B48D7 /* bear_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bear_skin_sunny.jpg; sourceTree = "<group>"; };
 		CE35DD6BF43B4E5CF7F5FDE7 /* showelephant_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showelephant_thumb.png; sourceTree = "<group>"; };
 		CE4A6AB8B3F1A90E61304F7D /* kitty_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitty_skin_sunny.jpg; sourceTree = "<group>"; };
+		CF1CDFC872F472267E508A25 /* kentrosaurus_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kentrosaurus_skin_berry.jpg; sourceTree = "<group>"; };
 		CF218FE57E232E1B54C27BEA /* pleatbill_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pleatbill_thumb.png; sourceTree = "<group>"; };
 		CF25EE5F5E44922849AF216A /* ostrich_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ostrich_skin_snow.jpg; sourceTree = "<group>"; };
 		CF56FDBD4503942899B26BA7 /* parrot_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = parrot_skin_galaxy.jpg; sourceTree = "<group>"; };
@@ -2160,6 +2197,7 @@
 		D599C8EC1F7951502610B14F /* ichthyosaurus_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ichthyosaurus_thumb.png; sourceTree = "<group>"; };
 		D69208395BF5BFA641E5270A /* lobster_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lobster_skin_berry.jpg; sourceTree = "<group>"; };
 		D6BEF90C93FFEE072330C1E1 /* pachycephalosaurus_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pachycephalosaurus_skin_sunny.jpg; sourceTree = "<group>"; };
+		D6C07A58BBE1D2E38E64018B /* microraptor_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microraptor_skin_berry.jpg; sourceTree = "<group>"; };
 		D6C17C61C6470D567EB38492 /* mouse_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mouse_skin_sunny.jpg; sourceTree = "<group>"; };
 		D6D7AA0DE9E5C99100CA3183 /* spinosaurus_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spinosaurus_skin_ocean.jpg; sourceTree = "<group>"; };
 		D784CF15D822D0CA48FD77F1 /* truck_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = truck_skin_snow.jpg; sourceTree = "<group>"; };
@@ -2194,6 +2232,7 @@
 		DF7CB25695FFFA98FFF2C40D /* showelephant_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = showelephant_skin_sunny.jpg; sourceTree = "<group>"; };
 		E0278B8AF0EC7B9EFA8EDD68 /* deer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = deer.usdz; sourceTree = "<group>"; };
 		E047971C193AD053A300354B /* tuftwhale_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tuftwhale_clips.json; sourceTree = "<group>"; };
+		E1284A812FCE53AFC3796D10 /* kentrosaurus.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = kentrosaurus.usdz; sourceTree = "<group>"; };
 		E1A1C2DE450DEB0B57AD2B61 /* carnotaurus_skin_natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carnotaurus_skin_natural.jpg; sourceTree = "<group>"; };
 		E1A49AEB985A1ACA8168792A /* jet_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jet_clips.json; sourceTree = "<group>"; };
 		E1AEE51E75926560AA51D7D4 /* chameleon.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chameleon.usdz; sourceTree = "<group>"; };
@@ -2239,6 +2278,7 @@
 		E8C9CBEFC6D3CFBD8995577D /* hippo_clips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hippo_clips.json; sourceTree = "<group>"; };
 		E9097BEA0E0946D835A68039 /* sfx_anim_wave.m4a */ = {isa = PBXFileReference; path = sfx_anim_wave.m4a; sourceTree = "<group>"; };
 		E9EEC2961F988C62317A1C32 /* hippo_skin_snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hippo_skin_snow.jpg; sourceTree = "<group>"; };
+		EA726A11B4754334242CC6A3 /* kentrosaurus_skin_sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kentrosaurus_skin_sunny.jpg; sourceTree = "<group>"; };
 		EA769A6D2E58E45200A686E5 /* ripplemantis_skin_berry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ripplemantis_skin_berry.jpg; sourceTree = "<group>"; };
 		EA7F2503DB14DDE258418CC3 /* gallimimus_skin_ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gallimimus_skin_ocean.jpg; sourceTree = "<group>"; };
 		EA7F709C7E9B70002D6A66AA /* cindermole_skin_galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cindermole_skin_galaxy.jpg; sourceTree = "<group>"; };
@@ -2883,6 +2923,16 @@
 				FE5F3CE994ED4842086BD3B4 /* kangaroo_skin_sunny.jpg */,
 				A217111DDCE60326B0E43474 /* kangaroo_thumb.png */,
 				F6DABB9608CD5ED70DA7136C /* kangaroo.usdz */,
+				112B0C4FCBD75FDDE7DF2095 /* kentrosaurus_clips.json */,
+				CF1CDFC872F472267E508A25 /* kentrosaurus_skin_berry.jpg */,
+				2B3FF1CB1D635883108D64C1 /* kentrosaurus_skin_galaxy.jpg */,
+				3A1007D859CD9F006D762D0E /* kentrosaurus_skin_mint.jpg */,
+				50E6048839097BEA9F79C6B5 /* kentrosaurus_skin_natural.jpg */,
+				BCA9D9BBC990DE3823763748 /* kentrosaurus_skin_ocean.jpg */,
+				A14C9EA533FAED9DD885E753 /* kentrosaurus_skin_snow.jpg */,
+				EA726A11B4754334242CC6A3 /* kentrosaurus_skin_sunny.jpg */,
+				BC40D73972FF9A998E43BD0B /* kentrosaurus_thumb.png */,
+				E1284A812FCE53AFC3796D10 /* kentrosaurus.usdz */,
 				45D7C18C435B093442649217 /* kitty_clips.json */,
 				C8C8D64654A50C45A868EC49 /* kitty_pos.png */,
 				882EEDE330A7B179FFAF9D13 /* kitty_skin_berry.jpg */,
@@ -2987,6 +3037,16 @@
 				39FFD0B27B0CB16A7F4D00EA /* megalodon_skin_sunny.jpg */,
 				A191D56323EBFA244156FEC5 /* megalodon_thumb.png */,
 				6096C4502CB6A383C883D19F /* megalodon.usdz */,
+				01AF0ABDB35C189A1DD88B59 /* microraptor_clips.json */,
+				D6C07A58BBE1D2E38E64018B /* microraptor_skin_berry.jpg */,
+				64213546306FB19E0A2E6B9D /* microraptor_skin_galaxy.jpg */,
+				130D0970C342EEAC3D613EF7 /* microraptor_skin_mint.jpg */,
+				41FBF333FCA14B76642E3845 /* microraptor_skin_natural.jpg */,
+				16AF44B23089C56C5F8834A8 /* microraptor_skin_ocean.jpg */,
+				534EE693DA557962F056A0C5 /* microraptor_skin_snow.jpg */,
+				AB67DB162B9922DEAF870535 /* microraptor_skin_sunny.jpg */,
+				A92F6465D0A09C872A04B546 /* microraptor_thumb.png */,
+				B2F983F2C148B08AFA659BEF /* microraptor.usdz */,
 				1B060AB53910921CDADF2F7B /* mole_clips.json */,
 				351B31F11493071DBA823AC4 /* mole_pos.png */,
 				DDA3422BABCB50DE716305E9 /* mole_skin_berry.jpg */,
@@ -4079,6 +4139,16 @@
 				49BCB5B78C22D58AF0FC3669 /* kangaroo_skin_snow.jpg in Resources */,
 				618BC59C8E6B3265D1AD9C3A /* kangaroo_skin_sunny.jpg in Resources */,
 				DAFF6CE455EAE148461E772B /* kangaroo_thumb.png in Resources */,
+				62828DDD26849EDAA08D331C /* kentrosaurus.usdz in Resources */,
+				DAB400E7B7A667EDA951DD65 /* kentrosaurus_clips.json in Resources */,
+				8F267A2470EAE5D201275DF8 /* kentrosaurus_skin_berry.jpg in Resources */,
+				29CAFAE8B3C75191842DAB4D /* kentrosaurus_skin_galaxy.jpg in Resources */,
+				834966A9C0E7833A3B68C47A /* kentrosaurus_skin_mint.jpg in Resources */,
+				571D1C26349CFF9D036CF732 /* kentrosaurus_skin_natural.jpg in Resources */,
+				3F5C22B762D944723A38A98E /* kentrosaurus_skin_ocean.jpg in Resources */,
+				3A4A65C30E9D1ED1BB94AC3E /* kentrosaurus_skin_snow.jpg in Resources */,
+				A79587281DAE022C189FFAA4 /* kentrosaurus_skin_sunny.jpg in Resources */,
+				0F075223151A24B562CC033E /* kentrosaurus_thumb.png in Resources */,
 				8F4CAB422077F0ADD5EA3FB1 /* kitty.usdz in Resources */,
 				976148EBD2795A3F391B5E61 /* kitty_clips.json in Resources */,
 				8A63DAE99215DD00707CFC69 /* kitty_pos.png in Resources */,
@@ -4183,6 +4253,16 @@
 				6468A22FCB74547AA14C7180 /* megalodon_skin_snow.jpg in Resources */,
 				98E69AA0F2A356353DF864D0 /* megalodon_skin_sunny.jpg in Resources */,
 				295B25B2150636D530006C45 /* megalodon_thumb.png in Resources */,
+				F3A30191B57070A18C8ECE59 /* microraptor.usdz in Resources */,
+				1AEA2496953C9909345F2D73 /* microraptor_clips.json in Resources */,
+				B41ADA6D25C0DDFFBACAD1A5 /* microraptor_skin_berry.jpg in Resources */,
+				CD56305800F9E2F4907DEFE0 /* microraptor_skin_galaxy.jpg in Resources */,
+				0BF42DF22EB44BAF56B6C122 /* microraptor_skin_mint.jpg in Resources */,
+				BB5ED797B39E98D52C19580B /* microraptor_skin_natural.jpg in Resources */,
+				C4F6C67D18A10F278E63A1DA /* microraptor_skin_ocean.jpg in Resources */,
+				F19BAEC3390916942469F3E1 /* microraptor_skin_snow.jpg in Resources */,
+				7740FEFE54ADC222B477365D /* microraptor_skin_sunny.jpg in Resources */,
+				79F14282CE64C94E15FCC33D /* microraptor_thumb.png in Resources */,
 				599C96E93DB175AC0E005652 /* mole.usdz in Resources */,
 				50B4A2C39A46C5962C4CF297 /* mole_clips.json in Resources */,
 				5C3E8D1968B95C67BED95FC8 /* mole_pos.png in Resources */,
@@ -4874,7 +4954,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				ENABLE_PREVIEWS = NO;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4960,7 +5040,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				ENABLE_PREVIEWS = NO;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
